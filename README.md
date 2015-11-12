@@ -1,4 +1,4 @@
 # Slingshot
-A tool to sling rocks
+Rock RMS Auto Deployment Service
 
 ![](https://media.giphy.com/media/gZWzd45z5uZQQ/giphy.gif)
