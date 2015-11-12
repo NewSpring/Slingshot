@@ -1,4 +1,4 @@
 # Slingshot
 A tool to sling rocks
 
-![](https://media.giphy.com/media/s4enmO9VZNuFO/giphy.gif)
+![](https://media.giphy.com/media/gZWzd45z5uZQQ/giphy.gif)
