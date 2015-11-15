@@ -5,5 +5,5 @@ tasks:
     "/.remote":
       "settings": "https://github.com/NewSpring/ops-settings.git"
       "junction": "NewSpring/junction-framework"
-    "packages":
+    "/packages":
       "meteor-scss": "NewSpring/meteor-scss"
