@@ -1,10 +1,13 @@
 import { Component } from "react";
 import ReactMixin from "react-mixin";
 
+import Title from "./components/title";
+import Logo from "./components/logo";
+
 // TODO: import collections
 
 // @ReactMixin.decorate(ReactMeteorData)
-export default class home extends Component {
+export default class Home extends Component {
 
   // TODO: fetch data
   // getMeteorData() {
@@ -17,16 +20,10 @@ export default class home extends Component {
     //   return null;
     // }
 
-    let tempStyles = {
-      width: "100px",
-      height: "100px"
-    }
-
     return (
-      <div className="locked-top locked-bottom one-whole floating">
-        <div className="floating__item" style={tempStyles}>
-          <img src="http://www.rockrms.com/Assets/Icons/touch-icon-iphone-retina.png"/>
-        </div>
+      <div>
+        <Title />
+        <Logo />
       </div>
     );
   }

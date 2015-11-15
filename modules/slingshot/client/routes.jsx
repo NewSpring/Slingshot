@@ -1,8 +1,8 @@
-import home from "./home";
+import Home from "./home";
 
 
 export default {
   path: "/",
-  component: home,
-  indexRoute: { component: home }
+  component: Home,
+  indexRoute: { component: Home }
 };
