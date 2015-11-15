@@ -6,4 +6,4 @@ tasks:
       "settings": "https://github.com/NewSpring/ops-settings.git"
       "junction": "NewSpring/junction-framework"
     "/packages":
-      "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#4273a4c152e48ab0d6f06c419ac2b4f9d6607351"
+      "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#7c6b8aff8225dd5030a21d09f169d839f8693cf9"
