@@ -32,3 +32,7 @@ You should then be able to go to localhost:3000 to see the app running
 ## App Structure
 
 Coming soon!
+
+## Deployments
+
+Release are auto-deployed when code is committed to the master branch
