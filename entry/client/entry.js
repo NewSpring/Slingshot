@@ -1,4 +1,4 @@
 // Methods for optimistic updates
-import 'NewSpringApp/app-methods';
+import 'slingshot/app-methods';
 
 import './routes';
