@@ -1,0 +1,21 @@
+{
+  "name": "slingshot",
+  "version": "1.0.0",
+  "description": "Meteor app for launching RockRMS sites",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewSpring/Slingshot.git"
+  },
+  "keywords": [
+    "RockRMS"
+  ],
+  "author": "NewSpringWeb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NewSpring/Slingshot/issues"
+  },
+  "homepage": "https://github.com/NewSpring/Slingshot#readme"
+}

@@ -1,0 +1,18 @@
+
+// colors taken from Rock
+// https://github.com/NewSpring/Rock/blob/master/RockWeb/Themes/Rock/Styles/_variables.less
+
+$colors: extend($colors, (
+  "primary": #ee7624, // rock orange
+  "secondary": #282526, // rock brown
+  "tertiary": #c2b8a7, // rock tan
+
+
+  "dark-primary": lighten(#000, 20%),
+  "dark-secondary": lighten(#000, 13.5%),
+  "dark-tertiary": lighten(#000, 33.5%),
+
+  "light-primary": #ffffff,
+  "light-secondary": lighten(#000, 93.5%),
+  "light-tertiary": lighten(#000, 46.7%),
+));

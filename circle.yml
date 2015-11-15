@@ -1,0 +1,36 @@
+machine:
+  node:
+    version: 4.1.1
+
+## Customize dependencies
+dependencies:
+  cache_directories:
+    - "node_modules/"
+    - "~/.norma"
+    - ../.meteor
+  pre:
+    - if [ ! -f $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+    - sudo ln -s $HOME/.meteor/meteor /usr/bin/meteor
+    - npm install -g normajs@1.7.10
+    - npm install -g mupx
+
+## Customize test commands
+test:
+  override:
+    # - norma build
+    - git clone https://github.com/NewSpring/ops-settings.git .remote/settings
+    - git clone https://github.com/NewSpring/junction-framework.git .remote/junction
+    - git clone https://github.com/NewSpring/meteor-scss.git packages/meteor-scss
+
+
+deployment:
+  hub:
+    branch: beta
+    commands:
+      # - cp ./.remote/settings/sites/rockrms.church/settings.json ./settings.json
+      - cp ./.remote/settings/sites/rockrms.church/mup.json ./mup.json
+      - cp ./.remote/settings/sites/app.newspring.io/apollos.pem ./apollos.pem
+      - cp ./.remote/settings/sites/app.newspring.io/compose.pem ./compose.pem
+      # - cp ./.remote/settings/sites/rockrms.church/bundle.crt .
+      # - cp ./.remote/settings/sites/rockrms.church/private.key .
+      - mupx deploy
