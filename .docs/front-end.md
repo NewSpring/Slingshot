@@ -130,6 +130,10 @@ export default {
 };
 ~~~
 
+## Styles
+
+Junction is imported and compiled in the `stylesheets` folder. You can override Junction here, or add custom styles when needed.
+
 ## Vendor Assets
 
 Any vendor js or css can be added to the `main.html` file.
