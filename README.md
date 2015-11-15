@@ -22,7 +22,7 @@ To get up and running with Slingshot, run the following commands:
 
 ```bash
 $ norma build
-$ meteor
+$ norma
 
 ```
 

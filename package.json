@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/NewSpring/Slingshot/issues"
   },
-  "homepage": "https://github.com/NewSpring/Slingshot#readme"
+  "homepage": "https://github.com/NewSpring/Slingshot#readme",
+  "dependencies": {
+    "babel-plugin-react-transform": "^1.1.1",
+    "norma-bower": "^0.3.7",
+    "norma-meteor-run": "jbaxleyiii/norma-meteor-run"
+  }
 }
