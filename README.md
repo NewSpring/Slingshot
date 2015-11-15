@@ -31,7 +31,19 @@ You should then be able to go to localhost:3000 to see the app running
 
 ## App Structure
 
-Coming soon!
+This application is using [webpack](https://atmospherejs.com/webpack/webpack) with [meteor](https://meteor.com) for the purposes of using [React](http://facebook.github.io/react/) and doing code splitting. Most of this is set up in the `entry` folder, and you won't need to hang out in there very often for this project.
+
+#### Front End
+
+[Front End Docs](.docs/front-end.md)
+
+#### Azure
+
+Interacting with [Azure](https://azure.microsoft.com/en-us/) will be done in the node package in the `.azure` folder.
+
+#### Rock
+
+Any [Rock](http://www.rockrms.com/) related scripts or files needed for auto launching be done in the `.rock` folder.
 
 ## Deployments
 
