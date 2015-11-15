@@ -17,10 +17,7 @@ dependencies:
 ## Customize test commands
 test:
   override:
-    # - norma build
-    - git clone https://github.com/NewSpring/ops-settings.git .remote/settings
-    - git clone https://github.com/NewSpring/junction-framework.git .remote/junction
-    - git clone https://github.com/NewSpring/meteor-scss.git packages/meteor-scss
+    - norma build
 
 
 deployment:
