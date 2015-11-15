@@ -1,6 +1,7 @@
 
 
 const Rock = {};
+Rock.api = {};
 
 /*
   Rock.api.call
@@ -14,7 +15,7 @@ const Rock = {};
   @param callback [Function] callback to run on response
  */
 
-Rock.call = function(method, endpoint, data, callback) {
+Rock.api.call = function(method, endpoint, data, callback) {
 
   if (typeof data === "function") {
     callback = data;
@@ -39,45 +40,45 @@ Rock.call = function(method, endpoint, data, callback) {
   options.headers = JSON.stringify(headers);
 
   endpoint = Meteor.settings.rock.baseURL + endpoint;
-  
+
   HTTP.call(method, endpoint, data, callback);
   return;
 };
 
 
-Rock.get = function() {
+Rock.api.get = function() {
   let args;
   args = _.values(arguments);
   args.unshift("GET");
-  return Rock.call.apply(this, args);
+  return Rock.api.call.apply(this, args);
 };
 
-Rock["delete"] = function() {
+Rock.api["delete"] = function() {
   let args;
   args = _.values(arguments);
   args.unshift("DELETE");
-  return Rock.call.apply(this, args);
+  return Rock.api.call.apply(this, args);
 };
 
-Rock.put = function() {
+Rock.api.put = function() {
   let args;
   args = _.values(arguments);
   args.unshift("PUT");
-  return Rock.call.apply(this, args);
+  return Rock.api.call.apply(this, args);
 };
 
-Rock.post = function() {
+Rock.api.post = function() {
   let args;
   args = _.values(arguments);
   args.unshift("POST");
-  return Rock.call.apply(this, args);
+  return Rock.api.call.apply(this, args);
 };
 
-Rock.patch = function() {
+Rock.api.patch = function() {
   let args;
   args = _.values(arguments);
   args.unshift("PATCH");
-  return Rock.call.apply(this, args);
+  return Rock.api.call.apply(this, args);
 };
 
 

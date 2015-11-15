@@ -71,7 +71,7 @@ function cancel(customerId, callback){
           if (err) { throw new Meteor.Error(err) }
 
           callback(confirmation);
-          
+
         }
       );
     }

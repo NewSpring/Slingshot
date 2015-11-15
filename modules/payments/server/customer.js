@@ -3,12 +3,13 @@ import Stripe from "./stripe.js"
 import Rock from "../../rock/server/api.js"
 
 
-function createCustomer(token, callback){
+function createCustomer(person, token, callback){
+  check(person, Object);
   check(token, String);
 
   Stripe.customers.create({
     description: "Customer for slingshot RockRMS service",
-    source: "tok_7MDBzOmvKninaJ" // obtained with Stripe.js
+    source: token // obtained with Stripe.js
   }, (err, customer) => {
 
     if (err) { throw new Meteor.Error(err) }
@@ -18,17 +19,21 @@ function createCustomer(token, callback){
       We will need to store customer.id, customer.email,
       and probably customer.subscriptions in Rock
 
-
-      Rock.put("url/to/put", {
-        id: customer.id,
-        email: customer.email
-      }, (err) => {
-
-        if (err) { throw new Meteor.Error(err) }
-
-      })
-
     */
+
+    Rock.api.post("api/People", {
+      // id: customer.id,
+      IsSystem: false,
+      FirstName: person.firstName || null,
+      LastName: person.lastName || null,
+      Email: person.email || null,
+      EmailPreference: customer.email || 0
+
+    }, (err) => {
+
+      if (err) { throw new Meteor.Error(err) }
+
+    })
 
   });
 
@@ -43,7 +48,7 @@ function findCustomer(email, callback){
     We will need to lookup the customer token from Rock and
     return it. This should be only a server side method
 
-    Rock.get("url/to/search", {
+    Rock.api.get("url/to/search", {
       email: email
     }, callback);
 

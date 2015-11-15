@@ -8,11 +8,11 @@ const Future = Npm.require('fibers/future');
 
 Meteor.methods({
 
-  "chargeCard": () => {
+  "chargeCard": (token, amount) => {
 
     const fut = new Future();
 
-    chargeCard(token, (result) => {
+    chargeCard(token, amount, (result) => {
       fut["return"](result);
     });
 
@@ -20,11 +20,11 @@ Meteor.methods({
 
   },
 
-  "createCustomer": (token) => {
+  "createCustomer": (person, token) => {
 
     const fut = new Future();
 
-    createCustomer(token, (result) => {
+    createCustomer(person, token, (result) => {
       fut["return"](result);
     });
 
