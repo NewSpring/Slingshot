@@ -37,6 +37,15 @@ This application is using [webpack](https://atmospherejs.com/webpack/webpack) wi
 
 [Front End Docs](.docs/front-end.md)
 
+#### Subscriptions and Customers
+
+Currently this application uses the Stripe payment SaaS to manage customers, charges, and subscriptions. It is also where we store the available plans that customers can purchase.
+
+Payments are setup using the `payments` and `rock` modules
+
+[Subscriptions and Customers docs](.docs/payments.md)
+
+
 #### Azure
 
 Interacting with [Azure](https://azure.microsoft.com/en-us/) will be done in the node package in the `.azure` folder.
