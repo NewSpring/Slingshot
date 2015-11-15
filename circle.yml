@@ -24,7 +24,7 @@ deployment:
   hub:
     branch: master
     commands:
-      # - cp ./.remote/settings/sites/rockrms.church/settings.json ./settings.json
+      - cp ./.remote/settings/sites/rockrms.church/settings.json ./settings.json
       - cp ./.remote/settings/sites/rockrms.church/mup.json ./mup.json
       - cp ./.remote/settings/sites/app.newspring.io/apollos.pem ./apollos.pem
       - cp ./.remote/settings/sites/app.newspring.io/compose.pem ./compose.pem
