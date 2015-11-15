@@ -1,7 +1,14 @@
+<p align="center" >
+  <a href="http://newspring.cc">
+    <img src="https://s3.amazonaws.com/ns.images/newspring/icons/newspring-church-logo-black.png" alt="NewSpring Church" title="NewSpring Church" />
+  </a>
+</p>
+
 # Slingshot
 Rock RMS Auto Deployment Service
 
-![](https://media.giphy.com/media/gZWzd45z5uZQQ/giphy.gif)
+![Rock RMS](https://raw.githubusercontent.com/SparkDevNetwork/Rock/develop/Images/github-banner.png)
+
 
 
 ## Development
