@@ -5,6 +5,7 @@
 </p>
 
 # Slingshot
+[![Circle CI](https://circleci.com/gh/NewSpring/Slingshot.svg?style=svg)](https://circleci.com/gh/NewSpring/Slingshot)
 Rock RMS Auto Deployment Service
 
 ![Rock RMS](https://raw.githubusercontent.com/SparkDevNetwork/Rock/develop/Images/github-banner.png)
