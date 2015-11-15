@@ -24,10 +24,10 @@ deployment:
   hub:
     branch: beta
     commands:
-      - cp ./.remote/settings/sites/rockrms.church/alpha.settings.json ./settings.json
-      - cp ./.remote/settings/sites/rockrms.church/alpha.mup.json ./mup.json
+      # - cp ./.remote/settings/sites/rockrms.church/settings.json ./settings.json
+      - cp ./.remote/settings/sites/rockrms.church/mup.json ./mup.json
       - cp ./.remote/settings/sites/app.newspring.io/apollos.pem ./apollos.pem
       - cp ./.remote/settings/sites/app.newspring.io/compose.pem ./compose.pem
-      - cp ./.remote/settings/ssl/bundle.crt .
-      - cp ./.remote/settings/ssl/private.key .
+      # - cp ./.remote/settings/sites/rockrms.church/bundle.crt .
+      # - cp ./.remote/settings/sites/rockrms.church/private.key .
       - mupx deploy
