@@ -129,3 +129,7 @@ export default {
   ]
 };
 ~~~
+
+## Vendor Assets
+
+Any vendor js or css can be added to the `main.html` file.
