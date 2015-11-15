@@ -1,0 +1,9 @@
+name: "newspring-app"
+
+tasks:
+  bower:
+    "/.remote":
+      "settings": "https://github.com/NewSpring/ops-settings.git"
+      "junction": "NewSpring/junction-framework"
+    "packages":
+      "meteor-scss": "NewSpring/meteor-scss"
