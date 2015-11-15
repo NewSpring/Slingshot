@@ -22,7 +22,7 @@ test:
 
 deployment:
   hub:
-    branch: beta
+    branch: master
     commands:
       # - cp ./.remote/settings/sites/rockrms.church/settings.json ./settings.json
       - cp ./.remote/settings/sites/rockrms.church/mup.json ./mup.json
