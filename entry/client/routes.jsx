@@ -1,5 +1,5 @@
 ReactRouterSSR.Run({
   childRoutes: [
-    require('NewSpringApp/client'),
+    require('slingshot/client'),
   ]
 });
