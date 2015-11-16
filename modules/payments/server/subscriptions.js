@@ -71,11 +71,7 @@ function cancel(customerId, callback){
           if (err) { throw new Meteor.Error(err) }
 
           callback(confirmation);
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> ed86037c2d3041abd1026fa235844f7e4ab3376c
         }
       );
     }
