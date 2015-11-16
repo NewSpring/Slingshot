@@ -1,8 +1,8 @@
 
 
-import chargeCard from "./charge.js"
-import { createCustomer, findCustomer } from "./customer.js"
-import subscribe from "./subscriptions.js"
+import chargeCard from "./methods/charge.js"
+import { createCustomer, findCustomer } from "./methods/customer.js"
+import subscribe from "./methods/subscriptions.js"
 
 const Future = Npm.require('fibers/future');
 

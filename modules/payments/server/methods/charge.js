@@ -1,6 +1,6 @@
 
 
-import Stripe from "./stripe.js"
+import Stripe from "./../stripe.js"
 
 function charge(token, amount, callback){
 

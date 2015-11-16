@@ -1,6 +1,6 @@
 
-import Stripe from "./stripe.js"
-import Rock from "../../rock/server/api.js"
+import Stripe from "./...stripe.js"
+import Rock from "../../../rock/server/api.js"
 
 
 function createCustomer(person, token, callback){

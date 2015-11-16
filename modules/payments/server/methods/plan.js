@@ -1,6 +1,6 @@
 
 
-import Stripe from "./stripe.js"
+import Stripe from "./../stripe.js"
 
 function getPlan(planId, callback){
 
@@ -11,7 +11,7 @@ function getPlan(planId, callback){
     if (err) { throw new Meteor.Error(err) }
 
     callback(plan);
-    
+
   });
 
 

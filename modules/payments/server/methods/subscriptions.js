@@ -1,9 +1,9 @@
 
 
 
-import Stripe from "./stripe.js"
+import Stripe from "./../stripe.js"
 import getPlan from "./plan.js"
-import Rock from "../../rock/server/api.js"
+import Rock from "../../../rock/server/api.js"
 
 function subscribe(customerId, token, planId, callback){
 
