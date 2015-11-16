@@ -28,6 +28,28 @@ Meteor.methods({
     token: String // generated from stripe.js
     plan: String // id of plan from Stripe
 
+    sample call:
+
+      console.log("starting setup...");
+
+      var int = setInterval(function(){
+        console.log("still setting up...");
+      }, 2000);
+
+      Meteor.call("purchasePlan", {
+        firstName: "Purus",
+        lastName: "Magna",
+        email: "terry.robles@newspring.cc",
+        orgSize: 10000,
+        orgName: "Freedom Church"
+      }, "Cursus", "Tellus", function(err, response){
+        if (err) { console.error(err); return; }
+
+        clearInterval(int);
+        console.table(response);
+
+      });
+
   */
   "purchasePlan": function(person, token, plan) {
 
@@ -67,6 +89,21 @@ Meteor.methods({
     email: String // required
     password: String // required
 
+
+    sample call:
+
+      console.log("getting plan...");
+
+      var planInt = setInterval(function(){
+        console.log("still getting plan...");
+      }, 2000);
+
+      Meteor.call("getPlan", "terry.robles@newspring.cc", "Cursus",  function(err, response){
+        if (err) { console.error(err); return; }
+
+        clearInterval(planInt);
+        console.table(response);
+      });
   */
   "getPlan": function(email, password){
 
@@ -124,6 +161,21 @@ Meteor.methods({
     password: String // required
     subId: String // required
 
+    sample call:
+
+      console.log("canceling plan...");
+
+      var cancelInt = setInterval(function(){
+        console.log("still canceling plan...");
+      }, 2000);
+
+      Meteor.call("cancelPlan", "terry.robles@newspring.cc", "Cursus", "foobar", function(err, response){
+        if (err) { console.error(err); return; }
+
+        clearInterval(cancelInt);
+        console.table(response);
+      });
+
   */
   "cancelPlan": function(email, password, subId) {
 
@@ -153,6 +205,16 @@ Meteor.methods({
     resetPassword:
 
     email: String // required
+
+    sample call:
+
+      console.log("resetting password...");
+
+      Meteor.call("resetPassword", "terry.robles@newspring.cc", function(err, response){
+        if (err) { console.error(err); return; }
+
+        console.table(response);
+      });
 
   */
   "resetPassword": function(email) {
