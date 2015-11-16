@@ -37,6 +37,8 @@ This application is using [webpack](https://atmospherejs.com/webpack/webpack) wi
 
 [Front End Docs](.docs/front-end.md)
 
+> There are currently stubs setup for testing out the payment workflow. Look at the [spec](.docs/payments.md) and the [file](modules/payments/server/stub-payments.js) for usage patterns
+
 #### Subscriptions and Customers
 
 Currently this application uses the Stripe payment SaaS to manage customers, charges, and subscriptions. It is also where we store the available plans that customers can purchase.
