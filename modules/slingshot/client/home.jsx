@@ -1,9 +1,10 @@
 import { Component } from "react";
 import ReactMixin from "react-mixin";
 
-import Title from "./components/title";
-import Logo from "./components/logo";
-import Input from "./components/input";
+import NavBar from "./sections/navbar"
+import Hero from "./sections/hero"
+import Ad from "./sections/ad"
+import Footer from "./sections/footer"
 
 // TODO: import collections
 
@@ -28,19 +29,10 @@ export default class Home extends Component {
 
     return (
       <div>
-        <form>
-          <Input
-            label="Layout Label"
-            name="firstName"
-            type="text"
-            placeholder="Test Placeholder"
-            class="stuff"
-            disabled=""
-            id="firstName"
-            validation={this.isValid}
-            validationErrorMessage="You Need A Name"
-          />
-        </form>
+        <NavBar />
+        <Hero />
+        <Ad />
+        <Footer />
       </div>
     );
   }

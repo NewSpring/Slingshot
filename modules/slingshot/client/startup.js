@@ -1,5 +1,3 @@
-
-
 Meteor.startup(() => {
   if (!Meteor.settings.public.stripe) {
     return;
