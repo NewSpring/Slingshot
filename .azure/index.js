@@ -6,7 +6,7 @@ const azure = require("azure-common"),
 
 const clientId = process.env.AZURE_CLIENT_ID,
       key = process.env.AZURE_SHARED_KEY,
-      resourceURI = "https://management.core.windows.net/",
+      resourceURI = "https://management.azure.com/",
       authority = `https://login.microsoftonline.com/${process.env.AZURE_TENANT_ID}`,
       resourceGroupName = process.env.AZURE_RESOURCE_GROUP_NAME,
       dnsZoneName = process.env.AZURE_DNS_ZONE_NAME;
@@ -48,7 +48,7 @@ function createCNAME(cname, url) {
           cnameRecord: {
             cname: url
           },
-          ttl: 3600
+          ttl: 300
         },
         location: "global"
       }
