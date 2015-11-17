@@ -7,22 +7,39 @@ import Ad from "./sections/ad"
 import Footer from "./sections/footer"
 import Input from "./components/input"
 
-// TODO: import collections
 
-// @ReactMixin.decorate(ReactMeteorData)
+import RockApi from "./collections"
+window.RockApi = RockApi;
+
+
 const Home = React.createClass({
+
+  mixins: [ReactMeteorData],
 
   isValid(){
     console.log("is valid");
     return true;
   },
 
+  getMeteorData() {
+    var channelHandle = Meteor.subscribe("rock.content-channels");
+    var channelItemHandle = Meteor.subscribe("rock.content-channel-items");
+
+    return {
+      isLoading: !(channelHandle.ready() && channelItemHandle.ready()),
+      contentChannels: RockApi.contentChannels.find().fetch(),
+      contentChannelItems: RockApi.contentChannelItems.find().fetch()
+    };
+  },
+
   render() {
-    // TODO: wait for subscriptions
-    // if (!this.data) {
-    //   // loading
-    //   return null;
-    // }
+    if (this.data.isLoading) {
+      return (
+        <div>
+          Loading!
+        </div>
+      );
+    }
 
     return (
       <div>
