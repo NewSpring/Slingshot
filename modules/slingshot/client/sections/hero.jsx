@@ -1,12 +1,13 @@
 
-import { Component } from "react";
+import React from "react";
 
 
-export default class Hero extends Component {
+const Hero = React.createClass({
 
-  styles = {
+  styles: {
     backgroundImage: "url('https://www.rockrms.com/Themes/RockRMSv2/Assets/Images/Homepage/section-hosting-background.jpg')"
-  }
+  },
+
 
   render() {
 
@@ -29,4 +30,5 @@ export default class Hero extends Component {
 
   }
 
-}
+})
+export default Hero

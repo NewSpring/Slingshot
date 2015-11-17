@@ -1,6 +1,6 @@
-import { Component } from "react";
+import React from "react";
 
-export default class Logo extends Component {
+const Logo = React.createClass({
 
   render() {
 
@@ -11,5 +11,7 @@ export default class Logo extends Component {
     );
 
   }
+});
 
-}
+
+export default Logo

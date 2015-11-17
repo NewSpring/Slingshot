@@ -1,8 +1,8 @@
 
-import { Component } from "react";
+import React from "react";
 
 
-export default class Devs extends Component {
+const Devs = React.createClass({
 
   render() {
 
@@ -27,4 +27,7 @@ export default class Devs extends Component {
 
   }
 
-}
+})
+
+
+export default Devs

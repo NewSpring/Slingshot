@@ -1,10 +1,10 @@
 
-import { Component } from "react";
+import React from "react";
 import Pastors from "./../components/pastors"
 import Devs from "./../components/devs"
 
-export default class Ad extends Component {
 
+const Ad = React.createClass({
   render() {
 
     return (
@@ -31,5 +31,7 @@ export default class Ad extends Component {
     );
 
   }
+});
 
-}
+
+export default Ad
