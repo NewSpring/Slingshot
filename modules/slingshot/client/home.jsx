@@ -1,8 +1,10 @@
 import { Component } from "react";
 import ReactMixin from "react-mixin";
 
-import Title from "./components/title";
-import Logo from "./components/logo";
+import NavBar from "./sections/navbar"
+import Hero from "./sections/hero"
+import Ad from "./sections/ad"
+import Footer from "./sections/footer"
 
 // TODO: import collections
 
@@ -22,8 +24,11 @@ export default class Home extends Component {
 
     return (
       <div>
-        <Title />
-        <Logo />
+
+        <NavBar />
+        <Hero />
+        <Ad />
+        <Footer />
       </div>
     );
   }
