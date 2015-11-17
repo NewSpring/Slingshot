@@ -8,15 +8,20 @@ export default class Ad extends Component {
   render() {
 
     return (
-      <section>
-        <div className="grid one-whole">
-          <div className="grid__item one-half@one-whole one-half@lap-and-up">
-            <div className="soft-ends">
+      <section className="hard">
+        <div className="grid flush one-whole">
+          <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
+            <div className="soft soft-double-ends">
               <Pastors />
             </div>
           </div>
-          <div className="grid__item one-half@one-whole one-half@lap-and-up">
-            <div className="soft-ends">
+          <div className="grid__item hard one-whole visuallyhidden@lap-and-up">
+            <div className="soft-sides">
+              <hr className="one-whole flush-ends"></hr>
+            </div>
+          </div>
+          <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
+            <div className="soft soft-double-ends">
               <Devs />
             </div>
           </div>

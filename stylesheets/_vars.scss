@@ -3,6 +3,8 @@
 $use-old-namespace: false; // dont use hanheld-<rule>
 $use-new-namespace: true; // do use <rule>@handheld
 
+$base-border-radius: 4px;
+
 // colors taken from Rock
 // https://github.com/NewSpring/Rock/blob/master/RockWeb/Themes/Rock/Styles/_variables.less
 
@@ -20,6 +22,7 @@ $colors: extend($colors, (
   "light-secondary": lighten(#000, 93.5%),
   "light-tertiary": lighten(#000, 46.7%),
 ));
+
 
 
 $fonts: (

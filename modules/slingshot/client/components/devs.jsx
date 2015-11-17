@@ -21,7 +21,7 @@ export default class Devs extends Component {
           </ul>
         </div>
 
-        <button className="btn">Download Rcok</button>
+        <button className="btn--secondary">Download Rcok</button>
       </div>
     );
 
