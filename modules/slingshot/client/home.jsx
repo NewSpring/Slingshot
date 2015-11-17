@@ -35,6 +35,12 @@ export default class Home extends Component {
     return (
       <div>
         <NavBar />
+        { this.data.contentChannelItems.map((task) => {
+          return (
+            <p dangerouslySetInnerHTML={__html: task.Content}>
+            </p>
+          );
+        }) }
         <Hero />
         <Ad />
         <Footer />
