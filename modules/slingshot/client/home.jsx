@@ -9,7 +9,7 @@ import Footer from "./sections/footer"
 import RockApi from "./collections"
 window.RockApi = RockApi;
 
-// @ReactMixin.decorate(ReactMeteorData)
+@ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
   getMeteorData() {
