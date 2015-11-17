@@ -6,25 +6,34 @@ import Hero from "./sections/hero"
 import Ad from "./sections/ad"
 import Footer from "./sections/footer"
 
-// TODO: import collections
+import RockApi from "./collections"
+window.RockApi = RockApi;
 
 // @ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
 
-  // TODO: fetch data
-  // getMeteorData() {
-  // }
+  getMeteorData() {
+    var channelHandle = Meteor.subscribe("rock.content-channels");
+    var channelItemHandle = Meteor.subscribe("rock.content-channel-items");
+
+    return {
+      isLoading: !(channelHandle.ready() && channelItemHandle.ready()),
+      contentChannels: RockApi.contentChannels.find().fetch(),
+      contentChannelItems: RockApi.contentChannelItems.find().fetch()
+    };
+  }
 
   render() {
-    // TODO: wait for subscriptions
-    // if (!this.data) {
-    //   // loading
-    //   return null;
-    // }
+    if (this.data.isLoading) {
+      return (
+        <div>
+          Loading!
+        </div>
+      );
+    }
 
     return (
       <div>
-
         <NavBar />
         <Hero />
         <Ad />
