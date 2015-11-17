@@ -38,11 +38,10 @@ Rock.api.call = function(method, endpoint, data, callback) {
 
   const options = {};
   options.content = JSON.stringify(data);
-  options.headers = JSON.stringify(headers);
+  options.headers = headers;
 
-  endpoint = Meteor.settings.rock.baseURL + endpoint;
-
-  HTTP.call(method, endpoint, data, callback);
+  endpoint = Meteor.settings.rock.baseURL + "api/" + endpoint;
+  HTTP.call(method, endpoint, options, callback);
   return;
 };
 
@@ -83,5 +82,10 @@ Rock.api.patch = function() {
 
 };
 
+
+Rock.apiSync = {};
+for (const meth in Rock.api) {
+  Rock.apiSync[meth] = Meteor.wrapAsync(Rock.api[meth], Rock.api);
+}
 
 export default Rock

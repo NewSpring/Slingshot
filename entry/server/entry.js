@@ -1,8 +1,10 @@
-import 'slingshot/app-methods';
-import 'slingshot/server/app-subscriptions'
+// ensure data is setup in Rock
+import "slingshot/server/models/rock-attributes"
 
-// import 'payments/server/payments'
-import 'payments/server/stub-payments'
+// create methods for interactions
+import "slingshot/server/methods"
+
+
 
 // Do server-rendering only in proudction mode
 if (process.env.NODE_ENV === "production") {
