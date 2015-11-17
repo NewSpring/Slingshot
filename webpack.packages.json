@@ -11,5 +11,8 @@
 
   "babel-plugin-react-transform": "^1.1.1",
   "react-transform-hmr": "^1.0.1",
-  "react-transform-catch-errors": "^1.0.0"
+  "react-transform-catch-errors": "^1.0.0",
+  "react-validation-mixin": "^5.3.1",
+  "joi-validation-strategy": "^0.3.1",
+  "joi": "^7.0.0"
 }
