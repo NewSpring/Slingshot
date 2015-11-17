@@ -43,9 +43,6 @@ export default class Input extends Component {
       this.tabIndex = 0;
     }
 
-
-    this.setState({ validating: true });
-
   }
 
   doThings(){
@@ -80,6 +77,12 @@ export default class Input extends Component {
 
   }
 
+  componentDidMount() {
+    this.setState({
+      validating: true
+    });
+  }
+
   render() {
 
     return (
@@ -99,7 +102,7 @@ export default class Input extends Component {
           onBlur={this.validate}
         />
 
-
+        {this.renderHelpText()}
 
       </div>
     );
