@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React from "react";
 import ReactMixin from "react-mixin";
 
 import NavBar from "./sections/navbar"
@@ -9,16 +9,12 @@ import Footer from "./sections/footer"
 // TODO: import collections
 
 // @ReactMixin.decorate(ReactMeteorData)
-export default class Home extends Component {
-
-  // TODO: fetch data
-  // getMeteorData() {
-  // }
+const Home = React.createClass({
 
   isValid(){
     console.log("is valid");
     return true;
-  }
+  },
 
   render() {
     // TODO: wait for subscriptions
@@ -36,4 +32,7 @@ export default class Home extends Component {
       </div>
     );
   }
-};
+})
+
+
+export default Home

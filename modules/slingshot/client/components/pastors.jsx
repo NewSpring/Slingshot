@@ -1,9 +1,8 @@
 
-import { Component } from "react";
+import React from "react";
 
 
-export default class Pastors extends Component {
-
+const Pastors = React.createClass({
   render() {
 
     return (
@@ -27,4 +26,6 @@ export default class Pastors extends Component {
 
   }
 
-}
+})
+
+export default Pastors

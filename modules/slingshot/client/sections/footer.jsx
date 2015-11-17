@@ -1,15 +1,14 @@
 
-import { Component } from "react";
+import React from "react";
 
+const Footer = React.createClass({
 
-export default class Footer extends Component {
-
-  services = [
+  services: [
     "facebook",
     "twitter",
     "google-plus",
     "rss"
-  ];
+  ],
 
   renderServices(){
     for (let service of this.services) {
@@ -22,7 +21,7 @@ export default class Footer extends Component {
         </div>
       )
     }
-  }
+  },
 
   render() {
 
@@ -64,4 +63,8 @@ export default class Footer extends Component {
 
   }
 
-}
+
+
+})
+
+export default Footer

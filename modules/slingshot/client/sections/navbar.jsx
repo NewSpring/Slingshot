@@ -1,10 +1,8 @@
 
-import { Component } from "react";
-
+import React from "react";
 import Logo from "./../components/logo"
 
-export default class NavBar extends Component {
-
+const NavBar = React.createClass({
   render() {
 
     return (
@@ -20,4 +18,6 @@ export default class NavBar extends Component {
 
   }
 
-}
+})
+
+export default NavBar
