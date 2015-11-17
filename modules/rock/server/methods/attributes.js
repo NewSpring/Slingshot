@@ -122,147 +122,80 @@ Attribute.set = function(key, Value, EntityId, callback) {
 
 Attribute.get = function(key, EntityId, callback) {
   check(key, String);
-  check(EntityId, Number);
+  let entityIdFilter = "";
+  let query;
+
+  if(typeof EntityId === "function") {
+    callback = EntityId;
+    EntityId = undefined;
+  }
+
+  if(EntityId) {
+    entityIdFilter = `and EntityId eq ${EntityId}`;
+  }
+
+  query = `AttributeValues?$select=Value&$expand=Attribute&$filter=Attribute/Key eq '${key}' ${entityIdFilter}`;
 
   if (!callback) {
-    let attributeInfo = Rock.apiSync.get(`Attributes?$filter=Key eq '${key}'`);
+    const attributeValues = Rock.apiSync.get(query).data.map(function (v) {
+      return v.Value;
+    });
 
-    if (!attributeInfo || !attributeInfo.data[0] || !attributeInfo.data[0].Id) {
-      throw new Meteor.Error("That attribute doesn't exist in Rock");
-    }
-
-    const AttributeId = attributeInfo.data[0].Id;
-
-    const data = {
-      AttributeId,
-      EntityId
-    };
-
-    const attributeValues = Rock.apiSync.get(
-      `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`
-    ).data
-
-    if (attributeValues.length) {
-      let value = attributeValues[0].Value
+    if (EntityId) {
+      let value = attributeValues.length ? attributeValues[0] : null;
       return value;
     }
 
-    return null;
+    return attributeValues;
   }
 
+  Rock.api.get(query, (err, response) => {
 
-  Rock.api.get(
-    `Attributes?$filter=Key eq '${key}'`,
-    (err, response) => {
+    if (err) { throw new Meteor.Error(err); }
 
-      if (err) { throw new Meteor.Error(err); }
+    const attributeValues = response.data.map(function (v) {
+      return v.Value;
+    });
 
-      if (!response.data[0] || !response.data[0].Id) {
-        throw new Meteor.Error("That attribute doesn't exist in Rock");
-      }
+    if (EntityId) {
+      let value = attributeValues.length ? attributeValues[0] : null;
+      callback(value);
+      return;
+    }
 
-      const AttributeId = response.data[0].Id;
-
-      const data = {
-        IsSystem: false,
-        AttributeId,
-        EntityId
-      };
-
-      Rock.api.get(
-        `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`,
-        (err, response) => {
-
-          if (err) { throw new Meteor.Error(err); }
-
-          if (response.data.length) {
-            let value = response.data[0].Value;
-            callback(null, value);
-          }
-
-          callback(new Meteor.Error("Attribute value not found"));
-      });
-
-
+    callback(attributeValues);
   });
-
-  return;
-
 }
 
 Attribute.delete = function(key, EntityId, callback) {
   check(key, String);
   check(EntityId, Number);
+  query = `AttributeValues?$select=Id&$expand=Attribute&$filter=EntityId eq ${EntityId} and Attribute/Key eq ${key}`;
 
   if (!callback) {
-    let attributeInfo = Rock.apiSync.get(`Attributes?$filter=Key eq '${key}'`);
+    const attributeValueIds = Rock.apiSync.get(query).data.map(function (v) {
+      return v.Id;
+    });
 
-    if (!attributeInfo || !attributeInfo.data[0] || !attributeInfo.data[0].Id) {
-      throw new Meteor.Error("That attribute doesn't exist in Rock");
-    }
-
-    const AttributeId = attributeInfo.data[0].Id;
-
-    const data = {
-      AttributeId,
-      EntityId
-    };
-
-    const attributeValues = Rock.apiSync.get(
-      `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`
-    ).data
-
-
-    if (attributeValues.length) {
-      let id = attributeValues[0].Id;
-
+    if (attributeValueIds.length) {
+      let id = attributeValueIds[0];
       Rock.apiSync.delete(`AttributeValues/${id}`);
-      return;
     }
 
-    return
+    return;
   }
 
+  Rock.api.get(query, (err, response) => {
+    if (err) { throw new Meteor.Error(err); }
 
-  Rock.api.get(
-    `Attributes?$filter=Key eq '${key}'`,
-    (err, response) => {
-
-      if (err) { throw new Meteor.Error(err); }
-
-      if (!response.data[0] || !response.data[0].Id) {
-        throw new Meteor.Error("That attribute doesn't exist in Rock");
-      }
-
-      const AttributeId = response.data[0].Id;
-
-      Rock.api.get(
-        `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`,
-        (err, response) => {
-
+    if (response.data.length) {
+      let id = response.data[0].Id;
+      Rock.api.delete(`AttributeValues/${id}`, (err, response) => {
           if (err) { throw new Meteor.Error(err); }
-
-          if (response.data.length) {
-            let id = response.data[0].Id;
-            Rock.api.delete(`AttributeValues/${id}`,
-              (err, response) => {
-
-                if (err) { throw new Meteor.Error(err); }
-
-                callback(true);
-
-            });
-          }
-
-          callback(new Meteor.Error("Attribute value not found"));
+          callback(true);
       });
-
-
-
+    }
   });
-
-  return;
-
 }
 
 export default Attribute
