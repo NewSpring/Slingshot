@@ -36,28 +36,15 @@ TBD
 ```javascript
 
 {
-  id: String // from Stripe
+  stripeId: String // from Stripe
   firstName: String // from user
   lastName: String // from user
-  subscriptionId: String // from Stripe
+  stripeSubscriptionId: String // from Stripe
   orgSize: Number // from user
   orgName: String // from user
-  azureId: String // internally generated
-  password: String // internally generated
-}
-
-```
-
-
-
-### Azure Accounts
-
-```javascript
-
-{
-  id: String // internally generated
-  ip: String // from Azure
-  subdomain: String // from user (or generated from orgName?)
+  slingshotIp: String // from Azure
+  slingshotSubdomain: String // from user (or generated from orgName?)
+  password: String // stored in Rock user Account
 }
 
 ```

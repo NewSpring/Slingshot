@@ -3,6 +3,8 @@
 const Future = Npm.require('fibers/future');
 const emailRegex = /[\w\.\'_%-]+(\+[\w-]*)?@([\w-]+\.)+[\w-]+/;
 
+import purchase from "./purchase"
+
 function checkEmail(email) {
 
   if (!emailRegex.test(email)) {
@@ -31,24 +33,34 @@ Meteor.methods({
     sample call:
 
       console.log("starting setup...");
+      Stripe.card.createToken({
+        number:"4242424242424242",
+        cvc:"001",
+        exp_month:"12",
+        exp_year:"2016",
+        name: "Terry Robels"
+      }, function(status, response) {
+        token = response.id;
+        console.log(token);
 
-      var int = setInterval(function(){
-        console.log("still setting up...");
-      }, 2000);
+        Meteor.call("purchasePlan", {
+          firstName: "Terry",
+          lastName: "Robles",
+          email: "terry.robles@newspring.cc",
+          subdomain: "mewsprings",
+          orgName: "MewSpring Church"
+        }, token, "Small", function(err, response){
 
-      Meteor.call("purchasePlan", {
-        firstName: "Purus",
-        lastName: "Magna",
-        email: "terry.robles@newspring.cc",
-        orgSize: 10000,
-        orgName: "Freedom Church"
-      }, "Cursus", "Tellus", function(err, response){
-        if (err) { console.error(err); return; }
+          if (err) { console.error(err); return; }
 
-        clearInterval(int);
-        console.table(response);
+          clearInterval(int);
+          console.table(response);
+
+        });
 
       });
+
+
 
   */
   "purchasePlan": function(person, token, plan) {
@@ -57,26 +69,20 @@ Meteor.methods({
       firstName: String,
       lastName: String,
       email: String,
-      orgSize: Match.Optional(Number),
+      subdomain: Match.Optional(String),
       orgName: Match.Optional(String)
     });
     checkEmail(person.email);
     check(token, String);
     check(plan, String);
 
-
-
-    // simulate actions being done
     const fut = new Future();
-    Meteor.setTimeout(() => {
+    purchase(person, token, plan, (response) => {
 
-      fut.return({
-        url: "https://sandbox.rockrms.church",
-        email: person.email
-      });
+      fut.return(response);
 
-    // long wait to setup everything!
-    }, 120000);
+    });
+
     return fut.wait();
 
   },

@@ -2,6 +2,6 @@
 import 'slingshot/app-methods';
 
 // payments
-import 'payments/client/startup'
+import 'slingshot/client/startup'
 
 import './routes';
