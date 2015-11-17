@@ -3,6 +3,7 @@ import "slingshot/server/models/rock-attributes"
 
 // create methods for interactions
 import "slingshot/server/methods"
+import "slingshot/server/publications"
 
 
 
