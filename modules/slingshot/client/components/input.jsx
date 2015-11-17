@@ -9,30 +9,17 @@ const Input = React.createClass({
       this.labelFor = this.props.id;
     } else if (this.props.name) {
       this.labelFor = this.props.name;
-    } else if (this.props.label) {
+    } else {
       this.labelFor = this.props.label;
     }
 
-    if (this.props.label) {
-      this.labelName = this.props.label;
-    } else if (this.props.name) {
-      this.labelName = this.props.name;
-    }
-
-    if (this.props.placeholder) {
-      this.Placeholder = this.props.placeholder;
-    } else if (this.props.label) {
-      this.Placeholder = this.props.label;
-    }
+    this.labelName = this.props.label ? this.props.label : this.props.name;
+    this.Placeholder = this.props.placeholder ? this.props.placeholder : this.props.label;
 
     const regex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i
     const userAgent = navigator.userAgent;
 
-    if (regex.test(userAgent)) {
-      this.tabIndex = -1;
-    } else {
-      this.tabIndex = 0;
-    }
+    this.tabIndex = regex.test(userAgent) ? -1 : 0;
 
   },
 
@@ -46,7 +33,7 @@ const Input = React.createClass({
     }
   },
 
-  disabled() {
+  disabled: function disabled() {
     if (this.props.disabled) {
       return disabled;
     }
