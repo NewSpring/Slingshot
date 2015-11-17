@@ -34,3 +34,5 @@ apollos.pem
 compose.pem
 mup.json
 settings.json
+bundle.crt
+private.key
