@@ -9,24 +9,15 @@ function checkSubdomain(subdomain, callback){
 
   // why doesn't this work?...
   // https://alpha-rock.newspring.cc/api/Attributes?$expand=AttributeValues&$filter=Key eq 'SlingshotSubdomain'
+  // https://alpha-rock.newspring.cc/api/AttributeValues?$expand=Attribute&$filter=Attribute/Key eq 'SlingshotSubdomain'&$select=Value
   Rock.api.get(
-    `Attributes?$filter=Key eq 'SlingshotSubdomain'`,
+    `AttributeValues?$expand=Attribute&$filter=Attribute/Key eq 'SlingshotSubdomain'&$select=Value`,
     (err, response) => {
 
       if (err) { throw new Meteor.Error(err); }
 
-      if (!response.data || ! response.data[0].Id) {
-        throw new Meteor.Error("Attribute for SlingshotSubdomain not setup");
-      }
-
-      const attributeId = response.data[0].Id;
-
-      const attributes = Rock.apiSync.get(
-        `AttributeValues?$filter=AttributeId eq ${attributeId}`
-      );
-
       let found = false;
-      for (let attr of attributes.data) {
+      for (let attr of response.data) {
         if (attr.Value === subdomain) {
           found = true;
           break;
