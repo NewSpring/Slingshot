@@ -44,24 +44,8 @@ const Home = React.createClass({
     return (
       <div>
         <NavBar />
-
         <Hero />
         <Ad />
-
-        <form>
-          <Input
-            label="Layout Label"
-            name="firstName"
-            type="text"
-            placeholder="Test Placeholder"
-            class="stuff"
-            disabled=""
-            id="firstName"
-            validation={this.isValid}
-            validationErrorMessage="You Need A Name"
-          />
-        </form>
-
         <Footer />
       </div>
     );
