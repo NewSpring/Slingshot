@@ -120,4 +120,149 @@ Attribute.set = function(key, Value, EntityId, callback) {
 
 }
 
+Attribute.get = function(key, EntityId, callback) {
+  check(key, String);
+  check(EntityId, Number);
+
+  if (!callback) {
+    let attributeInfo = Rock.apiSync.get(`Attributes?$filter=Key eq '${key}'`);
+
+    if (!attributeInfo || !attributeInfo.data[0] || !attributeInfo.data[0].Id) {
+      throw new Meteor.Error("That attribute doesn't exist in Rock");
+    }
+
+    const AttributeId = attributeInfo.data[0].Id;
+
+    const data = {
+      AttributeId,
+      EntityId
+    };
+
+    const attributeValues = Rock.apiSync.get(
+      `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`
+    ).data
+
+    if (attributeValues.length) {
+      let value = attributeValues[0].Value
+      return value;
+    }
+
+    return null;
+  }
+
+
+  Rock.api.get(
+    `Attributes?$filter=Key eq '${key}'`,
+    (err, response) => {
+
+      if (err) { throw new Meteor.Error(err); }
+
+      if (!response.data[0] || !response.data[0].Id) {
+        throw new Meteor.Error("That attribute doesn't exist in Rock");
+      }
+
+      const AttributeId = response.data[0].Id;
+
+      const data = {
+        IsSystem: false,
+        AttributeId,
+        EntityId
+      };
+
+      Rock.api.get(
+        `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`,
+        (err, response) => {
+
+          if (err) { throw new Meteor.Error(err); }
+
+          if (response.data.length) {
+            let value = response.data[0].Value;
+            callback(null, value);
+          }
+
+          callback(new Meteor.Error("Attribute value not found"));
+      });
+
+
+  });
+
+  return;
+
+}
+
+Attribute.delete = function(key, EntityId, callback) {
+  check(key, String);
+  check(EntityId, Number);
+
+  if (!callback) {
+    let attributeInfo = Rock.apiSync.get(`Attributes?$filter=Key eq '${key}'`);
+
+    if (!attributeInfo || !attributeInfo.data[0] || !attributeInfo.data[0].Id) {
+      throw new Meteor.Error("That attribute doesn't exist in Rock");
+    }
+
+    const AttributeId = attributeInfo.data[0].Id;
+
+    const data = {
+      AttributeId,
+      EntityId
+    };
+
+    const attributeValues = Rock.apiSync.get(
+      `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`
+    ).data
+
+
+    if (attributeValues.length) {
+      let id = attributeValues[0].Id;
+
+      Rock.apiSync.delete(`AttributeValues/${id}`);
+      return;
+    }
+
+    return
+  }
+
+
+  Rock.api.get(
+    `Attributes?$filter=Key eq '${key}'`,
+    (err, response) => {
+
+      if (err) { throw new Meteor.Error(err); }
+
+      if (!response.data[0] || !response.data[0].Id) {
+        throw new Meteor.Error("That attribute doesn't exist in Rock");
+      }
+
+      const AttributeId = response.data[0].Id;
+
+      Rock.api.get(
+        `AttributeValues?$filter=EntityId eq ${EntityId} and AttributeId eq ${AttributeId}`,
+        (err, response) => {
+
+          if (err) { throw new Meteor.Error(err); }
+
+          if (response.data.length) {
+            let id = response.data[0].Id;
+            Rock.api.delete(`AttributeValues/${id}`,
+              (err, response) => {
+
+                if (err) { throw new Meteor.Error(err); }
+
+                callback(true);
+
+            });
+          }
+
+          callback(new Meteor.Error("Attribute value not found"));
+      });
+
+
+
+  });
+
+  return;
+
+}
+
 export default Attribute

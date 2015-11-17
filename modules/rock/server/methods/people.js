@@ -1,6 +1,7 @@
 
 import Rock from "../api.js"
 import generatePassword from "./random-password"
+import Attribute from "./attributes"
 
 const People = {};
 
@@ -58,6 +59,35 @@ People.getByEmail = function(email, callback) {
   return
 
 }
+
+People.authorize = function(email, token){
+
+  check(email, String);
+  check(token, String);
+
+  // we need some way to ensure we don't have multiple people with the same email?
+  const people = People.getByEmail(email);
+
+  let valid = false;
+  for (const person of people) {
+    let found = Attribute.get("SlingShotGeneratedPassword", person.Id);
+
+    if (found) {
+      valid = person.Id;
+    };
+  }
+
+  /*
+
+    @TODO talk with Ben about using ODATA to shorten api requests
+
+  */
+
+  return valid;
+
+}
+
+
 
 
 export default People

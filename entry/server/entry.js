@@ -1,7 +1,7 @@
-import "slingshot/app-methods";
-import "slingshot/server/app-subscriptions"
+// ensure data is setup in Rock
 import "slingshot/server/models/rock-attributes"
 
+// create methods for interactions
 import "slingshot/server/methods"
 
 

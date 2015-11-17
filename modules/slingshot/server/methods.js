@@ -4,6 +4,9 @@ const Future = Npm.require('fibers/future');
 const emailRegex = /[\w\.\'_%-]+(\+[\w-]*)?@([\w-]+\.)+[\w-]+/;
 
 import purchase from "./purchase"
+import getPlan from "./get-plan"
+import cancelPlan from "./cancel-plan"
+import checkSubdomain from "./check-subdomain"
 
 function checkEmail(email) {
 
@@ -52,8 +55,6 @@ Meteor.methods({
         }, token, "Small", function(err, response){
 
           if (err) { console.error(err); return; }
-
-          clearInterval(int);
           console.table(response);
 
         });
@@ -77,12 +78,7 @@ Meteor.methods({
     check(plan, String);
 
     const fut = new Future();
-    purchase(person, token, plan, (response) => {
-
-      fut.return(response);
-
-    });
-
+    purchase(person, token, plan, (response) => { fut.return(response); });
     return fut.wait();
 
   },
@@ -100,14 +96,9 @@ Meteor.methods({
 
       console.log("getting plan...");
 
-      var planInt = setInterval(function(){
-        console.log("still getting plan...");
-      }, 2000);
-
-      Meteor.call("getPlan", "terry.robles@newspring.cc", "Cursus",  function(err, response){
+      Meteor.call("getPlan", "terry.robles@newspring.cc", "VURFlVjXWFDTqAE",  function(err, response){
         if (err) { console.error(err); return; }
 
-        clearInterval(planInt);
         console.table(response);
       });
   */
@@ -120,40 +111,7 @@ Meteor.methods({
 
     // simulate actions being done
     const fut = new Future();
-
-    Meteor.setTimeout(() => {
-
-      fut.return({
-        id: "sub_7MKtmcn8hX6y9v",
-        current_period_end: 1450230969,
-        current_period_start: 1447638969,
-        plan: {
-          id: "basic_plan_1",
-          amount: 50,
-          interval: "month",
-          interval_count: 1,
-          metadata: {
-          },
-          name: "Basic Plan",
-          statement_descriptor: "Dolor Cras Pharetra Fusce Inceptos"
-        },
-        start: 1447638969,
-        status: "active",
-        server: {
-          ip: "241.111.140.80",
-          url: "https://sandbox.rockrms.church",
-        },
-        person: {
-          firstName: "Purus",
-          lastName: "Magna",
-          email: "terry.robles@newspring.cc",
-          orgSize: 10000,
-          orgName: "Freedom Church"
-        }
-      });
-
-    // medium wait to pull everything!
-    }, 10000);
+    getPlan(email, password, (response) => { fut.return(response); })
     return fut.wait();
 
   },
@@ -163,55 +121,65 @@ Meteor.methods({
 
     cancelPlan:
 
-    email: String // required
-    password: String // required
-    subId: String // required
+    stripeId: String // required
+    stripeSubId: String // required
 
     sample call:
 
       console.log("canceling plan...");
-
-      var cancelInt = setInterval(function(){
-        console.log("still canceling plan...");
-      }, 2000);
-
-      Meteor.call("cancelPlan", "terry.robles@newspring.cc", "Cursus", "foobar", function(err, response){
+      Meteor.call("cancelPlan", "cus_7MjSbSEK51gMAa", "sub_7Mjc4b2JVlWTmQ", function(err, response){
         if (err) { console.error(err); return; }
 
-        clearInterval(cancelInt);
         console.table(response);
       });
 
   */
-  "cancelPlan": function(email, password, subId) {
+  "cancelPlan": function(stripeId, stripeSubId) {
 
-    check(email, String);
-    checkEmail(email);
-    check(password, String);
-    check(subId, String);
+    check(stripeId, String);
+    check(stripeSubId, String);
 
-
-    // simulate actions being done
     const fut = new Future();
-    Meteor.setTimeout(() => {
-
-      fut.return({
-        success: true
-      });
-
-    // medium wait to cancel plan!
-    }, 10000);
+    cancelPlan(stripeId, stripeSubId, (response) => { fut.return(response); })
     return fut.wait();
 
   },
 
+  /*
+
+    checkSubdomain
+
+    sampleCall:
+
+      console.log("checking taken subdomain...");
+      Meteor.call("checkSubdomain", "mewsprings", function(err, response){
+        if (err) { console.error(err); return; }
+
+        console.log(response); // false
+      });
+
+      console.log("checking available subdomain...");
+      Meteor.call("checkSubdomain", "mewsprings", function(err, response){
+        if (err) { console.error(err); return; }
+
+        console.log(response); // true
+      });
+
+  */
+  "checkSubdomain": function(subdomain) {
+    check(subdomain, String);
+
+    const fut = new Future();
+    checkSubdomain(subdomain, (response) => { fut.return(response); })
+    return fut.wait();
+
+  },
 
   /*
 
     resetPassword:
 
     email: String // required
-
     sample call:
 
       console.log("resetting password...");
@@ -237,7 +205,7 @@ Meteor.methods({
       });
 
     // quick return because of async actions
-  }, 500);
+    }, 500);
     return fut.wait();
 
   }
