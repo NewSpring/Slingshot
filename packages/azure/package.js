@@ -7,6 +7,7 @@ Package.describe({
 Npm.depends({
   "adal-node": "0.1.17",
   "azure-arm-dns": "https://github.com/NewSpring/azure-arm-dns/archive/f8ce8af028f5ca77564ca9555e11a4ffd5e23481.tar.gz",
+  "azure-arm-resource": "0.10.6",
   "azure-common": "0.9.16"
 })
 
