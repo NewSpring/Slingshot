@@ -16,6 +16,7 @@ import Stripe from "./stripe"
 import People from "../../rock/server/methods/people"
 import Attribute from "../../rock/server/methods/attributes"
 import generatePassword from "../../rock/server/methods/random-password"
+import { cname, token } from "../../azure/server/index"
 
 
 function purchase(person, token, plan, callback){
