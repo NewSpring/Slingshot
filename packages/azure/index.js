@@ -11,12 +11,11 @@ if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_SHARED_KEY ||
     !Meteor.settings.azure.AZURE_TENANT_ID ||
     !Meteor.settings.azure.AZURE_SUBSCRIPTION_ID ||
-    !Meteor.settings.azure.AZURE_RESOURCE_GROUP_NAME ||
+    !Meteor.settings.azure.AZURE_DNS_RESOURCE_GROUP_NAME ||
     !Meteor.settings.azure.AZURE_DNS_ZONE_NAME
   ) {
-
-    throw new Meteor.Error("Rock api credientials are missing");
-
+    console.log("Settings", Meteor.settings.azure);
+    throw new Meteor.Error("Azure api credientials are missing");
 }
 
 const clientId = Meteor.settings.azure.AZURE_CLIENT_ID,
