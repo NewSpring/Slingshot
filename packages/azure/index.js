@@ -57,31 +57,54 @@ Azure.cname.create = function createCNAME(cname, url) {
 
     let dnsClient = Dns.createDnsManagementClient(credentials, resourceURI);
 
-    let cnameParams = {
-      recordSet: {
-        properties: {
-          cnameRecord: {
-            cname: url
-          },
-          ttl: 300
-        },
-        location: "global"
-      }
-    };
-
-    dnsClient.recordSets.createOrUpdate(
+    dnsClient.recordSets.list(
       resourceGroupName,
       dnsZoneName,
-      cname,
       "CNAME",
-      cnameParams,
       (err, result) => {
 
       if (err) {
-        throw new Error(`Unable to create CNAME: ${err.stack}`);
+        throw new Error(`Unable to get CNAME: ${err.stack}`);
       }
 
-      console.log(result);
+      cnameList = result.recordSets.map((result) => {
+        return result.name
+      });
+
+      if (cnameList.indexOf(cname) === -1) {
+
+        let cnameParams = {
+          recordSet: {
+            properties: {
+              cnameRecord: {
+                cname: url
+              },
+              ttl: 300
+            },
+            location: "global"
+          }
+        };
+
+        dnsClient.recordSets.createOrUpdate(
+          resourceGroupName,
+          dnsZoneName,
+          cname,
+          "CNAME",
+          cnameParams,
+          (err, result) => {
+
+          if (err) {
+            throw new Error(`Unable to create CNAME: ${err.stack}`);
+          }
+
+          console.log(result);
+        });
+      }
+
+      else {
+        throw new Error(`CNAME ${cname} already exists`);
+      }
+
     });
 
   });
