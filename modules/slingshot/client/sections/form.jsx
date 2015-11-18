@@ -2,7 +2,7 @@ import React from "react";
 
 import Input from "../components/input"
 import Validation from "../components/validation"
-import PersonalInformation from "../fieldsets/personal"
+import BillingInformation from "../fieldsets/billing"
 
 const Form = React.createClass({
 
@@ -11,11 +11,19 @@ const Form = React.createClass({
     return (
       <section>
         
-        <form>
+        <div className="grid text-center">
           
-          <PersonalInformation />
+          <div className="grid__item one-third one-whole@handheld">
           
-        </form>
+            <form>
+            
+              <BillingInformation />
+              
+            </form>
+          
+          </div>
+          
+        </div>
 
       </section>
     );
