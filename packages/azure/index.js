@@ -2,6 +2,7 @@
 const AzureCommon = Npm.require("azure-common");
 const Dns = Npm.require("azure-arm-dns");
 const Adal = Npm.require("adal-node");
+const Resource = Npm.require("azure-arm-resource");
 
 
 Azure = {};
@@ -11,7 +12,7 @@ if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_SHARED_KEY ||
     !Meteor.settings.azure.AZURE_TENANT_ID ||
     !Meteor.settings.azure.AZURE_SUBSCRIPTION_ID ||
-    !Meteor.settings.azure.AZURE_RESOURCE_GROUP_NAME ||
+    !Meteor.settings.azure.AZURE_DNS_RESOURCE_GROUP_NAME ||
     !Meteor.settings.azure.AZURE_DNS_ZONE_NAME
   ) {
 
@@ -23,7 +24,7 @@ const clientId = Meteor.settings.azure.AZURE_CLIENT_ID,
       key = Meteor.settings.azure.AZURE_SHARED_KEY,
       resourceURI = "https://management.azure.com/",
       authority = `https://login.microsoftonline.com/${Meteor.settings.azure.AZURE_TENANT_ID}`,
-      resourceGroupName = Meteor.settings.azure.AZURE_RESOURCE_GROUP_NAME,
+      dnsResourceGroupName = Meteor.settings.azure.AZURE_DNS_RESOURCE_GROUP_NAME,
       dnsZoneName = Meteor.settings.azure.AZURE_DNS_ZONE_NAME;
 
 Azure.token = {};
@@ -74,7 +75,7 @@ Azure.cname.create = (cname, url) => {
         };
 
         dnsClient.recordSets.createOrUpdate(
-          resourceGroupName,
+          dnsResourceGroupName,
           dnsZoneName,
           cname,
           "CNAME",
@@ -119,7 +120,7 @@ Azure.cname.remove = (cname) => {
 
       if (exists) {
         dnsClient.recordSets.deleteMethod(
-          resourceGroupName,
+          dnsResourceGroupName,
           dnsZoneName,
           cname,
           "CNAME",
@@ -146,7 +147,7 @@ Azure.cname.remove = (cname) => {
 
 Azure.cname.exists = (dnsClient, cname, cb) => {
   dnsClient.recordSets.list(
-    resourceGroupName,
+    dnsResourceGroupName,
     dnsZoneName,
     "CNAME",
     (err, result) => {
@@ -164,4 +165,81 @@ Azure.cname.exists = (dnsClient, cname, cb) => {
     cb(exists);
 
   });
+}
+
+Azure.resourceGroup = {}
+Azure.resourceGroup.create = (name) => {
+  check(name, String);
+
+  Azure.token.get((err, result) => {
+
+    if (err) {
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
+    }
+
+    let credentials = new AzureCommon.TokenCloudCredentials({
+      subscriptionId: Meteor.settings.azure.AZURE_SUBSCRIPTION_ID,
+      token: result.accessToken
+    });
+
+    let resourceClient = Resource.createResourceManagementClient(credentials, resourceURI);
+
+    resourceClient.resourceGroups.checkExistence(name, (err, result) => {
+
+      if (err.code === "NotFound") {
+        const parameters = {
+          location: "East US"
+        }
+
+        resourceClient.resourceGroups.createOrUpdate(
+          name,
+          parameters,
+          (err, result) => {
+
+          if (err) {
+            throw new Meteor.Error(`Could not create resource group: ${err.stack}`);
+          }
+
+          console.log(result);
+
+        });
+      }
+
+      else {
+        throw new Meteor.Error(`Resource Group ${name} already exists`);
+      }
+
+    });
+
+  });
+
+}
+
+Azure.resourceGroup.remove = (name) => {
+  check(name, String);
+
+  Azure.token.get((err, result) => {
+
+    if (err) {
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
+    }
+
+    let credentials = new AzureCommon.TokenCloudCredentials({
+      subscriptionId: Meteor.settings.azure.AZURE_SUBSCRIPTION_ID,
+      token: result.accessToken
+    });
+
+    let resourceClient = Resource.createResourceManagementClient(credentials, resourceURI);
+
+    resourceClient.resourceGroups.deleteMethod(name, (err, result) => {
+
+      if (err) {
+        throw new Meteor.Error(`Unable to delete resource group ${name}: ${err.stack}`);
+      }
+
+      console.log(result);
+    });
+
+  });
+
 }
