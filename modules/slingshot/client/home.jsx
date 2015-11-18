@@ -15,9 +15,8 @@ const Home = React.createClass({
 
   mixins: [ReactMeteorData],
 
-  isValid(){
-    console.log("is valid");
-    return true;
+  isValid(value){
+    return value != "foobar";
   },
 
   getMeteorData() {
