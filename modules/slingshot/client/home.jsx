@@ -9,7 +9,8 @@ import Input from "./components/input"
 
 
 import RockApi from "./collections"
-window.RockApi = RockApi;
+// window not available on server for SSR
+// window.RockApi = RockApi;
 
 
 const Home = React.createClass({
