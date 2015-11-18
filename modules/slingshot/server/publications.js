@@ -1,5 +1,5 @@
 const settings = Meteor.settings.rock;
-const channelName = "External Website Ads";
+const channelName = "Slingshot Ads";
 
 if(!settings) {
   console.log("There are no rock connection settings, so no API subscriptions will be available");
