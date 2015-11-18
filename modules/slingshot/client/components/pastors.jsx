@@ -6,10 +6,10 @@ const Pastors = React.createClass({
   render() {
 
     return (
-      <div>
-        <h2 className="text-primary"> Rock For Pastors </h2>
+      <div className="push-double-sides">
+        <h2 className="text-primary text-center@handheld"> Rock For Pastors </h2>
         <h4>
-          Get setup and start taking better care of your community in less than 5 mins.
+          Get setup and start taking better care of your community in less than 10 mins.
         </h4>
         <div className="soft">
           <ul>

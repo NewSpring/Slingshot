@@ -1,0 +1,35 @@
+.hero {
+  max-height: 500px;
+}
+
+.nav-bar .grid{
+  height: 86px;
+}
+
+.nav-bar img {
+  position: relative;
+  top: -6px;
+}
+
+.nav-bar li {
+  list-style:none;
+}
+
+.nav-bar li a{
+  text-decoration: none;
+  color: #CECCCC;
+}
+
+.nav-bar li a:hover{
+  color: #FFF;
+}
+
+.nav-bar h6{
+  margin-top: 22px;
+}
+
+.nav-bar .btn--filled, .nav-bar .btn--secondary{
+  padding: 10px 15px 10px;
+  color: #FFF;
+  margin-top: -10px;
+}
