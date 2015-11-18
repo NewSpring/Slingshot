@@ -26,3 +26,4 @@ check
 http
 force-ssl
 newspring:rest2ddp
+newspring:azure

@@ -4,7 +4,7 @@ const Dns = Npm.require("azure-arm-dns");
 const Adal = Npm.require("adal-node");
 
 
-const Azure = {};
+Azure = {};
 
 if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_CLIENT_ID ||
@@ -87,6 +87,3 @@ Azure.cname.create = function createCNAME(cname, url) {
   });
 
 }
-
-
-export default Azure
