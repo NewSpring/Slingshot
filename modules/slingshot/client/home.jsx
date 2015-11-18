@@ -27,6 +27,14 @@ const Home = React.createClass({
   },
 
   renderAds() {
+    if (this.data.isLoading) {
+      return (
+        <div>
+          Loading!
+        </div>
+      );
+    }
+
     return this.data.ads.map((ad) => {
       return <Ad
         content={ ad.Content }
@@ -36,14 +44,6 @@ const Home = React.createClass({
   },
 
   render() {
-    if (this.data.isLoading) {
-      return (
-        <div>
-          Loading!
-        </div>
-      );
-    }
-
     return (
       <div>
         <NavBar />
