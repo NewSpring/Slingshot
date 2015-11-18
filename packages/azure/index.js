@@ -40,7 +40,7 @@ Azure.token.print = () => {
 
 
 Azure.cname = {};
-Azure.cname.create = function createCNAME(cname, url) {
+Azure.cname.create = (cname, url) => {
   check(cname, String);
   check(url, String);
 
@@ -99,7 +99,7 @@ Azure.cname.create = function createCNAME(cname, url) {
 
 }
 
-Azure.cname.remove = function deleteCNAME(cname) {
+Azure.cname.remove = (cname) => {
   check(cname, String);
 
   Azure.token.get((err, result) => {
@@ -144,7 +144,7 @@ Azure.cname.remove = function deleteCNAME(cname) {
   });
 }
 
-Azure.cname.exists = function existsCNAME(dnsClient, cname, cb) {
+Azure.cname.exists = (dnsClient, cname, cb) => {
   dnsClient.recordSets.list(
     resourceGroupName,
     dnsZoneName,
