@@ -47,7 +47,7 @@ Azure.cname.create = (cname, url) => {
   Azure.token.get((err, result) => {
 
     if (err) {
-      throw new Error(`Unable to authenticate: ${err.stack}`);
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
     }
 
     let credentials = new AzureCommon.TokenCloudCredentials({
@@ -82,7 +82,7 @@ Azure.cname.create = (cname, url) => {
           (err, result) => {
 
           if (err) {
-            throw new Error(`Unable to create CNAME: ${err.stack}`);
+            throw new Meteor.Error(`Unable to create CNAME: ${err.stack}`);
           }
 
           console.log(result);
@@ -90,7 +90,7 @@ Azure.cname.create = (cname, url) => {
       }
 
       else {
-        throw new Error(`CNAME ${cname} already exists`);
+        throw new Meteor.Error(`CNAME ${cname} already exists`);
       }
 
     });
@@ -105,7 +105,7 @@ Azure.cname.remove = (cname) => {
   Azure.token.get((err, result) => {
 
     if (err) {
-      throw new Error(`Unable to authenticate: ${err.stack}`);
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
     }
 
     let credentials = new AzureCommon.TokenCloudCredentials({
@@ -127,7 +127,7 @@ Azure.cname.remove = (cname) => {
           (err, result) => {
 
           if (err) {
-            throw new Error(`Unable to delete CNAME: ${err.stack}`);
+            throw new Meteor.Error(`Unable to delete CNAME: ${err.stack}`);
           }
 
           console.log(result);
@@ -136,7 +136,7 @@ Azure.cname.remove = (cname) => {
       }
 
       else {
-        throw new Error(`CNAME ${cname} does not exist`);
+        throw new Meteor.Error(`CNAME ${cname} does not exist`);
       }
 
     });
@@ -152,7 +152,7 @@ Azure.cname.exists = (dnsClient, cname, cb) => {
     (err, result) => {
 
     if (err) {
-      throw new Error(`Unable to list CNAMEs: ${err.stack}`);
+      throw new Meteor.Error(`Unable to list CNAMEs: ${err.stack}`);
     }
 
     cnameList = result.recordSets.map((result) => {
