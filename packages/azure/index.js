@@ -15,7 +15,7 @@ if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_DNS_ZONE_NAME
   ) {
 
-    throw new Meteor.Error("Rock api credientials are missing");
+    throw new Meteor.Error("Azure API credentials are missing");
 
 }
 
