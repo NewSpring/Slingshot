@@ -14,7 +14,6 @@ if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_DNS_RESOURCE_GROUP_NAME ||
     !Meteor.settings.azure.AZURE_DNS_ZONE_NAME
   ) {
-    console.log("Settings", Meteor.settings.azure);
     throw new Meteor.Error("Azure api credientials are missing");
 }
 
