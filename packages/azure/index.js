@@ -15,7 +15,7 @@ if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_DNS_ZONE_NAME
   ) {
 
-    throw new Meteor.Error("Rock api credientials are missing");
+    throw new Meteor.Error("Azure API credentials are missing");
 
 }
 
@@ -40,14 +40,14 @@ Azure.token.print = () => {
 
 
 Azure.cname = {};
-Azure.cname.create = function createCNAME(cname, url) {
+Azure.cname.create = (cname, url) => {
   check(cname, String);
   check(url, String);
 
   Azure.token.get((err, result) => {
 
     if (err) {
-      throw new Error(`Unable to authenticate: ${err.stack}`);
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
     }
 
     let credentials = new AzureCommon.TokenCloudCredentials({
@@ -57,33 +57,111 @@ Azure.cname.create = function createCNAME(cname, url) {
 
     let dnsClient = Dns.createDnsManagementClient(credentials, resourceURI);
 
-    let cnameParams = {
-      recordSet: {
-        properties: {
-          cnameRecord: {
-            cname: url
-          },
-          ttl: 300
-        },
-        location: "global"
+    Azure.cname.exists(dnsClient, cname, (exists) => {
+
+      if (!exists) {
+
+        let cnameParams = {
+          recordSet: {
+            properties: {
+              cnameRecord: {
+                cname: url
+              },
+              ttl: 300
+            },
+            location: "global"
+          }
+        };
+
+        dnsClient.recordSets.createOrUpdate(
+          resourceGroupName,
+          dnsZoneName,
+          cname,
+          "CNAME",
+          cnameParams,
+          (err, result) => {
+
+          if (err) {
+            throw new Meteor.Error(`Unable to create CNAME: ${err.stack}`);
+          }
+
+          console.log(result);
+        });
       }
-    };
 
-    dnsClient.recordSets.createOrUpdate(
-      resourceGroupName,
-      dnsZoneName,
-      cname,
-      "CNAME",
-      cnameParams,
-      (err, result) => {
-
-      if (err) {
-        throw new Error(`Unable to create CNAME: ${err.stack}`);
+      else {
+        throw new Meteor.Error(`CNAME ${cname} already exists`);
       }
 
-      console.log(result);
     });
 
   });
 
+}
+
+Azure.cname.remove = (cname) => {
+  check(cname, String);
+
+  Azure.token.get((err, result) => {
+
+    if (err) {
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
+    }
+
+    let credentials = new AzureCommon.TokenCloudCredentials({
+      subscriptionId: Meteor.settings.azure.AZURE_SUBSCRIPTION_ID,
+      token: result.accessToken
+    });
+
+    let dnsClient = Dns.createDnsManagementClient(credentials, resourceURI);
+
+    Azure.cname.exists(dnsClient, cname, (exists) => {
+
+      if (exists) {
+        dnsClient.recordSets.deleteMethod(
+          resourceGroupName,
+          dnsZoneName,
+          cname,
+          "CNAME",
+          {},
+          (err, result) => {
+
+          if (err) {
+            throw new Meteor.Error(`Unable to delete CNAME: ${err.stack}`);
+          }
+
+          console.log(result);
+
+        });
+      }
+
+      else {
+        throw new Meteor.Error(`CNAME ${cname} does not exist`);
+      }
+
+    });
+
+  });
+}
+
+Azure.cname.exists = (dnsClient, cname, cb) => {
+  dnsClient.recordSets.list(
+    resourceGroupName,
+    dnsZoneName,
+    "CNAME",
+    (err, result) => {
+
+    if (err) {
+      throw new Meteor.Error(`Unable to list CNAMEs: ${err.stack}`);
+    }
+
+    cnameList = result.recordSets.map((result) => {
+      return result.name
+    });
+
+    const exists = cnameList.indexOf(cname) > -1;
+
+    cb(exists);
+
+  });
 }
