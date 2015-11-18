@@ -183,13 +183,26 @@
 					"[concat('Microsoft.Web/Sites/', parameters('siteName'))]"
 				],
 				"properties": {
-          "packageUri": "https://github.com/NewSpring/smoothstone/archive/v1.0.zip",
 					"DefaultConnection": {
 						"value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('serverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('administratorLogin'), '@', parameters('serverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
 						"type": 2
 					}
 				}
-			}
+			},
+      {
+      "apiVersion": "2015-01-01",
+      "type": "Extensions",
+      "name": "MSDeploy",
+      "dependsOn": [
+        "[concat('Microsoft.Web/Sites/', parameters('siteName'))]"
+      ],
+      "properties": {
+        "packageUri": "https://github.com/NewSpring/smoothstone/archive/v1.0.zip",
+        "dbType": "None",
+        "connectionString": "",
+        "setParameters": { "Application Path": "[parameters('siteName')]" }
+      }
+      }
 		]
 	},
 	{
