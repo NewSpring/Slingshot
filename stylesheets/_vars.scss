@@ -38,15 +38,19 @@ $fonts: (
       line-height: 1.05,
       font-family: "Open Sans",
       font-weight: 700,
+      letter-spacing: -1.5px,
       margin-bottom: $base-spacing-unit
     ),
     h2: (
       font-size: 2em,
+      font-family: "Open Sans",
       line-height: 1.25,
+      letter-spacing: -1.25px,
       margin-bottom: $base-spacing-unit
     ),
     h3: (
       font-size: 1.5em,
+      font-family: "Open Sans",
       line-height: 1.25,
       margin-bottom: $base-spacing-unit
     ),

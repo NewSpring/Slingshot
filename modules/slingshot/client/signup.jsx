@@ -5,13 +5,12 @@ import Hero from "./sections/hero"
 import Ad from "./sections/ad"
 import Input from "./components/input"
 
-
 import RockApi from "./collections"
 // window not available on server for SSR
 // window.RockApi = RockApi;
 
 
-const Home = React.createClass({
+const SignUp = React.createClass({
 
   mixins: [ReactMeteorData],
 
@@ -42,12 +41,19 @@ const Home = React.createClass({
 
     return (
       <div>
-        <Hero />
-        <Ad />
+        <section>
+          <div className="grid">
+            <div className="grid__item one-half@lap-and-up">
+              <h2>Stuff</h2>
+            </div><div className="grid__item one-half@lap-and-up">
+              <h2>Stuff</h2>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
 })
 
 
-export default Home
+export default SignUp
