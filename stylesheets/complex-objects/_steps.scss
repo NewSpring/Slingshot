@@ -1,7 +1,7 @@
-.list-steps {
+.steps {
 	display: inline-block;
 
-	li {
+	.steps__item {
 		position: relative;
 		display: inline-block;
 		width: $base-spacing-unit*2.5;
@@ -36,7 +36,7 @@
 		}
 
 		// States
-		&.step--completed {
+		&.steps__item--completed {
 			border-color: map-get($colors, "primary");
 			color: map-get($colors, "primary");
 
@@ -45,7 +45,7 @@
 			}
 		}
 
-		&.step--active {
+		&.steps__item--active {
 			border-color: map-get($colors, "primary");
 			background-color: map-get($colors, "primary");
 			color: map-get($colors, "light-primary");
