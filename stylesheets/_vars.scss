@@ -67,6 +67,10 @@ $fonts: (
       font-size: $base-font-size/16px * 1em ,
       line-height: $line-height-ratio,
       margin-bottom: $base-spacing-unit
+    ),
+    button : (
+      font-family: "Open Sans",
+      letter-spacing: -.5px,
     )
   )
 );
@@ -78,4 +82,5 @@ $typography: (
   h3: "base",
   p: "base",
   li: "base",
+  button: "base",
 );
