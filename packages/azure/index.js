@@ -246,7 +246,8 @@ Azure.resourceGroup.remove = (name) => {
 
 Azure.deployment = {};
 Azure.deployment.create = (resourceGroupName, deploymentName) => {
-  check(name, String);
+  check(resourceGroupName, String);
+  check(deploymentName, String);
 
   Azure.token.get((err, result) => {
 
@@ -272,7 +273,11 @@ Azure.deployment.create = (resourceGroupName, deploymentName) => {
       }
     }
 
-    resourceClient.createOrUpdate(resourceGroupName, deploymentName, parameters, (err, result) => {
+    resourceClient.deployments.createOrUpdate(
+      resourceGroupName,
+      deploymentName,
+      parameters,
+      (err, result) => {
 
       if (err) {
         throw new Meteor.Error(`Unable to create deployment: ${err.stack}`);
@@ -281,6 +286,41 @@ Azure.deployment.create = (resourceGroupName, deploymentName) => {
       console.log(result);
 
     });
+
+  });
+
+}
+
+Azure.deployment.remove = (resourceGroupName, deploymentName) => {
+  check(resourceGroupName, String);
+  check(deploymentName, String);
+
+  Azure.token.get((err, result) => {
+
+    if (err) {
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
+    }
+
+    let credentials = new AzureCommon.TokenCloudCredentials({
+      subscriptionId: Meteor.settings.azure.AZURE_SUBSCRIPTION_ID,
+      token: result.accessToken
+    });
+
+    let resourceClient = Resource.createResourceManagementClient(credentials, resourceURI);
+
+    resourceClient.deployments.deleteMethod(
+      resourceGroupName,
+      deploymentName,
+      (err, result) => {
+
+      if (err) {
+        throw new Meteor.Error(`Unable to delete deployment: ${err.stack}`);
+      }
+
+      console.log(result);
+
+    });
+
 
   });
 
