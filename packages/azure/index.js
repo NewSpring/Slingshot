@@ -57,21 +57,9 @@ Azure.cname.create = function createCNAME(cname, url) {
 
     let dnsClient = Dns.createDnsManagementClient(credentials, resourceURI);
 
-    dnsClient.recordSets.list(
-      resourceGroupName,
-      dnsZoneName,
-      "CNAME",
-      (err, result) => {
+    Azure.cname.exists(dnsClient, cname, (exists) => {
 
-      if (err) {
-        throw new Error(`Unable to list CNAMEs: ${err.stack}`);
-      }
-
-      cnameList = result.recordSets.map((result) => {
-        return result.name
-      });
-
-      if (cnameList.indexOf(cname) === -1) {
+      if (!exists) {
 
         let cnameParams = {
           recordSet: {
@@ -127,21 +115,9 @@ Azure.cname.remove = function deleteCNAME(cname) {
 
     let dnsClient = Dns.createDnsManagementClient(credentials, resourceURI);
 
-    dnsClient.recordSets.list(
-      resourceGroupName,
-      dnsZoneName,
-      "CNAME",
-      (err, result) => {
+    Azure.cname.exists(dnsClient, cname, (exists) => {
 
-      if (err) {
-        throw new Error(`Unable to list CNAMEs: ${err.stack}`);
-      }
-
-      cnameList = result.recordSets.map((result) => {
-        return result.name
-      });
-
-      if (cnameList.indexOf(cname) > -1) {
+      if (exists) {
         dnsClient.recordSets.deleteMethod(
           resourceGroupName,
           dnsZoneName,
@@ -164,6 +140,28 @@ Azure.cname.remove = function deleteCNAME(cname) {
       }
 
     });
+
+  });
+}
+
+Azure.cname.exists = function existsCNAME(dnsClient, cname, cb) {
+  dnsClient.recordSets.list(
+    resourceGroupName,
+    dnsZoneName,
+    "CNAME",
+    (err, result) => {
+
+    if (err) {
+      throw new Error(`Unable to list CNAMEs: ${err.stack}`);
+    }
+
+    cnameList = result.recordSets.map((result) => {
+      return result.name
+    });
+
+    const exists = cnameList.indexOf(cname) > -1;
+
+    cb(exists);
 
   });
 }
