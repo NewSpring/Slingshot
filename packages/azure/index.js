@@ -11,7 +11,7 @@ if (!Meteor.settings.azure ||
     !Meteor.settings.azure.AZURE_SHARED_KEY ||
     !Meteor.settings.azure.AZURE_TENANT_ID ||
     !Meteor.settings.azure.AZURE_SUBSCRIPTION_ID ||
-    !Meteor.settings.azure.AZURE_RESOURCE_GROUP_NAME ||
+    !Meteor.settings.azure.AZURE_DNS_RESOURCE_GROUP_NAME ||
     !Meteor.settings.azure.AZURE_DNS_ZONE_NAME
   ) {
 
@@ -23,7 +23,7 @@ const clientId = Meteor.settings.azure.AZURE_CLIENT_ID,
       key = Meteor.settings.azure.AZURE_SHARED_KEY,
       resourceURI = "https://management.azure.com/",
       authority = `https://login.microsoftonline.com/${Meteor.settings.azure.AZURE_TENANT_ID}`,
-      resourceGroupName = Meteor.settings.azure.AZURE_RESOURCE_GROUP_NAME,
+      dnsResourceGroupName = Meteor.settings.azure.AZURE_DNS_RESOURCE_GROUP_NAME,
       dnsZoneName = Meteor.settings.azure.AZURE_DNS_ZONE_NAME;
 
 Azure.token = {};
@@ -74,7 +74,7 @@ Azure.cname.create = (cname, url) => {
         };
 
         dnsClient.recordSets.createOrUpdate(
-          resourceGroupName,
+          dnsResourceGroupName,
           dnsZoneName,
           cname,
           "CNAME",
@@ -119,7 +119,7 @@ Azure.cname.remove = (cname) => {
 
       if (exists) {
         dnsClient.recordSets.deleteMethod(
-          resourceGroupName,
+          dnsResourceGroupName,
           dnsZoneName,
           cname,
           "CNAME",
@@ -146,7 +146,7 @@ Azure.cname.remove = (cname) => {
 
 Azure.cname.exists = (dnsClient, cname, cb) => {
   dnsClient.recordSets.list(
-    resourceGroupName,
+    dnsResourceGroupName,
     dnsZoneName,
     "CNAME",
     (err, result) => {
