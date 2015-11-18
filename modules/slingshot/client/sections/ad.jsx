@@ -1,35 +1,23 @@
-
 import React from "react";
-import Pastors from "./../components/pastors"
-import Devs from "./../components/devs"
-
 
 const Ad = React.createClass({
-  render() {
 
+  createMarkup() {
+    return { __html: this.props.content };
+  },
+
+  render() {
     return (
-      <section className="hard">
-        <div className="grid flush one-whole">
-          <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
-            <div className="soft soft-double-ends">
-              <Pastors />
-            </div>
-          </div>
-          <div className="grid__item hard one-whole visuallyhidden@lap-and-up">
-            <div className="soft-sides">
-              <hr className="one-whole flush-ends"></hr>
-            </div>
-          </div>
-          <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
-            <div className="soft soft-double-ends">
-              <Devs />
-            </div>
+      <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
+        <div className="soft soft-double-ends">
+          <div>
+            <h2 className="text-primary">{ this.props.title }</h2>
+            <div dangerouslySetInnerHTML={ this.createMarkup() } className="soft" />
+            <button className="btn--filled">Get Started</button>
           </div>
         </div>
-
-      </section>
+      </div>
     );
-
   }
 });
 

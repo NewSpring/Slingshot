@@ -6,12 +6,7 @@ import Hero from "./sections/hero"
 import Ad from "./sections/ad"
 import Footer from "./sections/footer"
 import Input from "./components/input"
-
-
 import RockApi from "./collections"
-// window not available on server for SSR
-// window.RockApi = RockApi;
-
 
 const Home = React.createClass({
 
@@ -23,14 +18,21 @@ const Home = React.createClass({
   },
 
   getMeteorData() {
-    var channelHandle = Meteor.subscribe("rock.content-channels");
-    var channelItemHandle = Meteor.subscribe("rock.content-channel-items");
+    const adHandle = Meteor.subscribe("rock.ads");
 
     return {
-      isLoading: !(channelHandle.ready() && channelItemHandle.ready()),
-      contentChannels: RockApi.contentChannels.find().fetch(),
-      contentChannelItems: RockApi.contentChannelItems.find().fetch()
+      isLoading: !adHandle.ready(),
+      ads: RockApi.contentChannelItems.find({}, { sort: { Priority: -1 } }).fetch()
     };
+  },
+
+  renderAds() {
+    return this.data.ads.map((ad) => {
+      return <Ad
+        content={ ad.Content }
+        title={ ad.Title }
+        key={ ad.Id } />;
+    });
   },
 
   render() {
@@ -46,7 +48,11 @@ const Home = React.createClass({
       <div>
         <NavBar />
         <Hero />
-        <Ad />
+        <section className="hard">
+          <div className="grid flush one-whole">
+            {this.renderAds()}
+          </div>
+        </section>
         <Footer />
       </div>
     );
