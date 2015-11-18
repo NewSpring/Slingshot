@@ -31,7 +31,7 @@ const PersonalInfo = React.createClass({
           
         </fieldset>
         
-        <a href="" className="btn push-double-bottom">
+        <a href="" className="btn--secondary push-right push-double-bottom">
           Previous
         </a>
           
