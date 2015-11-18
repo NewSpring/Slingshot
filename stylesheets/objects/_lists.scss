@@ -1,0 +1,54 @@
+.list-steps {
+	display: inline-block;
+
+	li {
+		position: relative;
+		display: inline-block;
+		width: $base-spacing-unit*2.5;
+		height: $base-spacing-unit*2.5;
+		text-align: center;
+		line-height: $base-spacing-unit*2.5 - 3;
+		border-radius: $base-spacing-unit*5;
+		border: 1px solid map-get($colors, "light-secondary");
+		color: map-get($colors, "light-secondary");
+		margin-right: $base-spacing-unit*2.5;
+		text-indent: 2px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: -100% - 8;
+			display: inline-block;
+			height: 0;
+			width: $base-spacing-unit*2.5;
+			line-height: 0;
+			border-top: 1px solid map-get($colors, "light-secondary");
+
+		}
+
+		&:last-child {
+			margin-right: 0px;
+
+			&:before {
+				display: none;
+			}
+		}
+
+		// States
+		&.step--completed {
+			border-color: map-get($colors, "primary");
+			color: map-get($colors, "primary");
+
+			&:before {
+				border-color: map-get($colors, "primary");
+			}
+		}
+
+		&.step--active {
+			border-color: map-get($colors, "primary");
+			background-color: map-get($colors, "primary");
+			color: map-get($colors, "light-primary");
+		}
+	}
+}

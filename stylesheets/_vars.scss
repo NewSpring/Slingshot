@@ -20,7 +20,7 @@ $colors: extend($colors, (
   "dark-tertiary": lighten(#000, 33.5%),
 
   "light-primary": #ffffff,
-  "light-secondary": lighten(#000, 93.5%),
+  "light-secondary": lighten(#000, 83%),
   "light-tertiary": lighten(#000, 46.7%),
 ));
 
@@ -55,6 +55,13 @@ $fonts: (
       margin-bottom: $base-spacing-unit
     ),
     p: (
+      font-family: "Open Sans",
+      font-size: $base-font-size/16px * 1em ,
+      line-height: $line-height-ratio,
+      margin-bottom: $base-spacing-unit
+    ),
+    li: (
+      font-family: "Open Sans",
       font-size: $base-font-size/16px * 1em ,
       line-height: $line-height-ratio,
       margin-bottom: $base-spacing-unit
@@ -67,5 +74,6 @@ $typography: (
   h1: "base",
   h2: "base",
   h3: "base",
-  p: "base"
+  p: "base",
+  li: "base",
 );
