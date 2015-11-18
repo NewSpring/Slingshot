@@ -1,0 +1,7 @@
+.outlined--light-secondary {
+  @extend %_outlined;
+
+  border-width: $base-border-size;
+  border-style: solid;
+  border-color: map-get($colors, light-tertiary);
+}
