@@ -1,0 +1,30 @@
+.input {
+  
+  label {
+    position: relative;
+    left: 0;
+    top: 0;
+    padding-bottom: $base-spacing-unit/2;
+  }
+  
+  input {
+    border: 2px solid #CECCCC;
+    border-radius: $base-border-radius;
+    line-height: 20px;
+    font-size: 20px;
+    padding: $base-spacing-unit/2;
+  }
+  
+  &.input--focused input {
+    border-color: map-get($colors, primary);
+  }
+  
+  &.input--alert input {
+    border-color: map-get($colors, alert);
+  }
+  
+  &.input--active label {
+    font-size: initial;
+    transform: none;
+  }
+}

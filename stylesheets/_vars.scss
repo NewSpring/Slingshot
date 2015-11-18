@@ -22,6 +22,8 @@ $colors: extend($colors, (
   "light-primary": #ffffff,
   "light-secondary": lighten(#000, 83%),
   "light-tertiary": lighten(#000, 46.7%),
+  
+  "alert": #c64f55
 ));
 
 

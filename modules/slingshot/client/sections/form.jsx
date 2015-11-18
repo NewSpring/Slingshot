@@ -2,6 +2,7 @@ import React from "react";
 
 import Input from "../components/input"
 import Validation from "../components/validation"
+import BillingInformation from "../fieldsets/billing"
 
 const Form = React.createClass({
 
@@ -10,37 +11,19 @@ const Form = React.createClass({
     return (
       <section>
         
-        <form>
-          <Input 
-            label="First Name"
-            validation={Validation.notNull}
-            errorText="Please enter a valid first name"
-          />
-        
-          <Input 
-            label="Email"
-            validation={Validation.email}
-            errorText="Please enter a valid email address"
-          />
+        <div className="grid text-center">
           
-          <Input 
-            label="Credit Card Number"
-            validation={Validation.creditCard}
-            errorText="Please enter a valid credit card number"
-          />
+          <div className="grid__item one-third one-whole@handheld">
           
-          <Input 
-            label="Expiration Date"
-            validation={Validation.creditExpiry}
-            errorText="Please enter a valid expiration date"
-          />
+            <form>
+            
+              <BillingInformation />
+              
+            </form>
           
-          <Input 
-            label="Short Name"
-            validation={Validation.azureSubdomain}
-            errorText="Please enter a valid email address"
-          />
-        </form>
+          </div>
+          
+        </div>
 
       </section>
     );
