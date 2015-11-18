@@ -243,3 +243,45 @@ Azure.resourceGroup.remove = (name) => {
   });
 
 }
+
+Azure.deployment = {};
+Azure.deployment.create = (resourceGroupName, deploymentName) => {
+  check(name, String);
+
+  Azure.token.get((err, result) => {
+
+    if (err) {
+      throw new Meteor.Error(`Unable to authenticate: ${err.stack}`);
+    }
+
+    let credentials = new AzureCommon.TokenCloudCredentials({
+      subscriptionId: Meteor.settings.azure.AZURE_SUBSCRIPTION_ID,
+      token: result.accessToken
+    });
+
+    let resourceClient = Resource.createResourceManagementClient(credentials, resourceURI);
+
+    let parameters = {
+      properties: {
+        templateLink: {
+          uri: "https://raw.githubusercontent.com/NewSpring/Slingshot/master/.templates/azuredeploy.json"
+        },
+        parametersLink: {
+          uri: "https://raw.githubusercontent.com/NewSpring/Slingshot/master/.templates/azuredeploy-parameters.json"
+        }
+      }
+    }
+
+    resourceClient.createOrUpdate(resourceGroupName, deploymentName, parameters, (err, result) => {
+
+      if (err) {
+        throw new Meteor.Error(`Unable to create deployment: ${err.stack}`);
+      }
+
+      console.log(result);
+
+    });
+
+  });
+
+}
