@@ -5,7 +5,6 @@ import Hero from "./sections/hero"
 import Ad from "./sections/ad"
 import Input from "./components/input"
 
-
 import RockApi from "./collections"
 // window not available on server for SSR
 // window.RockApi = RockApi;
