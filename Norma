@@ -7,6 +7,8 @@ tasks:
       "junction": "NewSpring/junction-framework"
     "/packages":
       "meteor-scss": "https://github.com/NewSpring/meteor-scss.git#7c6b8aff8225dd5030a21d09f169d839f8693cf9"
+      "meteor-react-router-ssr": "https://github.com/NewSpring/meteor-react-router-ssr.git#a39ded7dab4779de043a53647fa1cd6a3d634c3c"
+      "fast-render": "https://github.com/NewSpring/fast-render.git#a9534918e8727c188bc92de7494cdce4df65dfc8"
 
   "meteor-run":
     endpoint: "jbaxleyiii/norma-meteor-run"
