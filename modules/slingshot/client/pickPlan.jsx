@@ -1,5 +1,6 @@
 import React from "react";
 
+import StepsBar from "./components/stepsbar";
 import Plan from "./components/plan";
 
 const PickPlan = React.createClass({
@@ -35,6 +36,11 @@ const PickPlan = React.createClass({
 
     return (
       <section>
+        <div className="grid push-double-top">
+          <div className="grid__item text-center">
+            <StepsBar />
+          </div>
+        </div>
         <h3 className="text-center push-double-top">Pick Your Plan</h3>
         <div className="grid">
           {plans.map(function(plan, i) {
