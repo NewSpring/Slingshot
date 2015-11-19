@@ -36,7 +36,6 @@ const Home = React.createClass({
     }
 
     return this.data.ads.map((ad) => {
-      console.log(ad);
       let json = ad.Content;
       let content = JSON.parse(json);
 

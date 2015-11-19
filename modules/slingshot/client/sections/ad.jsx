@@ -11,9 +11,9 @@ const Ad = React.createClass({
             <h4>{ this.props.subTitle }</h4>
             <div className="soft">
               <ul>
-                { this.props.points.map(function (p) {
+                { this.props.points.map(function (p, index) {
                   return (
-                    <li>{ p }</li>
+                    <li key={index}>{ p }</li>
                   );
                 }) }
               </ul>
