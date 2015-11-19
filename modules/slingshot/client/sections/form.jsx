@@ -17,7 +17,8 @@ let fieldValues = {
   shortName: null,
   cardNumber: null,
   expiration: null,
-  ccv: null
+  ccv: null,
+  url: null
 }
 
 
@@ -98,6 +99,8 @@ const Form = React.createClass({
     // save it here for storage
     const savedValues = fieldValues;
 
+    let history = this.props.history
+
     console.log("starting setup...");
     Stripe.card.createToken({
       number: fieldValues.cardNumber,
@@ -108,24 +111,28 @@ const Form = React.createClass({
     }, function(status, response) {
       let token = response.id;
 
-      Meteor.call("purchasePlan", {
-        firstName: savedValues.firstName,
-        lastName: savedValues.lastName,
-        email: savedValues.email,
-        subdomain: savedValues.shortName,
-        orgName: savedValues.churchName
-      }, token, savedValues.plan, function(err, response){
+      if (token) {
+        Meteor.call("purchasePlan", {
+          firstName: savedValues.firstName,
+          lastName: savedValues.lastName,
+          email: savedValues.email,
+          subdomain: savedValues.shortName,
+          orgName: savedValues.churchName
+        }, token, savedValues.plan, function(err, response){
 
-        // move this down to after err later
-        // this.nextStep("/signup/success");
+          // move this down to after err later
+          // this.nextStep("/signup/success");
 
-        if (err) { console.error(err); return; }
-        console.table(response);
-        this.props.history.pushState(null, "/signup/success");
-        fieldValues = savedValues;
+          if (err) { console.error(err); return; }
+          console.table(response);
+          history.pushState(null, "/signup/success");
+          fieldValues.url = response.url;
+          fieldValues = savedValues;
 
 
-      });
+        });
+      }
+
 
     });
 
