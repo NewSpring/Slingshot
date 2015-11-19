@@ -16,6 +16,10 @@ Package.onUse(function (api) {
   api.use('ecmascript')
   // Specify the source code for the package.
   api.addFiles('index.js', 'server');
+  api.addFiles('lib/token.js', 'server');
+  api.addFiles('lib/cname.js', 'server');
+  api.addFiles('lib/resourceGroup.js', 'server');
+  api.addFiles('lib/deployment.js', 'server');
 
   api.export('Azure', 'server');
 });
