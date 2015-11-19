@@ -33,7 +33,7 @@ People.create = function(person, callback){
 
   if (!callback) {
     const createdPerson = Rock.apiSync.post("People", person);
-    const newPerson = Rock.apiSync.get(`People?$filter=Guid eq '${Guid}'`);
+    const newPerson = Rock.apiSync.get(`People?$filter=Guid eq guid'${Guid}'`);
     const id = newPerson.data[0].Id;
     console.log(id)
 
