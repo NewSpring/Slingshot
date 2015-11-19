@@ -102,6 +102,18 @@
             "metadata": {
                 "description": "The name corresponding to the performance level for edition. The available options are: Shared, Basic, S0, S1, S2, S3, P1, P2, and P3."
             }
+        },
+        "certData": {
+          "type": "string",
+          "metadata": {
+            "description": "Base-64 encoded form of the .pfx file"
+          }
+        },
+        "certPassword": {
+          "type": "string",
+          "metadata": {
+            "description": "Password for .pfx certificate"
+          }
         }
     },
     "resources": [
@@ -159,6 +171,18 @@
             }
         },
         {
+          "apiVersion": "2015-05-01-preview",
+          "type": "Microsoft.Network/publicIPAddresses",
+          "name": "[parameters('SiteName')]",
+          "location": "[parameters('siteLocation')]",
+          "properties": {
+            "publicIPAllocationMethod": "Dynamic",
+            "dnsSettings": {
+              "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+            }
+          }
+        },
+        {
             "apiVersion": "2015-06-01",
             "name": "[parameters('siteName')]",
             "type": "Microsoft.Web/Sites",
@@ -171,7 +195,14 @@
             },
             "properties": {
                 "name": "[parameters('siteName')]",
-                "serverFarmId": "[parameters('hostingPlanName')]"
+                "serverFarmId": "[parameters('hostingPlanName')]",
+                "sslCertificates": [{
+                  "name": "rockSslCert",
+                  "properties": {
+                    "data": "[parameters('certData')]",
+                    "password": "[parameters('certPassword')]"
+                  }
+                }]
             },
             "resources": [
                 {
@@ -404,7 +435,7 @@
             "apiVersion": "2014-04-01",
             "name": "[parameters('siteName')]",
             "type": "microsoft.insights/components",
-            "location": "East US",
+            "location": "Central US",
             "dependsOn": [
                 "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
             ],

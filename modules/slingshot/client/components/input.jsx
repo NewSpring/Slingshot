@@ -70,9 +70,6 @@ const Input = React.createClass({
     })
 
     if (this.props.validation && typeof(this.props.validation) === "function") {
-
-      console.log(this.props.validation);
-
       this.setState({
         error: !this.props.validation(value)
       });

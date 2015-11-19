@@ -21,12 +21,12 @@ $colors: extend($colors, (
 
   "dark-primary": #282526,
   "dark-secondary": lighten(#000, 13.5%),
-  "dark-tertiary": lighten(#000, 33.5%),
+  "dark-tertiary": #706A6C,
 
   "light-primary": #ffffff,
   "light-secondary": rgb(246,246,246),
   "light-tertiary": rgb(206,204,204),
-  
+
   "input-help": #505050,
 
   "alert": #C09853,
@@ -116,6 +116,11 @@ $fonts: (
       font-size: $base-font-size/16px * 1em,
       letter-spacing: -.5px,
     ),
+    a: (
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      letter-spacing: -.5px,
+    ),
     label : (
       font-family: $base-font-family,
       font-size: 1em,
@@ -140,6 +145,7 @@ $typography: (
   p: "base",
   li: "base",
   button: "base",
+  a: "base",
   label: "base",
   input: "base"
 );
