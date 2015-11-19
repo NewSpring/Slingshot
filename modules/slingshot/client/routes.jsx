@@ -12,6 +12,7 @@ import BillingInfo from "./fieldsets/billing";
 import Success from "./fieldsets/success";
 
 import Account from "./sections/accountviewer";
+import Loading from "./sections/loading";
 import SignIn from "./fieldsets/signin"
 import Reset from "./fieldsets/reset"
 
@@ -32,7 +33,8 @@ const AppRoutes = (
       <IndexRoute component={SignIn}/>
       <Route path="reset" component={Reset}/>
     </Route>
-
+    <Route path="loading" component={Loading}>
+    </Route>
   </Route>
 )
 
