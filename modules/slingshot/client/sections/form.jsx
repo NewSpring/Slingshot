@@ -152,19 +152,14 @@ const Form = React.createClass({
         </div>
 
           <form>
-          <ReactCSSTransitionGroup
-            transitionName="swap"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}>
-              {this.props.children && React.cloneElement(this.props.children, {
-                saveValues: this.saveValues,
-                fieldValues: fieldValues,
-                previousStep: this.previousStep,
-                nextStep: this.nextStep,
-                submitRegistration: this.submitRegistration,
-                key: pathname
-              })}
-          </ReactCSSTransitionGroup>
+
+            {this.props.children && React.cloneElement(this.props.children, {
+              saveValues: this.saveValues,
+              fieldValues: fieldValues,
+              previousStep: this.previousStep,
+              nextStep: this.nextStep,
+              submitRegistration: this.submitRegistration
+            })}
           </form>
 
       </section>
