@@ -6,6 +6,7 @@ $use-new-namespace: true; // do use <rule>@handheld
 $base-font-size:      16px;
 $base-border-radius:  4px;
 $base-border-size:    1px;
+$page-width:          1280px;
 
 // colors taken from Rock
 // https://github.com/NewSpring/Rock/blob/master/RockWeb/Themes/Rock/Styles/_variables.less
@@ -40,20 +41,22 @@ $fonts: (
       font-size: 2.4em,
       line-height: 1.15,
       font-family: "Open Sans",
-      font-weight: 700,
-      letter-spacing: -1.7px,
+      font-weight: 300,
+      letter-spacing: -1.5px,
       margin-bottom: $base-spacing-unit
     ),
     h2: (
       font-size: 2em,
       font-family: "Open Sans",
+      font-weight: 300,
       line-height: 1.15,
-      letter-spacing: -1.7px,
+      letter-spacing: -1.5px,
       margin-bottom: $base-spacing-unit
     ),
     h3: (
       font-size: 1.5em,
       font-family: "Open Sans",
+      font-weight: 300,
       line-height: 1.25,
       letter-spacing: -1.15px,
       margin-bottom: $base-spacing-unit
@@ -61,8 +64,9 @@ $fonts: (
     h4: (
       font-size: 1.3em,
       font-family: "Open Sans",
+      font-weight: 300,
       line-height: 1.4,
-      letter-spacing: -1px,
+      letter-spacing: -.8px,
       margin-bottom: $base-spacing-unit
     ),
     p: (
@@ -95,4 +99,11 @@ $typography: (
   p: "base",
   li: "base",
   button: "base",
+);
+
+// constraints
+$constraints: (
+  page: (
+    max-width: $page-width,
+  )
 );
