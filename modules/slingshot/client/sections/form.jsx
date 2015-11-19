@@ -98,6 +98,8 @@ const Form = React.createClass({
     // save it here for storage
     const savedValues = fieldValues;
 
+    let history = this.props.history
+
     console.log("starting setup...");
     Stripe.card.createToken({
       number: fieldValues.cardNumber,
@@ -121,7 +123,7 @@ const Form = React.createClass({
 
         if (err) { console.error(err); return; }
         console.table(response);
-        this.props.history.pushState(null, "/signup/success");
+        history.pushState(null, "/signup/success");
         fieldValues = savedValues;
 
 
