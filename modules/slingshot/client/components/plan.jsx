@@ -16,7 +16,7 @@ const Plan = React.createClass({
     const buttonClasses = this.props.plan.featured ? "btn" : "btn--secondary";
 
     return (
-      <div className="grid__item one-third">
+      <div className="grid__item one-third@lap-and-up push-bottom">
         <div className={outlinedClasses.join(" ")}>
           <img src={this.props.plan.image} height="100" className="push-bottom" />
           <h4 className="text-dark-tertiary">{this.props.plan.name}</h4>

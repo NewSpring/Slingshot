@@ -45,7 +45,7 @@ const SignUp = React.createClass({
         <section>
           <div className="grid">
             <div className="grid__item text-center">
-              <StepsBar />
+              <StepsBar steps={4} active={4} />
             </div>
           </div>
         </section>

@@ -13,10 +13,6 @@ const Home = React.createClass({
 
   mixins: [ReactMeteorData],
 
-  isValid(value){
-    return value != "foobar";
-  },
-
   getMeteorData() {
     var channelHandle = Meteor.subscribe("rock.content-channels");
     var channelItemHandle = Meteor.subscribe("rock.content-channel-items");

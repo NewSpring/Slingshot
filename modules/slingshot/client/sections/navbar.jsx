@@ -7,12 +7,13 @@ const NavBar = React.createClass({
 
     return (
       <div className="section background--dark-primary hard">
-        <div className="grid one-whole">
-          <div className="grid__item one-half@handheld one-fifth@lap-and-up text-left">
-            <Logo/>
+        <div className="shell">
+          <div className="grid one-whole">
+            <div className="grid__item one-half@handheld one-fifth@lap-and-up text-left">
+              <Logo/>
+            </div>
           </div>
         </div>
-
       </div>
     );
 

@@ -38,7 +38,7 @@ const PickPlan = React.createClass({
       <section>
         <div className="grid push-double-top">
           <div className="grid__item text-center">
-            <StepsBar />
+            <StepsBar steps={4} active={3} />
           </div>
         </div>
         <h3 className="text-center push-double-top">Pick Your Plan</h3>

@@ -22,7 +22,7 @@ const LinkBlock = React.createClass({
       <div className="push-double-bottom">
         <h3 className="text-primary push-half-bottom">{this.props.title}</h3>
 
-        <ul>
+        <ul className="">
         {this.props.links.map((link, i) => {
           const inlineStyles = {
             textDecoration: "none",
@@ -87,49 +87,51 @@ const Footer = React.createClass({
   ],
 
 
-
   render() {
 
     return (
       <section className="background--dark-primary soft-double-ends">
+        <div className="constrain-page">
+          <div className="grid soft-double-top">
+            {this.links.map(function(link, i){
 
-        <div className="grid soft-double-top">
-          {this.links.map(function(link, i){
+              return (
+                <div className="grid__item one-whole text-center@lap-and-up one-third@lap-and-up" key={i}>
+                  <LinkBlock title={link.title} links={link.links}/>
+                </div>
+              )
+            })}
 
-            return (
-              <div className="grid__item one-whole one-third@lap-and-up" key={i}>
-                <LinkBlock title={link.title} links={link.links}/>
+
+            </div>
+
+          <div className="grid text-center">
+            <div className="grid__item one-whole one-third@lap-and-up">
+              <button className="btn--filled push-double-bottom">
+                Subscribe To Our Newsletter
+              </button>
+
+              <div className="soft-sides">
+                <div className="grid text-center hard-sides push-bottom">
+                  {this.services.map(function(service, i){
+                    return (
+                      <Service service={service}  key={i}/>
+                    )
+
+                  })}
+
+                </div>
               </div>
-            )
-          })}
 
-        </div>
-
-        <div className="grid text-center">
-          <div className="grid__item one-whole one-third@lap-and-up">
-            <button className="btn--filled push-double-bottom">
-              Subscribe To Our Newsletter
-            </button>
-
-
-            <div className="grid text-center hard-sides push-bottom">
-              {this.services.map(function(service, i){
-                return (
-                  <Service service={service}  key={i}/>
-                )
-
-              })}
-
-            </div>
-
-            <div className="soft text-center">
-              <p className="text-light-secondary">
-                <small>
-                  Rock is a project of the Spark Development Network
-                </small>
-              </p>
-            </div>
-            </div>
+              <div className="soft text-center">
+                <p className="text-light-secondary">
+                  <small>
+                    Rock is a project of the Spark Development Network
+                  </small>
+                </p>
+              </div>
+              </div>
+          </div>
         </div>
       </section>
     );
