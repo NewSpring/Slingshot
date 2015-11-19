@@ -99,7 +99,7 @@ const Form = React.createClass({
       }, token, savedValues.plan, function(err, response){
 
         // move this down to after err later
-        this.nextStep("/signup/success");
+        // this.nextStep("/signup/success");
 
         if (err) { console.error(err); return; }
         console.table(response);
