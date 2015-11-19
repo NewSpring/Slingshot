@@ -34,6 +34,7 @@ const Form = React.createClass({
       // to and overriding keys in `fieldValues` with the `fields` with Object.assign
       // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
       fieldValues = Object.assign({}, fieldValues, fields)
+      Session.set("stored-values", fieldValues);
     }()
   },
 
@@ -49,9 +50,12 @@ const Form = React.createClass({
 
   componentDidMount() {
 
-    if (this.props.location.pathname != "/signup/") {
+    const values = Session.get("stored-values");
+
+    if (!values) {
       this.props.history.pushState(null, "/signup/")
     }
+
 
   },
 
@@ -99,11 +103,11 @@ const Form = React.createClass({
       }, token, savedValues.plan, function(err, response){
 
         // move this down to after err later
-        this.nextStep("/signup/success");
+        // this.nextStep("/signup/success");
 
         if (err) { console.error(err); return; }
         console.table(response);
-
+        this.props.history.pushState(null, "/signup/success");
         fieldValues = savedValues;
 
 
@@ -125,13 +129,19 @@ const Form = React.createClass({
         </div>
 
           <form>
-          {this.props.children && React.cloneElement(this.props.children, {
-            saveValues: this.saveValues,
-            fieldValues: fieldValues,
-            previousStep: this.previousStep,
-            nextStep: this.nextStep,
-            submitRegistration: this.submitRegistration
-          })}
+          <ReactCSSTransitionGroup
+            transitionName="swap"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+              {this.props.children && React.cloneElement(this.props.children, {
+                saveValues: this.saveValues,
+                fieldValues: fieldValues,
+                previousStep: this.previousStep,
+                nextStep: this.nextStep,
+                submitRegistration: this.submitRegistration,
+                key: pathname
+              })}
+          </ReactCSSTransitionGroup>
           </form>
 
       </section>
