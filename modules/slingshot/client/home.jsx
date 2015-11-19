@@ -36,8 +36,13 @@ const Home = React.createClass({
     }
 
     return this.data.ads.map((ad) => {
+      console.log(ad);
+      let json = ad.Content;
+      let content = JSON.parse(json);
+
       return <Ad
-        content={ ad.Content }
+        subTitle={ content.subTitle }
+        points={ content.points }
         title={ ad.Title }
         key={ ad.Id } />;
     });
