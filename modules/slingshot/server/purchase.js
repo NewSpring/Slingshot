@@ -82,7 +82,7 @@ function purchase(person, token, plan, callback){
 
   Azure.resourceGroup.create(person.subdomain, (response) => {
     Azure.deployment.create(person.subdomain, person.subdomain, (response) => {
-      Azure.cname.create("cname", `${person.subdomain}.azurewebsites.net`, (response) => {
+      Azure.cname.create(person.subdomain, `${person.subdomain}.azurewebsites.net`, (response) => {
         console.log("Created", response);
         callback(null, {
           url: `https://${person.subdomain}.rockrms.church`,
