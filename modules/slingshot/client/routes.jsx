@@ -9,7 +9,6 @@ import Plans from "./fieldsets/plan";
 import PersonalInfo from "./fieldsets/personal";
 import ChurchInfo from "./fieldsets/church";
 import BillingInfo from "./fieldsets/billing";
-import Success from "./fieldsets/success";
 
 import Account from "./sections/accountviewer";
 import Loading from "./sections/loading";
@@ -27,13 +26,11 @@ const AppRoutes = (
       <Route path="step-2" component={PersonalInfo} />
       <Route path="step-3" component={ChurchInfo} />
       <Route path="step-4" component={BillingInfo} />
-      <Route path="success" component={Success} />
+      <Route path="loading" component={Loading} />
     </Route>
     <Route path="account" component={Account}>
       <IndexRoute component={SignIn}/>
       <Route path="reset" component={Reset}/>
-    </Route>
-    <Route path="loading" component={Loading}>
     </Route>
   </Route>
 )

@@ -90,7 +90,7 @@ const ChurchInfo = React.createClass({
               </Link>
             </div>
             <div className="grid__item one-half">
-              <Link to="/signup/success">
+              <Link to="/signup/loading">
                 <button className="btn--filled one-whole" onClick={this.saveAndContinue}>
                   Submit
                 </button>

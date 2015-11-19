@@ -11,7 +11,7 @@ const Loading = React.createClass({
 
   getValue () {
     // TODO: Hook up
-    return 90;
+    return 30;
   },
 
   isDone () {
