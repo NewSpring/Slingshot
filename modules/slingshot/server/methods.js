@@ -65,13 +65,13 @@ Meteor.methods({
 
   */
   "purchasePlan": function(person, token, plan) {
-
+    console.log(person)
     check(person, {
       firstName: String,
       lastName: String,
       email: String,
-      subdomain: Match.Optional(String),
-      orgName: Match.Optional(String)
+      subdomain: String,
+      orgName: String
     });
     checkEmail(person.email);
     check(token, String);

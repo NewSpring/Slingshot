@@ -14,7 +14,6 @@ let fieldValues = {
   email: null,
   churchName: null,
   shortName: null,
-  church: null,
   cardNumber: null,
   expiration: null,
   ccv: null
@@ -53,7 +52,7 @@ const Form = React.createClass({
     if (this.props.location.pathname != "/signup/") {
       this.props.history.pushState(null, "/signup/")
     }
-    
+
   },
 
   // Same as nextStep, but decrementing
@@ -70,9 +69,49 @@ const Form = React.createClass({
 
 
   submitRegistration: function() {
-    console.log(fieldValues);
 
-    this.nextStep("/signup/success");
+    const exp = fieldValues.expiration;
+
+    const month = exp.split("/")[0];
+    const year = exp.split("/")[1];
+
+    // for some reason after the stripe method returns,
+    // field values is empty?!
+    // save it here for storage
+    const savedValues = fieldValues;
+
+    console.log("starting setup...");
+    Stripe.card.createToken({
+      number: fieldValues.cardNumber,
+      cvc: fieldValues.ccv,
+      exp_month: month,
+      exp_year: year,
+      name: `${fieldValues.firstName} ${fieldValues.lastName}`
+    }, function(status, response) {
+      let token = response.id;
+
+      Meteor.call("purchasePlan", {
+        firstName: savedValues.firstName,
+        lastName: savedValues.lastName,
+        email: savedValues.email,
+        subdomain: savedValues.shortName,
+        orgName: savedValues.churchName
+      }, token, savedValues.plan, function(err, response){
+
+        // move this down to after err later
+        this.nextStep("/signup/success");
+
+        if (err) { console.error(err); return; }
+        console.table(response);
+
+        fieldValues = savedValues;
+
+
+      });
+
+    });
+
+
   },
 
   render() {
