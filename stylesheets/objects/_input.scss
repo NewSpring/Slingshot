@@ -1,8 +1,6 @@
 .input input {
   border: $base-border-size solid map-get($colors, light-tertiary);
   border-radius: $base-border-radius;
-  // line-height: 20px;
-  // font-size: 20px;
   padding: $base-spacing-unit/2;
 }
 
@@ -10,7 +8,6 @@
   position: relative;
   left: 0;
   top: 0;
-  padding-bottom: $base-spacing-unit/2;
   color: map-get($colors, dark-tertiary);
   font-size: $base-font-size/16px * 1em;
   line-height: 1.4;
@@ -26,9 +23,10 @@
 
 .input--active label {
   transform: none;
-  font-size: 1em;
   letter-spacing: inherit;
   font-size: $base-font-size/16px * 1em;
+  margin-bottom: $base-spacing-unit/2;
+  line-height: 1.4;
 }
 
 .input__help {
