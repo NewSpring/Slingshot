@@ -6,10 +6,11 @@ const Pastors = React.createClass({
   render() {
 
     return (
-      <div className="soft-right@lap-and-up">
+      <div className="push-double-sides@lap-and-up">
         <h2 className="text-primary text-center@handheld"> Rock For Pastors </h2>
         <h4>
           Get setup and start taking better care of your community in less than 5 minutes.
+
         </h4>
         <ul>
           <li>One-click easy install</li>

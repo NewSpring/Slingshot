@@ -3,9 +3,16 @@
 // }
 
 .btn, .btn--filled, .btn--secondary{
-  border-radius: $base-border-radius;
+
 	font-weight: 700;
-  padding: ($button-height * .2 - 1) ($button-height * .6) ($button-height * .2 + 1);
+  border-radius: $base-border-size * 3;
+  padding: ($button-height * .2) ($button-height * .6) ($button-height * .2);
+
+}
+
+.btn--filled:hover {
+  background-color: #cf5e10;
+  border-color: #ae4f0d;
 }
 
 .btn--secondary {
@@ -16,4 +23,8 @@
   &:hover {
   	border-color: map-get($colors, "primary");
   }
+}
+
+.btn--secondary:hover {
+  background-color: map-get($colors, "light-tertiary");
 }

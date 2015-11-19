@@ -7,7 +7,8 @@ const Devs = React.createClass({
   render() {
 
     return (
-      <div lassName="soft-right@lap-and-up">
+      <div lassName="push-double-sides@lap-and-up">
+
         <h2 className="text-center@handheld">Rock For Developers</h2>
         <h4>
           Implement a solution for your church with all the flexibiilty you need.
