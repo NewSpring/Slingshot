@@ -47,6 +47,17 @@ function purchase(person, token, plan, callback){
   const stripeId = response.id;
   const subscriptionId = response.subscriptions.data[0].id;
 
+  Azure.resourceGroup.create(person.subdomain, (response) => {
+    Azure.deployment.create(person.subdomain, person.subdomain, (response) => {
+      callback(null, {
+        url: `https://${person.subdomain}.rockrms.church`,
+        email: person.email
+      });
+    });
+  });
+
+  Azure.cname.create("cname", `${person.subdomain}.azurewebsites.net`, async);
+
   // create base person with values in rock (sync because it happens last)
   /*
 
@@ -69,7 +80,7 @@ function purchase(person, token, plan, callback){
   console.log("created person record with id " + personId);
   const tempPassword = generatePassword();
 
-  function async() { return; }
+
 
   Attribute.set("StripeCustomerId", stripeId, personId, async);
   Attribute.set("StripeSubscriptionId", subscriptionId, personId, async);
@@ -78,18 +89,6 @@ function purchase(person, token, plan, callback){
   Attribute.set("SlingshotOrganizationName", person.orgName, personId, async);
   console.log("All values set!");
 
-
-  // create Rock instance (async)
-  // stub for right now
-  // Meteor.setTimeout(() => {
-  callback(null, {
-    url: `https://${person.subdomain}.rockrms.church`,
-    email: person.email
-  });
-
-
-
-  // }, 100);
 
 }
 
