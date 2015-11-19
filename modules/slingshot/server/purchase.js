@@ -29,6 +29,8 @@ function purchase(person, token, plan, callback){
   check(plan, String);
   check(callback, Function);
 
+  function async() { return; }
+
   const SyncCreate = Meteor.wrapAsync(Stripe.customers.create, Stripe.customers);
 
 
@@ -47,16 +49,7 @@ function purchase(person, token, plan, callback){
   const stripeId = response.id;
   const subscriptionId = response.subscriptions.data[0].id;
 
-  Azure.resourceGroup.create(person.subdomain, (response) => {
-    Azure.deployment.create(person.subdomain, person.subdomain, (response) => {
-      callback(null, {
-        url: `https://${person.subdomain}.rockrms.church`,
-        email: person.email
-      });
-    });
-  });
 
-  Azure.cname.create("cname", `${person.subdomain}.azurewebsites.net`, async);
 
   // create base person with values in rock (sync because it happens last)
   /*
@@ -80,14 +73,25 @@ function purchase(person, token, plan, callback){
   console.log("created person record with id " + personId);
   const tempPassword = generatePassword();
 
-
-
   Attribute.set("StripeCustomerId", stripeId, personId, async);
   Attribute.set("StripeSubscriptionId", subscriptionId, personId, async);
   Attribute.set("SlingShotGeneratedPassword", tempPassword, personId, async);
   Attribute.set("SlingshotSubdomain", person.subdomain, personId, async);
   Attribute.set("SlingshotOrganizationName", person.orgName, personId, async);
   console.log("All values set!");
+
+  Azure.resourceGroup.create(person.subdomain, (response) => {
+    Azure.deployment.create(person.subdomain, person.subdomain, (response) => {
+      Azure.cname.create("cname", `${person.subdomain}.azurewebsites.net`, (response) => {
+        console.log("Created", response);
+        callback(null, {
+          url: `https://${person.subdomain}.rockrms.church`,
+          email: person.email
+        });
+      });
+    });
+  });
+
 
 
 }
