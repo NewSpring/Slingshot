@@ -1,8 +1,8 @@
 .input input {
-  border: 2px solid #CECCCC;
+  border: $base-border-size solid map-get($colors, light-tertiary);
   border-radius: $base-border-radius;
-  line-height: 20px;
-  font-size: 20px;
+  // line-height: 20px;
+  // font-size: 20px;
   padding: $base-spacing-unit/2;
 }
 
@@ -10,6 +10,9 @@
   position: relative;
   left: 0;
   top: 0;
+  padding-bottom: $base-spacing-unit/2;
+  color: map-get($colors, dark-tertiary);
+  font-size: 1em;
 }
 
 .input--focused input {
@@ -21,9 +24,10 @@
 }
 
 .input--active label {
-  font-size: initial;
   transform: none;
   font-size: 1em;
+  letter-spacing: inherit;
+  margin-bottom: $base-spacing-unit/2;
 }
 
 .input__help {

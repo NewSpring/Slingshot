@@ -5,6 +5,19 @@ import Attribute from "./attributes"
 
 const People = {};
 
+function makeGUID () {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+
+
+  const guid = `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+  return guid.toUpperCase()
+}
+
+
 People.create = function(person, callback){
   check(person, {
     FirstName: String,
@@ -12,14 +25,17 @@ People.create = function(person, callback){
     Email: String
   });
 
+  let Guid = makeGUID();
   person.IsSystem = false;
   person.Gender = 0
   person.SystemNote = "Created from https://rockrms.church"
-
+  person.Guid = Guid;
 
   if (!callback) {
     const createdPerson = Rock.apiSync.post("People", person);
-    const id = createdPerson.data;
+    const newPerson = Rock.apiSync.get(`People?$filter=Guid eq guid'${Guid}'`);
+    const id = newPerson.data[0].Id;
+    console.log(id)
 
     if (!id) {
       throw new Meteor.Error("No person created");

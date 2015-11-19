@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Input from "../components/input"
@@ -34,6 +35,7 @@ const Form = React.createClass({
       // to and overriding keys in `fieldValues` with the `fields` with Object.assign
       // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
       fieldValues = Object.assign({}, fieldValues, fields)
+      Session.set("stored-values", fieldValues);
     }()
   },
 
@@ -49,10 +51,26 @@ const Form = React.createClass({
 
   componentDidMount() {
 
-    if (this.props.location.pathname != "/signup/") {
-      this.props.history.pushState(null, "/signup/")
+    const values = Session.get("stored-values");
+
+    if (!values) {
+      this.props.history.replaceState(null, "/signup")
     }
 
+    // please forgive me
+    const form = ReactDOM.findDOMNode(this);
+    const rect = form.getBoundingClientRect();
+    window.scrollTo(0, rect.top);
+
+
+  },
+
+  componentWillReceiveProps() {
+
+    // please forgive me
+    const form = ReactDOM.findDOMNode(this);
+    const rect = form.getBoundingClientRect();
+    window.scrollTo(0, rect.top);
   },
 
   // Same as nextStep, but decrementing
@@ -99,11 +117,11 @@ const Form = React.createClass({
       }, token, savedValues.plan, function(err, response){
 
         // move this down to after err later
-        this.nextStep("/signup/success");
+        // this.nextStep("/signup/success");
 
         if (err) { console.error(err); return; }
         console.table(response);
-
+        this.props.history.pushState(null, "/signup/success");
         fieldValues = savedValues;
 
 
@@ -125,13 +143,19 @@ const Form = React.createClass({
         </div>
 
           <form>
-          {this.props.children && React.cloneElement(this.props.children, {
-            saveValues: this.saveValues,
-            fieldValues: fieldValues,
-            previousStep: this.previousStep,
-            nextStep: this.nextStep,
-            submitRegistration: this.submitRegistration
-          })}
+          <ReactCSSTransitionGroup
+            transitionName="swap"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={500}>
+              {this.props.children && React.cloneElement(this.props.children, {
+                saveValues: this.saveValues,
+                fieldValues: fieldValues,
+                previousStep: this.previousStep,
+                nextStep: this.nextStep,
+                submitRegistration: this.submitRegistration,
+                key: pathname
+              })}
+          </ReactCSSTransitionGroup>
           </form>
 
       </section>

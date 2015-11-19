@@ -4,9 +4,10 @@ $use-old-namespace: false; // dont use hanheld-<rule>
 $use-new-namespace: true; // do use <rule>@handheld
 
 $base-font-size:      16px;
-$base-border-radius:  4px;
-$base-border-size:    1px;
+$base-border-radius:  6px;
+$base-border-size:    2px;
 $base-page-width:     1180px;
+$base-font-family:    "Open Sans", sans-serif;
 
 
 // colors taken from Rock
@@ -66,14 +67,14 @@ $fonts: (
     h1: (
       font-size: 2.4em,
       line-height: 1.15,
-      font-family: "Open Sans",
+      font-family: $base-font-family,
       font-weight: 900,
       letter-spacing: -1.5px,
       margin-bottom: $base-spacing-unit
     ),
     h2: (
       font-size: 2em,
-      font-family: "Open Sans",
+      font-family: $base-font-family,
       font-weight: 800,
       line-height: 1.15,
       letter-spacing: -1.5px,
@@ -82,7 +83,7 @@ $fonts: (
     h3: (
       font-size: 1.25em,
       line-weight: 500,
-      font-family: "Open Sans",
+      font-family: $base-font-family,
       font-weight: 800,
       line-height: 1.25,
       letter-spacing: -1.15px,
@@ -90,36 +91,43 @@ $fonts: (
     ),
     h4: (
       font-size: 1.3em,
-      font-family: "Open Sans",
+      font-family: $base-font-family,
       font-weight: 800,
       line-height: 1.4,
       letter-spacing: -.8px,
       margin-bottom: $base-spacing-unit
     ),
     p: (
-      font-family: "Open Sans",
-      font-size: $base-font-size/16px * 1em ,
-      line-height: $line-height-ratio,
-      letter-spacing: -.5px,
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      line-height: 1.4,
+      letter-spacing: -.3px,
       margin-bottom: $base-spacing-unit
     ),
     li: (
-      font-family: "Open Sans",
-      font-size: $base-font-size/16px * 1em ,
-      line-height: $line-height-ratio,
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      line-height: 1.4,
       letter-spacing: -.5px,
       margin-bottom: $base-spacing-unit
     ),
-    button : (
-      font-family: "Open Sans",
+    button: (
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
       letter-spacing: -.5px,
     ),
     label : (
+      font-family: $base-font-family,
       font-size: 1em,
       font-weight: 700,
       line-height: $line-height-ratio,
       margin-bottom: $base-spacing-unit/2
-    ) 
+    ),
+    input: (
+      font-family: $base-font-family,
+      font-size: 1em,
+      line-height: $line-height-ratio
+    )
   )
 );
 
@@ -132,7 +140,8 @@ $typography: (
   p: "base",
   li: "base",
   button: "base",
-  label: "base"
+  label: "base",
+  input: "base"
 );
 
 // constraints

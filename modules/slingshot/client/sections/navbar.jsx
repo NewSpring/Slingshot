@@ -19,39 +19,27 @@ const NavBar = React.createClass({
           <div className="grid__item five-sixths@lap-and-up visuallyhidden@handheld text-right" style={align}>
             <div className="display-inline-block">
               <div className="display-inline-block soft-sides">
-                <h5>
-                  <a href="#" className="text-light-secondary">Features</a>
-                </h5>
+                <a href="#" className="text-light-secondary"><strong>Features</strong></a>
               </div>
               <div className="display-inline-block soft-sides">
-                <h5>
-                  <a href="#" className="text-light-secondary">Demo</a>
-                </h5>
+                <a href="#" className="text-light-secondary"><strong>Demo</strong></a>
               </div>
               <div className="display-inline-block soft-sides">
-                <h5>
-                  <a href="#" className="text-light-secondary">Learn</a>
-                </h5>
+                <a href="#" className="text-light-secondary"><strong>Learn</strong></a>
               </div>
               <div className="display-inline-block soft-sides">
-                <h5>
-                  <a href="#" className="text-light-secondary">Ask</a>
-                </h5>
+                <a href="#" className="text-light-secondary"><strong>Ask</strong></a>
               </div>
               <div className="display-inline-block soft-sides">
-                <h5>
-                  <a href="#" className="text-light-secondary">Connect</a>
-                </h5>
+                <a href="#" className="text-light-secondary"><strong>Connect</strong></a>
               </div>
               <div className="display-inline-block soft-sides">
-                <h5>
-                  <a href="#" className="text-light-secondary">Donate</a>
-                </h5>
+                <a href="#" className="text-light-secondary"><strong>Donate</strong></a>
               </div>
-              <div className="display-inline-block soft-sides">
+              <div className="display-inline-block soft-half-sides">
                 <button href="#" className="btn--filled">Get Started</button>
               </div>
-              <div className="display-inline-block soft-sides">
+              <div className="display-inline-block soft-half-sides">
                 <button href="#" className="btn--secondary">Sign In</button>
               </div>
             </div>
