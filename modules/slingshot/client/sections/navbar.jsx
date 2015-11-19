@@ -19,7 +19,7 @@ const NavBar = React.createClass({
           <div className="grid__item five-sixths@lap-and-up visuallyhidden@handheld text-right" style={align}>
             <div className="display-inline-block">
               <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary"><strong>Features</strong></a>
+                <a href="#" className="text-light-secondary h6"><strong>Features</strong></a>
               </div>
               <div className="display-inline-block soft-sides">
                 <a href="#" className="text-light-secondary"><strong>Demo</strong></a>
