@@ -111,6 +111,11 @@ $fonts: (
       font-size: $base-font-size/16px * 1em,
       letter-spacing: -.5px,
     ),
+    a: (
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      letter-spacing: -.5px,
+    ),
     input: (
       font-family: $base-font-family,
     )
@@ -126,6 +131,7 @@ $typography: (
   p: "base",
   li: "base",
   button: "base",
+  a: "base",
   input: "base",
 );
 

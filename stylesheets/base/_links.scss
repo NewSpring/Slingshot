@@ -1,3 +1,7 @@
 a {
   text-decoration: none;
+
+	&.underline {
+		border-bottom: $base-border-size solid $base-font-color;
+	}
 }
