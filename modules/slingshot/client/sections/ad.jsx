@@ -30,7 +30,7 @@ const Ad = React.createClass({
       );
     }
 
-    
+
     return (
       <Link to={ this.props.link }>
         <button className={classes.join(" ")}>
@@ -49,7 +49,7 @@ const Ad = React.createClass({
 
     return (
       <div className="grid__item one-whole@handheld one-half@lap-and-up">
-        <div className="soft-double-ends">
+        <div className="soft-double-ends soft-double-sides@lap-and-up">
           <div className="">
             <h2 className={ classNames.join(" ") }>
               { this.props.title }
