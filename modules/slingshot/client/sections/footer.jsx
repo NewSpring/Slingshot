@@ -27,7 +27,7 @@ const Footer = React.createClass({
 
     return (
       <section className="background--dark-primary">
-        <div className="shell">
+        <div className="constrain-page">
 
         <button className="btn--filled push-double-bottom">
             Subscribe To Our Newsletter

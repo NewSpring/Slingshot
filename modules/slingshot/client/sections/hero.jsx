@@ -13,7 +13,7 @@ const Hero = React.createClass({
 
     return (
       <section className="background--fill hard" style={this.styles}>
-        <div className="shell">
+        <div className="constrain-page">
           <div className="ratio--square@handheld ratio--landscape@lap-and-up">
 
             <div className="ratio__item floating--bottom one-whole">

@@ -10,19 +10,20 @@ const Form = React.createClass({
 
     return (
       <section>
-        
-        <div className="grid text-center">
-          
-          <div className="grid__item one-third one-whole@handheld">
-          
-            <form>
+        <div className="constrain-page">
+          <div className="grid text-center">
             
-              <BillingInformation />
+            <div className="grid__item one-third one-whole@handheld">
+            
+              <form>
               
-            </form>
-          
+                <BillingInformation />
+                
+              </form>
+            
+            </div>
+            
           </div>
-          
         </div>
 
       </section>

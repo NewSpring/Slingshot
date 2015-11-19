@@ -9,10 +9,10 @@ const Ad = React.createClass({
 
     return (
       <section className="hard">
-        <div className="shell">
+        <div className="constrain-page">
           <div className="grid flush one-whole">
             <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
-              <div className="soft soft-double-top">
+              <div className="soft-top">
                 <Pastors />
               </div>
             </div>
@@ -22,7 +22,7 @@ const Ad = React.createClass({
               </div>
             </div>
             <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
-              <div className="soft soft-double-top">
+              <div className="soft-top">
                 <Devs />
               </div>
             </div>
