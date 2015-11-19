@@ -1,5 +1,9 @@
 ul, ol {
 	list-style: outside;
-	margin-left: $base-spacing-unit*1.1;
+	margin-left: $base-spacing-unit*1.05;
 	margin-bottom: $base-spacing-unit;
+
+	li {
+		margin-bottom: $base-spacing-unit/2;
+	}
 }

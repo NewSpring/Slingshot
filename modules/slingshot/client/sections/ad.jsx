@@ -9,24 +9,25 @@ const Ad = React.createClass({
 
     return (
       <section className="hard">
-        <div className="grid flush one-whole">
-          <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
-            <div className="soft soft-double-ends">
-              <Pastors />
+        <div className="shell">
+          <div className="grid flush one-whole">
+            <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
+              <div className="soft soft-double-top">
+                <Pastors />
+              </div>
             </div>
-          </div>
-          <div className="grid__item hard one-whole visuallyhidden@lap-and-up">
-            <div className="soft-sides">
-              <hr className="one-whole flush-ends"></hr>
+            <div className="grid__item hard one-whole visuallyhidden@lap-and-up">
+              <div className="soft-sides">
+                <hr className="one-whole flush-ends"></hr>
+              </div>
             </div>
-          </div>
-          <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
-            <div className="soft soft-double-ends">
-              <Devs />
+            <div className="grid__item hard one-whole@handheld one-half@lap-and-up">
+              <div className="soft soft-double-top">
+                <Devs />
+              </div>
             </div>
           </div>
         </div>
-
       </section>
     );
 

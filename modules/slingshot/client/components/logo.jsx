@@ -6,7 +6,9 @@ const Logo = React.createClass({
 
     return (
       <div className="soft">
-        <img src="https://www.rockrms.com//Themes/RockExternal/Assets/Images/rock-logo.svg"/>
+        <a href='/'>
+        	<img src="https://www.rockrms.com//Themes/RockExternal/Assets/Images/rock-logo.svg"/>
+        </a>
       </div>
     );
 

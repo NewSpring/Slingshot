@@ -13,18 +13,19 @@ const Hero = React.createClass({
 
     return (
       <section className="background--fill hard" style={this.styles}>
-        <div className="ratio--square@handheld ratio--landscape@lap-and-up">
+        <div className="shell">
+          <div className="ratio--square@handheld ratio--landscape@lap-and-up">
 
-          <div className="ratio__item floating--bottom one-whole">
-            <div className="floating__item">
-              <h1 className="text-light-primary soft-bottom">
-                Take Better Care Of Your Community
-              </h1>
+            <div className="ratio__item floating--bottom one-whole">
+              <div className="floating__item">
+                <h1 className="text-light-primary soft-bottom">
+                  Take Better Care Of Your Community
+                </h1>
+              </div>
             </div>
+
           </div>
-
-        </div>
-
+          </div>
       </section>
     );
 

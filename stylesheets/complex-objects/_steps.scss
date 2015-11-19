@@ -13,7 +13,6 @@
 		border: 1px solid map-get($colors, "light-secondary");
 		color: map-get($colors, "light-secondary");
 		margin-right: $base-spacing-unit*2.5;
-		text-indent: 2px;
 
 		&:before {
 			content: '';
@@ -49,6 +48,7 @@
 			border-color: map-get($colors, "primary");
 			background-color: map-get($colors, "primary");
 			color: map-get($colors, "light-primary");
+			text-indent: 1px;
 		}
 	}
 
@@ -60,12 +60,12 @@
 			width: $base-spacing-unit*1.8;
 			height: $base-spacing-unit*1.8;
 			line-height: $base-spacing-unit*1.8 - 2;
-			margin-right: $base-spacing-unit*1.2;
+			margin-right: $base-spacing-unit;
 			text-indent: 1px;
 
 			&:before {
-				right: -$base-spacing-unit*1.2 - 1;
-				width: $base-spacing-unit*1.2;
+				right: -$base-spacing-unit - 1;
+				width: $base-spacing-unit;
 			}
 		}
 	}
