@@ -7,7 +7,7 @@
   left: 0;
   
   background-color: map-get($colors, alert-bg);
-  border: 2px solid map-get($colors, alert-border);
+  border: $base-border-size solid map-get($colors, alert-border);
   padding: $base-spacing-unit;
   border-radius: $base-border-radius;
   
