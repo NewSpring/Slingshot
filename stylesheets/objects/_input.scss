@@ -12,7 +12,8 @@
   top: 0;
   padding-bottom: $base-spacing-unit/2;
   color: map-get($colors, dark-tertiary);
-  font-size: 1em;
+  font-size: $base-font-size/16px * 1em;
+  line-height: 1.4;
 }
 
 .input--focused input {
@@ -27,7 +28,7 @@
   transform: none;
   font-size: 1em;
   letter-spacing: inherit;
-  margin-bottom: $base-spacing-unit/2;
+  font-size: $base-font-size/16px * 1em;
 }
 
 .input__help {

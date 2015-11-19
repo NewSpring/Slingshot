@@ -4,7 +4,7 @@
 
 .btn, .btn--filled, .btn--secondary{
 	font-weight: 700;
-  border-radius: $base-border-size * 3;
+  border-radius: $base-border-radius;
   padding: ($button-height * .2 - 1) ($button-height * .6) ($button-height * .2 + 1);
 
 }

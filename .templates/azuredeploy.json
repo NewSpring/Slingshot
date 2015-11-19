@@ -404,7 +404,7 @@
             "apiVersion": "2014-04-01",
             "name": "[parameters('siteName')]",
             "type": "microsoft.insights/components",
-            "location": "Central US",
+            "location": "East US",
             "dependsOn": [
                 "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
             ],
