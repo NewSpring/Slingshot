@@ -1,5 +1,8 @@
-.inline-center {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
+
+@include media-query(lap-and-up) {
+  .inline-center {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

@@ -19,7 +19,7 @@ const LinkBlock = React.createClass({
   render() {
 
     return (
-      <div className="push-double-bottom inline-center">
+      <div className="push-double-bottom inline-center text-left@handheld">
         <h3 className="text-primary push-half-bottom">{this.props.title}</h3>
 
         <ul className="">
