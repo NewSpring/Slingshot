@@ -72,7 +72,7 @@ const Input = React.createClass({
     if ((this.state.error && this.props.errorText) || this.state.status) {
 
       return (
-        <span className="input__status">
+        <span className="input__status push-top">
           {this.props.errorText || this.state.status}
         </span>
       );
@@ -102,6 +102,18 @@ const Input = React.createClass({
                   this.props.label || this.props.name
                 }
               />
+            )
+          }
+        })()}
+
+        {(() => {
+          if (this.props.helpText){
+            return (
+              <span className="input__help push-half-bottom text-left">
+                <small>
+                  {this.props.helpText}
+                </small>
+              </span>
             )
           }
         })()}

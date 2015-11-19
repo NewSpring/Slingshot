@@ -1,0 +1,20 @@
+.input .input__status {
+
+  display: block;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  
+  background-color: map-get($colors, alert-bg);
+  border: $base-border-size solid map-get($colors, alert-border);
+  padding: $base-spacing-unit;
+  border-radius: $base-border-radius;
+  
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.375em;
+  
+  color: map-get($colors, alert);
+  
+}

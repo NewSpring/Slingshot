@@ -26,8 +26,13 @@ $colors: extend($colors, (
   "light-primary": #ffffff,
   "light-secondary": rgb(246,246,246),
   "light-tertiary": rgb(206,204,204),
+  
+  "input-help": #505050,
 
-  "alert": #c64f55
+  "alert": #C09853,
+  "alert-bg": #FCF8E3,
+  "alert-border": #FBEED5
+
 ));
 
 $brand-colors: (
@@ -115,9 +120,17 @@ $fonts: (
       font-family: $base-font-family,
       font-size: $base-font-size/16px * 1em,
       letter-spacing: -.5px,
+    label : (
+      font-family: $base-font-family,
+      font-size: 1em,
+      font-weight: 700,
+      line-height: $line-height-ratio,
+      margin-bottom: $base-spacing-unit/2
     ),
     input: (
       font-family: $base-font-family,
+      font-size: 1em,
+      line-height: $line-height-ratio
     )
   )
 );
@@ -132,7 +145,8 @@ $typography: (
   li: "base",
   button: "base",
   a: "base",
-  input: "base",
+  label: "base",
+  input: "base"
 );
 
 // constraints
