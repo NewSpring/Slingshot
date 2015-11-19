@@ -22,11 +22,31 @@ $colors: extend($colors, (
   "light-primary": #ffffff,
   "light-secondary": lighten(#000, 83%),
   "light-tertiary": lighten(#000, 46.7%),
-  
+
   "alert": #c64f55
 ));
 
+$brand-colors: (
+  facebook: (
+    color: #282526,
+    icon: "\f09a"
+  ),
+  google: (
+    color: #282526,
+    icon: "\f0d5"
+  ),
+  twitter: (
+    color: #282526,
+    icon: "\f099"
+  ),
+  rss: (
+    color: #282526,
+    icon: "\f09e"
+  )
+);
 
+
+$brands: "facebook", "twitter", "google", "rss";
 
 $fonts: (
   breakpoints: (
@@ -51,7 +71,8 @@ $fonts: (
       margin-bottom: $base-spacing-unit
     ),
     h3: (
-      font-size: 1.5em,
+      font-size: 1.25em,
+      line-weight: 500,
       font-family: "Open Sans",
       line-height: 1.25,
       margin-bottom: $base-spacing-unit
