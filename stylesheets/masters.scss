@@ -10,4 +10,34 @@
 
 
 // import local overrides below
+@import "./base/_lists";
+@import "./base/_links";
 @import "./objects/_buttons";
+@import "./objects/_input";
+@import "./objects/_lists";
+@import "./objects/_outlined";
+@import "./complex-objects/_steps";
+@import "./complex-objects/_overlays";
+
+
+.swap-enter {
+  opacity: 0.01;
+  transform: translateX(5em);
+  transition: all .5s ease-in;
+}
+
+.swap-enter.swap-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.swap-leave {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all .5s ease-in;
+}
+
+.swap-leave.swap-leave-active {
+  opacity: 0;
+  transform: translateX(-5em);
+}

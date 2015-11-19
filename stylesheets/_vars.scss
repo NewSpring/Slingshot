@@ -3,8 +3,12 @@
 $use-old-namespace: false; // dont use hanheld-<rule>
 $use-new-namespace: true; // do use <rule>@handheld
 
-$base-border-radius: 4px;
-$base-border-size: 1px;
+$base-font-size:      16px;
+$base-border-radius:  6px;
+$base-border-size:    1px;
+$base-page-width:     1180px;
+$base-font-family:    "Open Sans", sans-serif;
+
 
 // colors taken from Rock
 // https://github.com/NewSpring/Rock/blob/master/RockWeb/Themes/Rock/Styles/_variables.less
@@ -20,11 +24,33 @@ $colors: extend($colors, (
   "dark-tertiary": lighten(#000, 33.5%),
 
   "light-primary": #ffffff,
-  "light-secondary": lighten(#000, 93.5%),
-  "light-tertiary": lighten(#000, 46.7%),
+  "light-secondary": rgb(246,246,246),
+  "light-tertiary": rgb(206,204,204),
+
+  "alert": #c64f55
 ));
 
+$brand-colors: (
+  facebook: (
+    color: #282526,
+    icon: "\f09a"
+  ),
+  google: (
+    color: #282526,
+    icon: "\f0d5"
+  ),
+  twitter: (
+    color: #282526,
+    icon: "\f099"
+  ),
+  rss: (
+    color: #282526,
+    icon: "\f09e"
+  )
+);
 
+
+$brands: "facebook", "twitter", "google", "rss";
 
 $fonts: (
   breakpoints: (
@@ -34,26 +60,59 @@ $fonts: (
   ),
   base: (
     h1: (
-      font-size: 2.25em,
-      line-height: 1.05,
-      font-family: "Open Sans",
-      font-weight: 700,
+      font-size: 2.4em,
+      line-height: 1.15,
+      font-family: $base-font-family,
+      font-weight: 900,
+      letter-spacing: -1.5px,
       margin-bottom: $base-spacing-unit
     ),
     h2: (
       font-size: 2em,
-      line-height: 1.25,
+      font-family: $base-font-family,
+      font-weight: 800,
+      line-height: 1.15,
+      letter-spacing: -1.5px,
       margin-bottom: $base-spacing-unit
     ),
     h3: (
-      font-size: 1.5em,
+      font-size: 1.25em,
+      line-weight: 500,
+      font-family: $base-font-family,
+      font-weight: 800,
       line-height: 1.25,
+      letter-spacing: -1.15px,
+      margin-bottom: $base-spacing-unit
+    ),
+    h4: (
+      font-size: 1.3em,
+      font-family: $base-font-family,
+      font-weight: 800,
+      line-height: 1.4,
+      letter-spacing: -.8px,
       margin-bottom: $base-spacing-unit
     ),
     p: (
-      font-size: $base-font-size/16px * 1em ,
-      line-height: $line-height-ratio,
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      line-height: 1.4,
+      letter-spacing: -.3px,
       margin-bottom: $base-spacing-unit
+    ),
+    li: (
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      line-height: 1.4,
+      letter-spacing: -.5px,
+      margin-bottom: $base-spacing-unit
+    ),
+    button: (
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      letter-spacing: -.5px,
+    ),
+    input: (
+      font-family: $base-font-family,
     )
   )
 );
@@ -63,5 +122,19 @@ $typography: (
   h1: "base",
   h2: "base",
   h3: "base",
-  p: "base"
+  h4: "base",
+  p: "base",
+  li: "base",
+  button: "base",
+  input: "base",
+);
+
+// constraints
+$constraints: (
+  page: (
+    max-width: $base-page-width,
+  ),
+  form: (
+    max-width: 380px,
+  )
 );

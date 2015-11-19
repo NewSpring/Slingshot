@@ -1,12 +1,26 @@
+// .btn, button {
+// 	margin-bottom: $base-spacing-unit;
+// }
 
 .btn, .btn--filled, .btn--secondary{
-  border-radius: $base-border-size;
-  padding: ($button-height * .2) ($button-height * .6) ($button-height * .2);
+	font-weight: 700;
+  border-radius: $base-border-size * 3;
+  padding: ($button-height * .2 - 1) ($button-height * .6) ($button-height * .2 + 1);
 
+}
+
+.btn--filled:hover {
+  background-color: darken(map-get($colors, primary), 15);
+  border-color: darken(map-get($colors, primary), 15);
 }
 
 .btn--secondary {
   @extend %btn;
-  border-color: map-get($colors, "light-tertiary");
-  color: map-get($colors, "light-tertiary");
+  border-color: darken(map-get($colors, light-tertiary), 10);
+  color: darken(map-get($colors, light-tertiary), 10);
+
+  &:hover {
+    background-color: darken(map-get($colors, light-tertiary), 20);
+  	border-color: darken(map-get($colors, light-tertiary), 20);
+  }
 }

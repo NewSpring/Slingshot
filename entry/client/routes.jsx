@@ -1,5 +1,5 @@
-ReactRouterSSR.Run({
-  childRoutes: [
-    require('slingshot/client'),
-  ]
-});
+
+
+import Routes from "./../../modules/slingshot/client/routes"
+
+ReactRouterSSR.Run(Routes);
