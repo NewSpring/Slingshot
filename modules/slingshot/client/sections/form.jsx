@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Input from "../components/input"
@@ -56,7 +57,20 @@ const Form = React.createClass({
       this.props.history.replaceState(null, "/signup")
     }
 
+    // please forgive me
+    const form = ReactDOM.findDOMNode(this);
+    const rect = form.getBoundingClientRect();
+    window.scrollTo(0, rect.top);
 
+
+  },
+
+  componentWillReceiveProps() {
+
+    // please forgive me
+    const form = ReactDOM.findDOMNode(this);
+    const rect = form.getBoundingClientRect();
+    window.scrollTo(0, rect.top);
   },
 
   // Same as nextStep, but decrementing
@@ -131,8 +145,8 @@ const Form = React.createClass({
           <form>
           <ReactCSSTransitionGroup
             transitionName="swap"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={500}>
               {this.props.children && React.cloneElement(this.props.children, {
                 saveValues: this.saveValues,
                 fieldValues: fieldValues,
