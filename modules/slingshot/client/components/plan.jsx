@@ -4,6 +4,13 @@ import { Link } from 'react-router'
 
 const Plan = React.createClass({
 
+
+  saveData: function(event) {
+    event.preventDefault();
+
+    this.props.save(this.refs.plan.value)
+  },
+
   render() {
 
     let outlinedClasses = [
@@ -22,19 +29,19 @@ const Plan = React.createClass({
     }
 
     const buttonClasses = this.props.plan.featured ? "btn" : "btn--secondary";
-
     return (
       <div className="grid__item one-third@lap-and-up push-bottom">
         <div className={outlinedClasses.join(" ")}>
+          <input ref="plan" type="hidden" value={this.props.plan.id}/>
           <img src={this.props.plan.image} height="100" className="push-bottom" />
           <h4 className="text-dark-tertiary">{this.props.plan.name}</h4>
           <h3 className="soft flush">${this.props.plan.price}/mo</h3>
           <p><small>{this.props.plan.people} people</small></p>
           <p><small>Server with {this.props.plan.ram} RAM</small></p>
 
-          <Link to="/signup/step-2" className={buttonClasses}>
+          <button className={buttonClasses} onClick={this.saveData}>
             Select Plan
-          </Link>
+          </button>
         </div>
       </div>
     );

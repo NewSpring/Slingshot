@@ -1,16 +1,17 @@
 import React from "react";
 import ReactMixin from "react-mixin";
 
-import Hero from "./sections/hero"
-import Ad from "./sections/ad"
+import Hero from "./hero"
+import Ad from "./ad"
+import Account from "./account"
 
-import RockApi from "./collections"
+import RockApi from "./../collections"
 // window not available on server for SSR
 // window.RockApi = RockApi;
 
 
 const Home = React.createClass({
-  // 
+  //
   // mixins: [ReactMeteorData],
   //
   // getMeteorData() {
@@ -30,6 +31,7 @@ const Home = React.createClass({
       <div>
         <Hero />
         <Ad />
+        <Account />
       </div>
     );
   }

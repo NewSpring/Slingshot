@@ -9,6 +9,7 @@ module.exports = {
     'react-router': 'ReactRouter',
     'react-dom': 'ReactDOM',
     'react-addons-transition-group': 'React.addons.TransitionGroup',
+    'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup',
     'react-addons-create-fragment': 'React.addons.createFragment',
     'react-addons-pure-render-mixin': 'React.addons.PureRenderMixin',
     'react-addons-update': 'React.addons.update',
