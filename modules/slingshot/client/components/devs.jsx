@@ -12,14 +12,12 @@ const Devs = React.createClass({
         <h4>
           Implement a solution for your church with all the flexibiilty you need.
         </h4>
-        <div className="soft">
-          <ul>
-            <li>Customize your Rock RMS install.</li>
-            <li>Hosted on your own platform</li>
-            <li>Open source, contribute to the community.</li>
-            <li>Free of charge - donations suggested.</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Customize your Rock RMS install.</li>
+          <li>Hosted on your own platform</li>
+          <li>Open source, contribute to the community.</li>
+          <li>Free of charge - donations suggested.</li>
+        </ul>
 
         <button className="btn--secondary">Download Rock</button>
       </div>
