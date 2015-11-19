@@ -1,0 +1,73 @@
+.steps {
+	display: inline-block;
+}
+
+.steps__item {
+	position: relative;
+	display: inline-block;
+	width: $base-spacing-unit*2.5;
+	height: $base-spacing-unit*2.5;
+	text-align: center;
+	line-height: $base-spacing-unit*2.5 - 3;
+	border-radius: $base-spacing-unit*5;
+	background-color: map-get($colors, "light-primary");
+	border: 1px solid map-get($colors, "light-tertiary");
+	color: map-get($colors, "light-tertiary");
+	margin-right: $base-spacing-unit*2.5;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: -$base-spacing-unit*2.5 - 1;
+		display: inline-block;
+		height: 0;
+		width: $base-spacing-unit*2.5;
+		line-height: 0;
+		border-top: 1px solid map-get($colors, "light-tertiary");
+	}
+
+	&:last-child {
+		margin-right: 0px;
+
+		&:before {
+			display: none;
+		}
+	}
+
+	// States
+	&.steps__item--completed {
+		border-color: map-get($colors, "primary");
+		background-color: map-get($colors, "primary");
+		color: map-get($colors, "light-primary");
+
+		&:before {
+			border-color: map-get($colors, "primary");
+		}
+	}
+
+	&.steps__item--active {
+		border-color: map-get($colors, "primary");
+
+		color: map-get($colors, "primary");
+		text-indent: 1px;
+	}
+}
+
+// Mobile Styling
+@include media-query(handheld) {
+	.steps__item {
+		font-size: $base-font-size*.9;
+		font-weight: 600;
+		width: $base-spacing-unit*1.8;
+		height: $base-spacing-unit*1.8;
+		line-height: $base-spacing-unit*1.8 - 2;
+		margin-right: $base-spacing-unit;
+		text-indent: 1px;
+
+		&:before {
+			right: -$base-spacing-unit - 1;
+			width: $base-spacing-unit;
+		}
+	}
+}

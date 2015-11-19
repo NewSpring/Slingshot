@@ -1,26 +1,29 @@
 
 import React from "react";
-
+import { Link } from 'react-router'
 
 const Pastors = React.createClass({
   render() {
 
     return (
-      <div>
-        <h2 className="text-primary"> Rock For Pastors </h2>
+      <div className="push-double-sides@lap-and-up">
+        <h2 className="text-primary text-center@handheld"> Rock For Pastors </h2>
         <h4>
-          Get setup and start taking better care of your community in less than 5 mins.
-        </h4>
-        <div className="soft">
-          <ul>
-            <li>One-click easy install</li>
-            <li>Hosted for you, no techincal knowledge required.</li>
-            <li>Scaleable for your growing church</li>
-            <li>Low cost monthly subscription.</li>
-          </ul>
-        </div>
+          Get setup and start taking better care of your community in less than 5 minutes.
 
-        <button className="btn--filled">Get Started</button>
+        </h4>
+        <ul>
+          <li>One-click easy install</li>
+          <li>Hosted for you, no techincal knowledge required.</li>
+          <li>Scaleable for your growing church</li>
+          <li>Low cost monthly subscription.</li>
+        </ul>
+
+        <Link to="/signup/step-1">
+          <button className="btn--filled one-whole@handheld push-ends">
+            Get Started
+          </button>
+        </Link>
       </div>
     );
 

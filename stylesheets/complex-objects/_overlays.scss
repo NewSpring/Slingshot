@@ -1,0 +1,6 @@
+.overlay--solid-dark-secondary {
+  @extend %_overlay;
+  &:after {
+    background: rgba(map-get($colors, dark-secondary), .5);
+  }
+}

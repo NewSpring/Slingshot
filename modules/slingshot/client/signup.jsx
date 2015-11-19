@@ -4,6 +4,7 @@ import ReactMixin from "react-mixin";
 import Hero from "./sections/hero"
 import Ad from "./sections/ad"
 import Input from "./components/input"
+import StepsBar from "./components/stepsbar"
 
 import RockApi from "./collections"
 // window not available on server for SSR
@@ -43,10 +44,8 @@ const SignUp = React.createClass({
       <div>
         <section>
           <div className="grid">
-            <div className="grid__item one-half@lap-and-up">
-              <h2>Stuff</h2>
-            </div><div className="grid__item one-half@lap-and-up">
-              <h2>Stuff</h2>
+            <div className="grid__item text-center">
+              <StepsBar steps={4} active={4} />
             </div>
           </div>
         </section>

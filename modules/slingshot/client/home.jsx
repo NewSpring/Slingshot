@@ -3,8 +3,6 @@ import ReactMixin from "react-mixin";
 
 import Hero from "./sections/hero"
 import Ad from "./sections/ad"
-import Input from "./components/input"
-
 
 import RockApi from "./collections"
 // window not available on server for SSR
@@ -12,33 +10,21 @@ import RockApi from "./collections"
 
 
 const Home = React.createClass({
-
-  mixins: [ReactMeteorData],
-
-  isValid(){
-    console.log("is valid");
-    return true;
-  },
-
-  getMeteorData() {
-    var channelHandle = Meteor.subscribe("rock.content-channels");
-    var channelItemHandle = Meteor.subscribe("rock.content-channel-items");
-
-    return {
-      isLoading: !(channelHandle.ready() && channelItemHandle.ready()),
-      contentChannels: RockApi.contentChannels.find().fetch(),
-      contentChannelItems: RockApi.contentChannelItems.find().fetch()
-    };
-  },
+  // 
+  // mixins: [ReactMeteorData],
+  //
+  // getMeteorData() {
+  //   var channelHandle = Meteor.subscribe("rock.content-channels");
+  //   var channelItemHandle = Meteor.subscribe("rock.content-channel-items");
+  //
+  //   return {
+  //     isLoading: !(channelHandle.ready() && channelItemHandle.ready()),
+  //     contentChannels: RockApi.contentChannels.find().fetch(),
+  //     contentChannelItems: RockApi.contentChannelItems.find().fetch()
+  //   };
+  // },
 
   render() {
-    if (this.data.isLoading) {
-      return (
-        <div>
-          Loading!
-        </div>
-      );
-    }
 
     return (
       <div>
