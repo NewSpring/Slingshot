@@ -73,13 +73,16 @@ function purchase(person, token, plan, callback){
   console.log("created person record with id " + personId);
   const tempPassword = generatePassword();
 
+  let subdomain = person.subdomain + generatePassword();
+
   Attribute.set("StripeCustomerId", stripeId, personId, async);
   Attribute.set("StripeSubscriptionId", subscriptionId, personId, async);
   Attribute.set("SlingShotGeneratedPassword", tempPassword, personId, async);
   Attribute.set("SlingshotSubdomain", person.subdomain, personId, async);
   Attribute.set("SlingshotOrganizationName", person.orgName, personId, async);
+  Attribute.set("SlingshotResourceGroup", subdomain, personId, async);
   console.log("All values set!");
-  let subdomain = person.subdomain + generatePassword();
+
 
   Azure.resourceGroup.create(subdomain, (response) => {
     Azure.deployment.create(subdomain, subdomain, (response) => {

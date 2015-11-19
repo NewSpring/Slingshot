@@ -21,6 +21,8 @@ function cancel(stripeId, stripeSubId, callback){
       `AttributeValues?$filter=Value eq '${stripeId}'`
     );
 
+
+
     if (
       attributeRecord.data &&
       attributeRecord.data[0] &&
@@ -30,15 +32,24 @@ function cancel(stripeId, stripeSubId, callback){
       function async() { return; }
 
       const personId = attributeRecord.data[0].EntityId;
+      const subdomain = Attribute.get("SlingshotResourceGroup", personId);
 
       Attribute.delete("StripeCustomerId", personId, async);
       Attribute.delete("StripeSubscriptionId", personId, async);
       Attribute.delete("SlingShotGeneratedPassword", personId, async);
       Attribute.delete("SlingshotSubdomain", personId, async);
       Attribute.delete("SlingshotOrganizationName", personId, async);
+
+      Azure.resourceGroup.remove(subdomain, (err, response) => {
+        Azure.cname.remove(subdomain, (err, response) => {
+          callback(response);
+        })
+      })
+
     }
   }
-  callback(response);
+
+
   return;
 
 }
