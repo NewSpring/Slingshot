@@ -27,11 +27,12 @@ const Home = React.createClass({
       );
     }
 
-    return this.data.ads.map((ad) => {
+    return this.data.ads.map((ad, index) => {
       let json = ad.Content;
       let content = JSON.parse(json);
 
       return <Ad
+        isPrimary={ index === 0 }
         subTitle={ content.subTitle }
         points={ content.points }
         linkText={ content.linkText }
