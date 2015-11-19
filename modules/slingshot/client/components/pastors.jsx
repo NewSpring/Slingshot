@@ -19,7 +19,7 @@ const Pastors = React.createClass({
           <li>Low cost monthly subscription.</li>
         </ul>
 
-        <Link to="/signup/step-1">
+        <Link to="/signup">
           <button className="btn--filled one-whole@handheld push-ends">
             Get Started
           </button>

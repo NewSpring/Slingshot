@@ -107,6 +107,7 @@ const Input = React.createClass({
         })()}
 
         <input
+          ref={this.props.id || this.props.label || this.props.name}
           id={this.props.id || this.props.label || this.props.name}
           type={this.props.type}
           placeholder={this.props.placeholder || this.props.label}
@@ -115,6 +116,7 @@ const Input = React.createClass({
           disabled={this.disabled()}
           onBlur={this.validate}
           onFocus={this.focus}
+          defaultValue={this.props.defaultValue}
         />
 
         {this.renderHelpText()}

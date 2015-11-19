@@ -1,24 +1,39 @@
 import Global from "./global";
-import Home from "./home";
-import SignUp from "./signup";
-import Form from "./sections/form";
-import PickPlan from "./pickPlan";
-import PersonalInfo from "./personalInfo";
-import ChurchInfo from "./churchInfo";
-import BillingInfo from "./billingInfo";
-import Success from "./success";
 
-export default {
-  path: "/",
-  component: Global,
-  indexRoute: { component: Home },
-  childRoutes: [
-    { path: "/signup", component: SignUp },
-    { path: "/form", component: Form },
-    { path: "/signup/step-1", component: PickPlan },
-    { path: "/signup/step-2", component: PersonalInfo },
-    { path: "/signup/step-3", component: ChurchInfo },
-    { path: "/signup/step-4", component: BillingInfo },
-    { path: "/signup/success", component: Success }
-  ]
-};
+import Home from "./sections/home";
+
+
+import Form from "./sections/form";
+
+import Plans from "./fieldsets/plan";
+import PersonalInfo from "./fieldsets/personal";
+import ChurchInfo from "./fieldsets/church";
+import BillingInfo from "./fieldsets/billing";
+import Success from "./fieldsets/success";
+
+import Account from "./sections/accountviewer";
+import SignIn from "./fieldsets/signin"
+import Reset from "./fieldsets/reset"
+
+const {IndexRoute, Route} = ReactRouter;
+
+const AppRoutes = (
+  <Route path="/" component={Global}>
+    <IndexRoute component={Home} />
+    <Route path="signup" component={Form}>
+      <IndexRoute component={Plans}/>
+      <Route path="step-1" component={Plans}/>
+      <Route path="step-2" component={PersonalInfo} />
+      <Route path="step-3" component={ChurchInfo} />
+      <Route path="step-4" component={BillingInfo} />
+      <Route path="success" component={Success} />
+    </Route>
+    <Route path="account" component={Account}>
+      <IndexRoute component={SignIn}/>
+      <Route path="reset" component={Reset}/>
+    </Route>
+
+  </Route>
+)
+
+export default AppRoutes

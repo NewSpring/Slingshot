@@ -1,30 +1,99 @@
 import React from "react";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Input from "../components/input"
 import Validation from "../components/validation"
+import StepsBar from"../components/stepsbar"
 // import BillingInformation from "../fieldsets/billing"
+
+
+let fieldValues = {
+  plan: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  churchName: null,
+  shortName: null,
+  church: null,
+  cardNumber: null,
+  expiration: null,
+  ccv: null
+}
+
 
 const Form = React.createClass({
 
+  getInitialState: function() {
+    return {
+      step: 1
+    }
+  },
+
+  saveValues: function(fields) {
+    return function() {
+      // Remember, `fieldValues` is set at the top of this file, we are simply appending
+      // to and overriding keys in `fieldValues` with the `fields` with Object.assign
+      // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+      fieldValues = Object.assign({}, fieldValues, fields)
+    }()
+  },
+
+  nextStep: function(link) {
+
+    this.setState({
+      step : this.state.step + 1
+    })
+    // console.log(this.props.history, link)
+    // this.props.history.go(link)
+    this.props.history.pushState(null, link)
+  },
+
+  componentDidMount() {
+
+    if (this.props.location.pathname != "/signup/") {
+      this.props.history.pushState(null, "/signup/")
+    }
+    
+  },
+
+  // Same as nextStep, but decrementing
+  previousStep: function(link) {
+
+
+    this.setState({
+      step : this.state.step - 1
+    })
+
+    this.props.history.pushState(null, link)
+  },
+
+
+
+  submitRegistration: function() {
+    console.log(fieldValues);
+
+    this.nextStep("/signup/success");
+  },
+
   render() {
-
+    const { pathname } = this.props.location
     return (
-      <section>
-        <div className="constrain-page">
-          <div className="grid text-center">
-
-            <div className="grid__item one-third one-whole@handheld">
-
-              <form>
-
-                <BillingInformation />
-
-              </form>
-
-            </div>
-
+      <section className="constrain-page soft-double-ends@lap-and-up">
+        <div className="grid push-double-top">
+          <div className="grid__item text-center">
+            <StepsBar steps={4} active={this.state.step} />
           </div>
         </div>
+
+          <form>
+          {this.props.children && React.cloneElement(this.props.children, {
+            saveValues: this.saveValues,
+            fieldValues: fieldValues,
+            previousStep: this.previousStep,
+            nextStep: this.nextStep,
+            submitRegistration: this.submitRegistration
+          })}
+          </form>
 
       </section>
     );
