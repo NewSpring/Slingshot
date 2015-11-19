@@ -79,15 +79,15 @@ function purchase(person, token, plan, callback){
   Attribute.set("SlingshotSubdomain", person.subdomain, personId, async);
   Attribute.set("SlingshotOrganizationName", person.orgName, personId, async);
   console.log("All values set!");
+  let subdomain = person.subdomain + "-" + generatePassword();
 
-  Azure.resourceGroup.create(person.subdomain, (response) => {
-    Azure.deployment.create(person.subdomain, person.subdomain, (response) => {
-      Azure.cname.create(person.subdomain, `${person.subdomain}.azurewebsites.net`, (response) => {
+  Azure.resourceGroup.create(subdomain, (response) => {
+    Azure.deployment.create(subdomain, subdomain, (response) => {
+      Azure.cname.create(person.subdomain, `${subdomain}.azurewebsites.net`, (response) => {
 
         console.log("Created", response);
         callback({
-          // url: `https://${person.subdomain}.rockrms.church/Start.aspx`,
-          url: `http://${person.subdomain}.azurewebsites.net/Start.aspx`,
+          url: `http://${person.subdomain}.rockrms.church/Start.aspx`,
           email: person.email
         });
       });
