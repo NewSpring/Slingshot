@@ -65,6 +65,7 @@ const PersonalInfo = React.createClass({
             classes="soft-ends"
             validation={Validation.email}
             defaultValue={this.props.fieldValues.email}
+            errorText="Please enter a valid email address"
           />
 
           <div className="grid push-top">
