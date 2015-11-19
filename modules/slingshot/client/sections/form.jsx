@@ -125,9 +125,11 @@ const Form = React.createClass({
 
           if (err) { console.error(err); return; }
           console.table(response);
-          history.pushState(null, "/signup/success");
+
           fieldValues.url = response.url;
           fieldValues = savedValues;
+
+          history.pushState(null, "/signup/success");
 
 
         });
