@@ -31,7 +31,7 @@ Azure.deployment.create = (resourceGroupName, deploymentName, cb) => {
             "value": deploymentName
           },
           "hostingPlanName": {
-            "value": "NewServiceAppPlan"
+            "value": deploymentName
           },
           "siteLocation": {
             "value": "East US"
