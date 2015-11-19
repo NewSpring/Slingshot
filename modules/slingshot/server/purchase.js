@@ -79,7 +79,7 @@ function purchase(person, token, plan, callback){
   Attribute.set("SlingshotSubdomain", person.subdomain, personId, async);
   Attribute.set("SlingshotOrganizationName", person.orgName, personId, async);
   console.log("All values set!");
-  let subdomain = person.subdomain + "-" + generatePassword();
+  let subdomain = person.subdomain + generatePassword();
 
   Azure.resourceGroup.create(subdomain, (response) => {
     Azure.deployment.create(subdomain, subdomain, (response) => {
