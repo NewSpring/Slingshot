@@ -1,5 +1,5 @@
 .input {
-  
+
   label {
     position: relative;
     left: 0;
@@ -9,7 +9,7 @@
     font-size: $base-font-size/16px * 1em;
     line-height: 1.4;
   }
-  
+
   input {
     border: $base-border-size solid map-get($colors, light-tertiary);
     border-radius: $base-border-radius;
@@ -17,17 +17,18 @@
     font-size: 20px;
     padding: $base-spacing-unit/2;
   }
-  
+
   &.input--focused input {
     border-color: map-get($colors, primary);
   }
-  
+
   &.input--alert input {
     border-color: map-get($colors, alert);
   }
-  
+
   &.input--active label {
-    font-size: initial;
+    font-size: inherit;
+    letter-spacing: inherit;
     transform: none;
   }
 }

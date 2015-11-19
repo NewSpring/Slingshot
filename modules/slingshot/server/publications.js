@@ -1,4 +1,5 @@
 const settings = Meteor.settings.rock;
+const channelName = "Slingshot Ads";
 
 if(!settings) {
   console.log("There are no rock connection settings, so no API subscriptions will be available");
@@ -10,14 +11,8 @@ if(settings.token && settings.tokenName) {
   headers[settings.tokenName] = settings.token;
 }
 
-REST2DDP.publish("rock.content-channels", {
-  collectionName: "rock.content-channels",
-  restUrl: `${settings.baseURL}api/contentchannels`,
-  headers
-});
-
-REST2DDP.publish("rock.content-channel-items", {
+REST2DDP.publish("rock.ads", {
   collectionName: "rock.content-channel-items",
-  restUrl: `${settings.baseURL}api/contentchannelitems`,
+  restUrl: `${settings.baseURL}api/ContentChannelItems?$expand=ContentChannel&$filter=ContentChannel/Name eq '${channelName}'`,
   headers
 });

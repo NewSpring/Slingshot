@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Input from "../components/input"
@@ -53,10 +54,23 @@ const Form = React.createClass({
     const values = Session.get("stored-values");
 
     if (!values) {
-      this.props.history.pushState(null, "/signup/")
+      this.props.history.replaceState(null, "/signup")
     }
 
+    // please forgive me
+    const form = ReactDOM.findDOMNode(this);
+    const rect = form.getBoundingClientRect();
+    window.scrollTo(0, rect.top);
 
+
+  },
+
+  componentWillReceiveProps() {
+
+    // please forgive me
+    const form = ReactDOM.findDOMNode(this);
+    const rect = form.getBoundingClientRect();
+    window.scrollTo(0, rect.top);
   },
 
   // Same as nextStep, but decrementing
