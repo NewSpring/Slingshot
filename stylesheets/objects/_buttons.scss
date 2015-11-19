@@ -3,24 +3,24 @@
 // }
 
 .btn, .btn--filled, .btn--secondary{
-
 	font-weight: 700;
   border-radius: $base-border-size * 3;
-  padding: ($button-height * .2) ($button-height * .6) ($button-height * .2);
+  padding: ($button-height * .2 - 1) ($button-height * .6) ($button-height * .2 + 1);
 
 }
 
 .btn--filled:hover {
-  background-color: #cf5e10;
-  border-color: #ae4f0d;
+  background-color: darken(map-get($colors, primary), 15);
+  border-color: darken(map-get($colors, primary), 15);
 }
 
 .btn--secondary {
   @extend %btn;
-  border-color: map-get($colors, "light-tertiary");
-  color: map-get($colors, "light-tertiary");
+  border-color: darken(map-get($colors, light-tertiary), 10);
+  color: darken(map-get($colors, light-tertiary), 10);
 
   &:hover {
-  	border-color: map-get($colors, "primary");
+    background-color: darken(map-get($colors, light-tertiary), 20);
+  	border-color: darken(map-get($colors, light-tertiary), 20);
   }
 }
