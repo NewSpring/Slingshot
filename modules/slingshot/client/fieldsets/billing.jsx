@@ -3,7 +3,8 @@ import { Link } from 'react-router'
 
 import StepsBar from "./../components/stepsbar";
 import Input from "./../components/input";
-import Validation from "./../components/validation"
+import LiveFormatting from "./../components/formatting";
+import Validation from "./../components/validation";
 
 const ChurchInfo = React.createClass({
 
@@ -59,7 +60,9 @@ const ChurchInfo = React.createClass({
             id="cardNumber"
             classes="soft-ends"
             defaultValue={this.props.fieldValues.cardNumber}
+            liveFormatting={LiveFormatting.creditCard}
             validation={Validation.creditCard}
+            errorText="Please enter a valid credit card number."
           />
           <div className="grid">
             <div className="grid__item one-half">
@@ -69,6 +72,7 @@ const ChurchInfo = React.createClass({
                 classes="soft-ends"
                 defaultValue={this.props.fieldValues.expiration}
                 validation={Validation.creditExpiry}
+                errorText="Please enter a valid expiration date."
               />
             </div>
             <div className="grid__item one-half">
@@ -78,6 +82,7 @@ const ChurchInfo = React.createClass({
                 classes="soft-ends"
                 defaultValue={this.props.fieldValues.ccv}
                 validation={Validation.creditCVV}
+                errorText="Please enter a valid credit card verification number."
               />
             </div>
           </div>

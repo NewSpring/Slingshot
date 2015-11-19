@@ -1,32 +1,36 @@
-.input {
+.input input {
+  border: $base-border-size solid map-get($colors, light-tertiary);
+  border-radius: $base-border-radius;
+  padding: $base-spacing-unit/2;
+}
 
-  label {
-    position: relative;
-    left: 0;
-    top: 0;
-    padding-bottom: $base-spacing-unit/2;
-    color: map-get($colors, dark-tertiary);
-  }
+.input label {
+  position: relative;
+  left: 0;
+  top: 0;
+  color: map-get($colors, dark-tertiary);
+  font-size: $base-font-size/16px * 1em;
+  line-height: 1.4;
+}
 
-  input {
-    border: $base-border-size solid map-get($colors, light-tertiary);
-    border-radius: $base-border-radius;
-    line-height: 20px;
-    font-size: 20px;
-    padding: $base-spacing-unit/2;
-  }
+.input--focused input {
+  border-color: map-get($colors, primary);
+}
 
-  &.input--focused input {
-    border-color: map-get($colors, primary);
-  }
+.input--alert input {
+  border-color: map-get($colors, alert);
+}
 
-  &.input--alert input {
-    border-color: map-get($colors, alert);
-  }
+.input--active label {
+  transform: none;
+  letter-spacing: inherit;
+  font-size: $base-font-size/16px * 1em;
+  margin-bottom: $base-spacing-unit/2;
+  line-height: 1.4;
+}
 
-  &.input--active label {
-    font-size: inherit;
-    letter-spacing: inherit;
-    transform: none;
-  }
+.input__help {
+  display: block;
+  font-size: $base-font-size/16px * 0.875em;
+  color: map-get($colors, input-help);
 }

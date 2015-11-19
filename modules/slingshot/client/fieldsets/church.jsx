@@ -57,6 +57,9 @@ const ChurchInfo = React.createClass({
             id="shortName"
             classes="soft-ends"
             defaultValue={this.props.fieldValues.shortName}
+            validation={Validation.azureSubdomain}
+            errorText="Your shortname may only contain lowercase letters, numbers and hypens can not be used at the beginning or end of your shortname."
+            helpText="This is used to create your unique URL."
           />
 
           <div className="grid push-top">

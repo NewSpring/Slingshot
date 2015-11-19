@@ -14,7 +14,7 @@ callback-hook@1.0.4
 check@1.1.0
 chuangbo:cookie@1.1.0
 coffeescript@1.0.11
-cosmos:browserify@0.8.4
+cosmos:browserify@0.8.3
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -89,4 +89,4 @@ webapp@1.2.3
 webapp-hashing@1.0.5
 webpack:npmworkaround@0.1.0
 webpack:reload@0.2.0
-webpack:webpack@0.3.4
+webpack:webpack@0.3.0

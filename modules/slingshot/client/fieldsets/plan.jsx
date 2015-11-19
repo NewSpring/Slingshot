@@ -10,7 +10,7 @@ const PickPlan = React.createClass({
     {
       name: "Small Church",
       id: "Small",
-      image: "https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/church.png",
+      image: "//s3.amazonaws.com/uploads.hipchat.com/21097/1894791/hv1pPmozW3vKfFo/icon-plan_small.svg",
       featured: false,
       price: "74.99",
       people: "2 - 4,999",
@@ -19,7 +19,7 @@ const PickPlan = React.createClass({
     {
       name: "Medium Church",
       id: "Medium",
-      image: "https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/church.png",
+      image: "//s3.amazonaws.com/uploads.hipchat.com/21097/1894791/1gAoANrrcNuyqFC/icon-plan_medium.svg",
       featured: true,
       price: "149.99",
       people: "5,000 - 9,999",
@@ -28,7 +28,7 @@ const PickPlan = React.createClass({
     {
       name: "Large Church",
       id: "Large",
-      image: "https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/church.png",
+      image: "//s3.amazonaws.com/uploads.hipchat.com/21097/1894791/cgwTEXSWQV1Ybvc/icon-plan_large.svg",
       featured: false,
       price: "299.99",
       people: "10,000 - 100,000",

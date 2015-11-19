@@ -4,7 +4,7 @@ $use-old-namespace: false; // dont use hanheld-<rule>
 $use-new-namespace: true; // do use <rule>@handheld
 
 $base-font-size:      16px;
-$base-border-radius:  6px;
+$base-border-radius:  3px;
 $base-border-size:    1px;
 $base-page-width:     1180px;
 $base-font-family:    "Open Sans", sans-serif;
@@ -21,13 +21,18 @@ $colors: extend($colors, (
 
   "dark-primary": #282526,
   "dark-secondary": lighten(#000, 13.5%),
-  "dark-tertiary": lighten(#000, 33.5%),
+  "dark-tertiary": #706A6C,
 
   "light-primary": #ffffff,
   "light-secondary": rgb(246,246,246),
   "light-tertiary": rgb(206,204,204),
 
-  "alert": #c64f55
+  "input-help": #505050,
+
+  "alert": #C09853,
+  "alert-bg": #FCF8E3,
+  "alert-border": #FBEED5
+
 ));
 
 $brand-colors: (
@@ -111,8 +116,22 @@ $fonts: (
       font-size: $base-font-size/16px * 1em,
       letter-spacing: -.5px,
     ),
+    a: (
+      font-family: $base-font-family,
+      font-size: $base-font-size/16px * 1em,
+      letter-spacing: -.5px,
+    ),
+    label : (
+      font-family: $base-font-family,
+      font-size: 1em,
+      font-weight: 700,
+      line-height: $line-height-ratio,
+      margin-bottom: $base-spacing-unit/2
+    ),
     input: (
       font-family: $base-font-family,
+      font-size: 1em,
+      line-height: $line-height-ratio
     )
   )
 );
@@ -126,7 +145,9 @@ $typography: (
   p: "base",
   li: "base",
   button: "base",
-  input: "base",
+  a: "base",
+  label: "base",
+  input: "base"
 );
 
 // constraints

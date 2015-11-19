@@ -2,9 +2,9 @@
 // 	margin-bottom: $base-spacing-unit;
 // }
 
-.btn, .btn--filled, .btn--secondary{
+.btn, .btn--filled, .btn--secondary, .btn--tertiary{
 	font-weight: 700;
-  border-radius: $base-border-size * 3;
+  border-radius: $base-border-radius;
   padding: ($button-height * .2 - 1) ($button-height * .6) ($button-height * .2 + 1);
 
 }
@@ -16,11 +16,23 @@
 
 .btn--secondary {
   @extend %btn;
-  border-color: darken(map-get($colors, light-tertiary), 10);
-  color: darken(map-get($colors, light-tertiary), 10);
+  border-color: map-get($colors, dark-tertiary);
+  color: map-get($colors, dark-tertiary);
 
   &:hover {
-    background-color: darken(map-get($colors, light-tertiary), 20);
-  	border-color: darken(map-get($colors, light-tertiary), 20);
+    background-color: map-get($colors, dark-tertiary);
+  	border-color: map-get($colors, dark-tertiary);
   }
+}
+
+.btn--tertiary {
+	@extend %btn;
+	border-color: map-get($colors, light-primary);
+	color: map-get($colors, light-primary);
+
+	&:hover {
+		background-color: map-get($colors, light-primary);
+		border-color: map-get($colors, light-primary);
+		color: map-get($colors, dark-primary);
+	}
 }
