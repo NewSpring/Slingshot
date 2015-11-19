@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDom from "react-dom";
 
 const Label = React.createClass({
 
@@ -20,8 +21,38 @@ const Input = React.createClass({
       focused: false,
       error: false,
       value: '',
-      status: ''
+      status: '',
+      liveFormat: ''
     })
+  },
+  
+  format: function format() {
+
+    
+    let value = '';
+    
+    for (let ref in this.refs) {
+      value = this.refs[ref].value;
+      continue;
+    }
+    
+    if (this.props.liveFormatting && typeof(this.props.liveFormatting) === "function") {
+    
+      const newValue = this.props.liveFormatting(value);
+      
+      
+      for (let ref in this.refs) {
+
+        let node = ReactDOM.findDOMNode(this.refs[ref]);
+        
+        node.value = newValue;
+      }
+    
+      // this.setState({
+      //   liveFormat: !this.props.liveFormatting(value)
+      // });
+    
+    }
   },
 
   validate: function validate(event) {
@@ -128,6 +159,7 @@ const Input = React.createClass({
           disabled={this.disabled()}
           onBlur={this.validate}
           onFocus={this.focus}
+          onChange={this.format}
           defaultValue={this.props.defaultValue}
         />
 

@@ -3,7 +3,8 @@ import { Link } from 'react-router'
 
 import StepsBar from "./../components/stepsbar";
 import Input from "./../components/input";
-import Validation from "./../components/validation"
+import LiveFormatting from "./../components/formatting";
+import Validation from "./../components/validation";
 
 const ChurchInfo = React.createClass({
 
@@ -59,6 +60,7 @@ const ChurchInfo = React.createClass({
             id="cardNumber"
             classes="soft-ends"
             defaultValue={this.props.fieldValues.cardNumber}
+            liveFormatting={LiveFormatting.creditCard}
             validation={Validation.creditCard}
             errorText="Please enter a valid credit card number."
           />

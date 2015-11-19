@@ -37,10 +37,13 @@ const Validation = {
   },
 
   creditCard: function creditCard(value) {
+  
+    value = value.replace(/-/g, "");
 
     if (Validation.startOfVisa.test(value)) {
 
-      const regex = /^4[0-9]{12}(?:[0-9]{3})?$/;
+      let regex = /^4[0-9]{12}(?:[0-9]{3})?$/;
+      
       return regex.test(value);
 
     } else if (Validation.startOfMastercard.test(value)) {
