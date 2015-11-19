@@ -23,8 +23,8 @@ $colors: extend($colors, (
   "dark-tertiary": lighten(#000, 33.5%),
 
   "light-primary": #ffffff,
-  "light-secondary": lighten(#000, 83%),
-  "light-tertiary": lighten(#000, 46.7%),
+  "light-secondary": rgb(246,246,246),
+  "light-tertiary": rgb(206,204,204),
 
   "alert": #c64f55
 ));
@@ -78,7 +78,7 @@ $fonts: (
       font-size: 1.25em,
       line-weight: 500,
       font-family: "Open Sans",
-      font-weight: 300,
+      font-weight: 800,
       line-height: 1.25,
       letter-spacing: -1.15px,
       margin-bottom: $base-spacing-unit
@@ -127,5 +127,8 @@ $typography: (
 $constraints: (
   page: (
     max-width: $base-page-width,
+  ),
+  form: (
+    max-width: 380px,
   )
 );

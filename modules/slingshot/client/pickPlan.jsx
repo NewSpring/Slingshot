@@ -35,19 +35,26 @@ const PickPlan = React.createClass({
     ]
 
     return (
-      <section>
+      <section className="constrain-page soft-double-ends@lap-and-up">
         <div className="grid push-double-top">
           <div className="grid__item text-center">
-            <StepsBar steps={4} active={3} />
+            <StepsBar steps={4} active={1} />
           </div>
         </div>
-        <h3 className="text-center push-double-top">Pick Your Plan</h3>
+        <h3 className="text-center push-ends soft-double-ends">
+          Pick Your Plan
+        </h3>
         <div className="grid">
           {plans.map(function(plan, i) {
             return <Plan plan={plan} key={i} />
           })}
         </div>
-        <p className="text-center push-double">Looking for a larger, multi-campus plan? <a href="#">Contact Us</a></p>
+        <div className="soft-double">
+          <p className="text-center text-dark-tertiary">
+            Looking for a larger, multi-campus plan? <a href="#" className="text-dark-tertiary underline">Contact Us</a>
+          </p>
+
+        </div>
       </section>
     );
 

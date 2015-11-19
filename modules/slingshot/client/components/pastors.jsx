@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import { Link } from 'react-router'
 
 const Pastors = React.createClass({
   render() {
@@ -19,7 +19,11 @@ const Pastors = React.createClass({
           <li>Low cost monthly subscription.</li>
         </ul>
 
-        <button className="btn--filled one-whole@handheld push-ends">Get Started</button>
+        <Link to="/signup/step-1">
+          <button className="btn--filled one-whole@handheld push-ends">
+            Get Started
+          </button>
+        </Link>
       </div>
     );
 

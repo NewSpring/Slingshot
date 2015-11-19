@@ -24,7 +24,3 @@
   	border-color: map-get($colors, "primary");
   }
 }
-
-.btn--secondary:hover {
-  background-color: map-get($colors, "light-tertiary");
-}

@@ -87,7 +87,7 @@ const Input = React.createClass({
     if (this.state.active) { inputclasses.push("input--active") }
     if (this.state.focused) { inputclasses.push("input--focused") }
     if (this.state.error) { inputclasses.push("input--alert") }
-    if (this.props.class) { inputclasses.push(this.props.class) }
+    if (this.props.classes) { inputclasses.push(this.props.classes) }
 
     return (
       <div className={inputclasses.join(" ")}>

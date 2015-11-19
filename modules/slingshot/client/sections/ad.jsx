@@ -9,7 +9,7 @@ const Ad = React.createClass({
 
     return (
       <section className="constrain-page soft-double-ends@lap-and-up">
-          <div className="grid one-whole soft-double-ends@lap-and-up">
+          <div className="grid soft-double-ends@lap-and-up">
             <div className="grid__item one-whole@handheld one-half@lap-and-up">
               <div className="soft-double-ends soft-double-sides@lap-and-up">
                 <Pastors />

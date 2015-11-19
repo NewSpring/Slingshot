@@ -6,14 +6,15 @@ const StepsBar = React.createClass({
 
     let steps = [];
     for (let i = 1; i <= this.props.steps; i++) {
-      if (i < this.props.active) {
-        steps.push(<li className="steps__item steps__item--completed">{i}</li>);
+      if (i < this.props.active || this.props.active > this.props.length) {
+        steps.push(<li className="flush steps__item steps__item--completed" key={i}>{i}</li>);
       }
       else if (i === this.props.active) {
-        steps.push(<li className="steps__item steps__item--active">{i}</li>);
+        steps.push(<li className="flush steps__item steps__item--active" key={i}>{i}</li>);
       }
+
       else {
-        steps.push(<li className="steps__item">{i}</li>);
+        steps.push(<li className="flush steps__item" key={i}>{i}</li>);
       }
     }
 
