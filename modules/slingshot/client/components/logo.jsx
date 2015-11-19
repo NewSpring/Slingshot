@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Logo = React.createClass({
 
@@ -6,9 +7,9 @@ const Logo = React.createClass({
 
     return (
       <div className="soft-half soft@lap-and-up">
-        <a href='/'>
+        <Link to='/'>
         	<img src="https://www.rockrms.com//Themes/RockExternal/Assets/Images/rock-logo.svg"/>
-        </a>
+        </Link>
       </div>
     );
 
