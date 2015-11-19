@@ -103,12 +103,6 @@
                 "description": "The name corresponding to the performance level for edition. The available options are: Shared, Basic, S0, S1, S2, S3, P1, P2, and P3."
             }
         },
-        "dnsNameForPublicIP": {
-          "type": "string",
-          "metadata": {
-            "description": "Unique DNS name for the public IP used to access the virtual machine."
-          }
-        },
         "certData": {
           "type": "string",
           "metadata": {
