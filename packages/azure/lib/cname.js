@@ -7,7 +7,7 @@ const resourceURI = "https://management.azure.com/",
 
 Azure.cname = {};
 
-Azure.cname.create = (cname, url) => {
+Azure.cname.create = (cname, url, cb) => {
   check(cname, String);
   check(url, String);
 
@@ -52,7 +52,7 @@ Azure.cname.create = (cname, url) => {
             throw new Meteor.Error(`Unable to create CNAME: ${err.stack}`);
           }
 
-          console.log(result);
+          cb(result);
         });
       }
 
@@ -66,7 +66,7 @@ Azure.cname.create = (cname, url) => {
 
 }
 
-Azure.cname.remove = (cname) => {
+Azure.cname.remove = (cname, cb) => {
   check(cname, String);
 
   Azure.token.get((err, result) => {
@@ -97,7 +97,7 @@ Azure.cname.remove = (cname) => {
             throw new Meteor.Error(`Unable to delete CNAME: ${err.stack}`);
           }
 
-          console.log(result);
+          cb(result);
 
         });
       }

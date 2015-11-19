@@ -4,7 +4,7 @@ const Resource = Npm.require("azure-arm-resource");
 const resourceURI = "https://management.azure.com/";
 
 Azure.deployment = {};
-Azure.deployment.create = (resourceGroupName, deploymentName) => {
+Azure.deployment.create = (resourceGroupName, deploymentName, cb) => {
   check(resourceGroupName, String);
   check(deploymentName, String);
 
@@ -66,7 +66,7 @@ Azure.deployment.create = (resourceGroupName, deploymentName) => {
         throw new Meteor.Error(`Unable to create deployment: ${err.stack}`);
       }
 
-      console.log(result);
+      cb(result);
 
     });
 
@@ -74,7 +74,7 @@ Azure.deployment.create = (resourceGroupName, deploymentName) => {
 
 }
 
-Azure.deployment.remove = (resourceGroupName, deploymentName) => {
+Azure.deployment.remove = (resourceGroupName, deploymentName, cb) => {
   check(resourceGroupName, String);
   check(deploymentName, String);
 
@@ -100,7 +100,7 @@ Azure.deployment.remove = (resourceGroupName, deploymentName) => {
         throw new Meteor.Error(`Unable to delete deployment: ${err.stack}`);
       }
 
-      console.log(result);
+      cb(result);
 
     });
 

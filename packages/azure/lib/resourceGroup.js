@@ -5,7 +5,7 @@ const resourceURI = "https://management.azure.com/";
 
 Azure.resourceGroup = {}
 
-Azure.resourceGroup.create = (name) => {
+Azure.resourceGroup.create = (name, cb) => {
   check(name, String);
 
   Azure.token.get((err, result) => {
@@ -37,7 +37,7 @@ Azure.resourceGroup.create = (name) => {
             throw new Meteor.Error(`Could not create resource group: ${err.stack}`);
           }
 
-          console.log(result);
+          cb(result);
 
         });
       }
@@ -52,7 +52,7 @@ Azure.resourceGroup.create = (name) => {
 
 }
 
-Azure.resourceGroup.remove = (name) => {
+Azure.resourceGroup.remove = (name, cb) => {
   check(name, String);
 
   Azure.token.get((err, result) => {
@@ -74,7 +74,7 @@ Azure.resourceGroup.remove = (name) => {
         throw new Meteor.Error(`Unable to delete resource group ${name}: ${err.stack}`);
       }
 
-      console.log(result);
+      cb(result);
     });
 
   });
