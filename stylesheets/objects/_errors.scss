@@ -12,7 +12,7 @@
   border-radius: $base-border-radius;
   
   font-weight: 400;
-  font-size: 1em;
+  font-size: $base-font-size/16px * 0.875em;
   line-height: 1.375em;
   
   color: map-get($colors, alert);

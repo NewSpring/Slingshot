@@ -19,7 +19,7 @@ const LinkBlock = React.createClass({
   render() {
 
     return (
-      <div className="push-double-bottom">
+      <div className="push-double-bottom inline-center">
         <h3 className="text-primary push-half-bottom">{this.props.title}</h3>
 
         <ul className="">
@@ -96,7 +96,7 @@ const Footer = React.createClass({
             {this.links.map(function(link, i){
 
               return (
-                <div className="grid__item one-whole text-center@lap-and-up one-third@lap-and-up" key={i}>
+                <div className="grid__item one-whole text-center@handheld one-third@lap-and-up" key={i}>
                   <LinkBlock title={link.title} links={link.links}/>
                 </div>
               )

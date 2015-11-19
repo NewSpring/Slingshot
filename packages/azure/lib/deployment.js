@@ -50,6 +50,12 @@ Azure.deployment.create = (resourceGroupName, deploymentName, cb) => {
           },
           "databaseName": {
             "value": deploymentName
+          },
+          "certData": {
+            "value": Meteor.settings.ssl.cert
+          },
+          "certPassword": {
+            "value": Meteor.settings.ssl.password
           }
         },
         mode: "Incremental"
