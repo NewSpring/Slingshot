@@ -28,20 +28,22 @@ const Plan = React.createClass({
       outlinedClasses.push("push-top");
     }
 
-    const buttonClasses = this.props.plan.featured ? "btn" : "btn--secondary";
+    const buttonClasses = this.props.plan.featured ? "btn--filled" : "btn--secondary";
     return (
       <div className="grid__item one-third@lap-and-up push-bottom">
         <div className={outlinedClasses.join(" ")}>
-          <input ref="plan" type="hidden" value={this.props.plan.id}/>
-          <img src={this.props.plan.image} height="100" className="push-bottom" />
-          <h4 className="text-dark-tertiary">{this.props.plan.name}</h4>
-          <h3 className="soft flush">${this.props.plan.price}/mo</h3>
-          <p><small>{this.props.plan.people} people</small></p>
-          <p><small>Server with {this.props.plan.ram} RAM</small></p>
+          <div className="soft-ends">
+            <input ref="plan" type="hidden" value={this.props.plan.id}/>
+            <img src={this.props.plan.image} height="100" className="push-bottom" />
+            <h4 className="text-dark-tertiary">{this.props.plan.name}</h4>
+            <h3 className="soft flush">${this.props.plan.price}/mo</h3>
+            <p><small>{this.props.plan.people} people</small></p>
+            <p><small>Server with {this.props.plan.ram} RAM</small></p>
 
-          <button className={buttonClasses} onClick={this.saveData}>
-            Select Plan
-          </button>
+            <button className={buttonClasses} onClick={this.saveData}>
+              Select Plan
+            </button>
+          </div>
         </div>
       </div>
     );

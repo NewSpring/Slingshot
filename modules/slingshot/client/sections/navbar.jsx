@@ -37,10 +37,10 @@ const NavBar = React.createClass({
                 <a href="#" className="text-light-secondary"><strong>Donate</strong></a>
               </div>
               <div className="display-inline-block soft-half-sides">
-                <button href="#" className="btn--filled">Get Started</button>
+                <button href="/signup" className="btn--filled">Get Started</button>
               </div>
               <div className="display-inline-block soft-half-sides">
-                <button href="#" className="btn--secondary">Sign In</button>
+                <button href="/account" className="btn--secondary">Sign In</button>
               </div>
             </div>
           </div>
