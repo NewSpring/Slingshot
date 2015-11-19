@@ -53,7 +53,7 @@ const Form = React.createClass({
     const values = Session.get("stored-values");
 
     if (!values) {
-      this.props.history.pushState(null, "/signup/")
+      this.props.history.replaceState(null, "/signup")
     }
 
 
