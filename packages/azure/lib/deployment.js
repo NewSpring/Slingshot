@@ -26,9 +26,35 @@ Azure.deployment.create = (resourceGroupName, deploymentName) => {
         templateLink: {
           uri: "https://raw.githubusercontent.com/NewSpring/Slingshot/master/.templates/azuredeploy.json"
         },
-        parametersLink: {
-          uri: "https://raw.githubusercontent.com/NewSpring/Slingshot/master/.templates/azuredeploy-parameters.json"
-        }
+        parameters: 
+          {
+            "siteName": {
+              "value": deploymentName
+            },
+            "hostingPlanName": {
+              "value": "NewServiceAppPlan"
+            },
+            "siteLocation": {
+              "value": "East US"
+            },
+            "serverName": {
+              "value": deploymentName
+            },
+            "serverLocation": {
+              "value": "East US"
+            },
+            "administratorLogin": {
+              "value": "NewAdmin"
+            },
+            "administratorLoginPassword": {
+              "value": "1hundredK"
+            },
+            "databaseName": {
+              "value": deploymentName
+            }
+          }
+          ,
+        mode: "Incremental"
       }
     }
 
