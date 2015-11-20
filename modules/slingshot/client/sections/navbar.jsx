@@ -2,7 +2,51 @@
 import React from "react";
 import Logo from "./../components/logo"
 
+const Link = React.createClass({
+  render() {
+
+    const btnClass = `btn--${this.props.btn}`
+    const linkClasses = `text-light-secondary h6 btn--${this.props.link.btn}`
+
+    return (
+      <div className="display-inline-block soft-sides">
+        <a href={this.props.link.link} className={linkClasses}><strong>{this.props.link.title}</strong></a>
+      </div>
+    )
+  }
+})
+
 const NavBar = React.createClass({
+
+  links: [
+    {
+      title: "Features",
+      link: "http://www.rockrms.com/Rock/Features",
+    },{
+      title: "Demo",
+      link: "http://rock.rocksolidchurchdemo.com/page/3?returnurl=%252f",
+    },{
+      title: "Learn",
+      link: "http://www.rockrms.com/Learn",
+    },{
+      title: "Ask",
+      link: "http://www.rockrms.com/Rock/Ask",
+    },{
+      title: "Connect",
+      link: "http://www.rockrms.com/Rock/Connect",
+    },{
+      title: "Donate",
+      link: "http://www.rockrms.com/Rock/Invest",
+    },{
+      title: "Get Started",
+      btn: "filled",
+      link: "/signup",
+    },{
+      title: "Sign In",
+      btn: "tertiary",
+      link: "/account",
+    },
+  ],
 
   render() {
 
@@ -18,30 +62,11 @@ const NavBar = React.createClass({
           </div>
           <div className="grid__item five-sixths@lap-and-up visuallyhidden@handheld text-right" style={align}>
             <div className="display-inline-block">
-              <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary h6"><strong>Features</strong></a>
-              </div>
-              <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary"><strong>Demo</strong></a>
-              </div>
-              <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary"><strong>Learn</strong></a>
-              </div>
-              <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary"><strong>Ask</strong></a>
-              </div>
-              <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary"><strong>Connect</strong></a>
-              </div>
-              <div className="display-inline-block soft-sides">
-                <a href="#" className="text-light-secondary"><strong>Donate</strong></a>
-              </div>
-              <div className="display-inline-block soft-half-sides">
-                <button href="/signup" className="btn--filled">Get Started</button>
-              </div>
-              <div className="display-inline-block soft-half-sides">
-                <button href="/account" className="btn--tertiary">Sign In</button>
-              </div>
+              {this.links.map(function(link, i){
+                return (
+                  <Link link={link} btn={link.btn} key={i}/>
+                )
+              })}
             </div>
           </div>
         </div>

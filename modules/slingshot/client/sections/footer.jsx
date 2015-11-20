@@ -4,10 +4,10 @@ import React from "react";
 const Service = React.createClass({
   render() {
 
-    const classes = `background--light-secondary icon--${this.props.service}`
+    const classes = `background--light-secondary icon--${this.props.service} display-inline-block`
     const center = {margin: "0 auto"}
     return (
-      <div className="grid__item one-quarter" style={center}>
+      <div className="grid__item one-quarter text-center" style={center}>
         <span className={classes}>
         </span>
       </div>
