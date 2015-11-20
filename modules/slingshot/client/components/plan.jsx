@@ -41,7 +41,26 @@ const Plan = React.createClass({
             {(() => {
               if (this.props.plan.featured) {
                 return (
-                  <div className="triangle">MOST POPULAR</div>
+                  <div>
+                    <div style={{
+                      width: 0,
+                      height: 0,
+                      borderBottom: "115px solid transparent",
+                      borderLeft: "115px solid #ee7624"
+                    }} className="locked-top locked-left push-left"></div>
+
+                  <span className="h3 text-light-primary locked-top uppercase locked-left" style={{
+                        fontSize: "14px",
+                        WebkitTransform: "rotate(315deg)",
+                        OTransform: "rotate(315deg)",
+                        msTransform: "rotate(315deg)",
+                        letterSpacing: ".75",
+                        paddingTop: "25px",
+                        paddingLeft: "15px"
+                      }}>
+                      Most<br/>Popular
+                    </span>
+                  </div>
                 )
               }
 
