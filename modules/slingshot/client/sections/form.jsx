@@ -18,7 +18,8 @@ let fieldValues = {
   cardNumber: null,
   expiration: null,
   ccv: null,
-  url: null
+  url: null,
+  azureEmail: null
 }
 
 
@@ -127,6 +128,7 @@ const Form = React.createClass({
           console.table(response);
 
           fieldValues.url = response.url;
+          fieldValues.azureEmail = response.azureEmail;
           fieldValues = savedValues;
 
           history.pushState(null, "/signup/success");
