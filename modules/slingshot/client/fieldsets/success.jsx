@@ -18,7 +18,7 @@ const ChurchInfo = React.createClass({
             Your account has been created and your first payment has been approved. Now it's time to get started with RockRMS!
           </p>
           <div className="text-center soft-ends">
-            <a href={this.props.fieldValues.azureEmail} className="btn--filled">
+            <a href={this.props.fieldValues.url} className="btn--filled">
               Set Up My Rock
             </a>
           </div>
