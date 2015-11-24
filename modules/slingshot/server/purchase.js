@@ -88,7 +88,8 @@ function purchase(person, token, plan, callback){
         console.log("Created", response);
         callback({
           url: `http://${person.subdomain}.rockrms.church/Start.aspx`,
-          email: person.email
+          email: person.email,
+          azureEmail: `http://${subdomain}.azurewebsites.net/Start.aspx`
         });
       });
     });
