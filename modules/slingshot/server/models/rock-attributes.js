@@ -19,11 +19,11 @@ const neededAttributes = [
     Description: "Stripe Subscription Id for use with Slingshot"
   },
   {
-    Key: "SlingshotIp",
-    Name: "Slingshot Ip",
+    Key: "SlingshotResourceGroup",
+    Name: "Slingshot Resource Group",
     FieldTypeId: 1,
     EntityTypeId: 15,
-    Description: "Slingshot ip address of RockRMS instance"
+    Description: "Name of Slingshot resource group and cname"
   },
   {
     Key: "SlingshotSubdomain",
