@@ -10,6 +10,7 @@ Azure.cname = {};
 Azure.cname.create = (cname, url, cb) => {
   check(cname, String);
   check(url, String);
+  check(cb, Function);
 
   Azure.token.get((err, result) => {
 
