@@ -20,6 +20,8 @@ Package.onUse(function (api) {
   api.addFiles('lib/cname.js', 'server');
   api.addFiles('lib/resourceGroup.js', 'server');
   api.addFiles('lib/deployment.js', 'server');
+  api.addFiles('lib/cert.js', 'server');
+  api.addFiles('lib/domain.js', 'server');
 
   api.export('Azure', 'server');
 });
