@@ -3,8 +3,8 @@ const https = Npm.require("https"),
 
 const resourceURI = "management.azure.com",
       subscriptionId = Meteor.settings.azure.AZURE_SUBSCRIPTION_ID,
-      pfxBlob = Meteor.settings.azure.AZURE_PFX_BLOB,
-      pfxPass = Meteor.settings.azure.AZURE_PFX_PASS
+      pfxBlob = Meteor.settings.ssl.cert,
+      pfxPass = Meteor.settings.ssl.pass
 
 Azure.cert = {};
 
